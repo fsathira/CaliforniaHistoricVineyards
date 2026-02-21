@@ -1,7 +1,7 @@
 [
   {
     "name": "Alegría Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/alegria-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/alegria-vineyard",
     "AVA": "Russian River Valley",
     "Decade": "1890s",
     "County": "Sonoma",
@@ -15,7 +15,7 @@
   },
   {
     "name": "Monte Rosso Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/monte-rosso-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/monte-rosso-vineyard",
     "AVA": "Moon Mountain District",
     "Decade": "1880s",
     "County": "Sonoma",
@@ -29,7 +29,7 @@
   },
   {
     "name": "Bedrock Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/bedrock-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/bedrock-vineyard",
     "AVA": "Sonoma Valley",
     "Decade": "1880s",
     "County": "Sonoma",
@@ -43,7 +43,7 @@
   },
   {
     "name": "Pagani Ranch",
-    "url": "https://historicvineyardsociety.org/vineyards/pagani-ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/pagani-ranch",
     "AVA": "Sonoma Valley",
     "Decade": "1880s",
     "County": "Sonoma",
@@ -57,7 +57,7 @@
   },
   {
     "name": "Teldeschi Ranch",
-    "url": "https://historicvineyardsociety.org/vineyards/teldeschi-ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/teldeschi-ranch",
     "AVA": "Dry Creek Valley",
     "Decade": "1900s",
     "County": "Sonoma",
@@ -71,7 +71,7 @@
   },
   {
     "name": "Marston Family Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/marston-family-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/marston-family-vineyard",
     "AVA": "Spring Mountain District",
     "Decade": "1960s",
     "County": "Napa",
@@ -85,7 +85,7 @@
   },
   {
     "name": "St. George Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/st-george-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/st-george-vineyard",
     "AVA": "Napa Valley",
     "Decade": "1880s",
     "County": "Napa",
@@ -99,7 +99,7 @@
   },
   {
     "name": "Evangelho Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/evangelho-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/evangelho-vineyard",
     "AVA": "Contra Costa County",
     "Decade": "1890s",
     "County": "Contra Costa",
@@ -113,7 +113,7 @@
   },
   {
     "name": "Tofanelli Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/tofanelli-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/tofanelli-vineyard",
     "AVA": "Napa Valley",
     "Decade": "1900s",
     "County": "Napa",
@@ -127,7 +127,7 @@
   },
   {
     "name": "Rous Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyards/rous-vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/rous-vineyard",
     "AVA": "Russian River Valley",
     "Decade": "1900s",
     "County": "Sonoma",
