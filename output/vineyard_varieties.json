@@ -12,42 +12,7 @@
         "inferred": false
       },
       {
-        "name": "Cabernet Sauvignon",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Golden Chasselas",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Tempranillo",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Chardonnay",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grand Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Carignan",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Chasselas",
         "pct": null,
         "inferred": false
       },
@@ -57,12 +22,37 @@
         "inferred": false
       },
       {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Refosco",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Golden Chasselas",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel is dominant, with a 'sprinkling of other varieties,' but no specific percentages are provided; the text references a vineyard map documenting varietal makeup but does not state the actual percentages."
   },
   {
     "name": "Alegría Vineyard",
@@ -87,22 +77,7 @@
         "inferred": false
       },
       {
-        "name": "Muscat Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Plavac Mali",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Sangiovese",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Peloursin",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
@@ -112,17 +87,7 @@
         "inferred": false
       },
       {
-        "name": "Grenache",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Carignan",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Palomino",
+        "name": "Sangiovese",
         "pct": null,
         "inferred": false
       },
@@ -132,7 +97,37 @@
         "inferred": false
       },
       {
+        "name": "Plavac Mali",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tannat",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Monbadon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
         "pct": null,
         "inferred": false
       },
@@ -147,32 +142,17 @@
         "inferred": false
       },
       {
-        "name": "Mission",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Muscat",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Tannat",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Béclan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Syrah",
+        "name": "Grenache",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": "Listed percentages sum to 98.0%; remainder not attributed to a specific variety"
+    "notes": "The remaining 2% comprises 14 trace varieties; individual percentages cannot be determined."
   },
   {
     "name": "Alta Vista Vineyard",
@@ -183,11 +163,11 @@
     "varieties": [
       {
         "name": "Gewürztraminer",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The description indicates this is a Gewürztraminer vineyard with no mention of other varieties currently planted."
   },
   {
     "name": "Amann Ranch",
@@ -232,7 +212,7 @@
     "Decade": "1900s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "Description provides only historical context about the Bacchi family and tasting notes from wines made by various wineries (Carlisle, Lambert Bridge, Seghesio) using Bacchi Ranch fruit, but contains no information about the current grape varieties planted in the vineyard itself."
   },
   {
     "name": "Bacigalupi",
@@ -242,17 +222,17 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Pinot Noir",
+        "name": "Chardonnay",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Chardonnay",
+        "name": "Pinot Noir",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The description documents plantings of six acres each of Chardonnay and Pinot Noir beginning in 1964, but does not provide current acreage or percentage composition of the 125-acre vineyard."
   },
   {
     "name": "Barricia",
@@ -267,7 +247,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in the vineyard; the blackberry and pepper-spiced character aligns with Zinfandel's profile, but no percentage is stated."
   },
   {
     "name": "Beatty Ranch",
@@ -282,7 +262,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is described as currently planted at Beatty Ranch; no percentage is stated or inferable."
   },
   {
     "name": "Bechthold",
@@ -291,7 +271,7 @@
     "Decade": "1880s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape variety information provided in the description."
   },
   {
     "name": "Bedrock",
@@ -300,7 +280,7 @@
     "Decade": "1880s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "The description provides extensive historical context about Bedrock Vineyard's ownership and replanting history, but does not specify which grape varieties are currently planted in the vineyard. Only tasting notes (spice, red fruits, orange peel, acidity) are given, which are insufficient to identify specific varieties."
   },
   {
     "name": "Belloni",
@@ -310,27 +290,32 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Mourvèdre",
+        "name": "Carignane",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mataro",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Classic old California field blend with no percentages stated; Zinfandel appears to be the dominant variety based on Ravenswood's vineyard-designated bottling, but exact proportions are not specified."
   },
   {
     "name": "Benito Dusi",
@@ -345,7 +330,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard; no percentage breakdown is provided."
   },
   {
     "name": "Besson (Grenache)",
@@ -370,7 +355,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Grenache is stated as effectively 100%; Zinfandel and Muscat are trace interplantings with counts given but no percentage."
   },
   {
     "name": "Besson (Zinfandel)",
@@ -385,17 +370,12 @@
         "inferred": false
       },
       {
-        "name": "Grenache",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Mission",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Vineyard is effectively 100% Zinfandel; Mission vines are interplanted but their grapes are not used for the wine, so listed as trace with null percentage."
   },
   {
     "name": "Betty Ann Vineyard",
@@ -405,12 +385,12 @@
     "County": "Sonoma County",
     "varieties": [
       {
-        "name": "Colombard",
+        "name": "French Colombard",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "French Colombard is the primary/confirmed variety currently planted; West's White Prolific is mentioned as a possible alternate identification but French Colombard is more likely. No percentage data provided."
   },
   {
     "name": "Big Break Vineyard",
@@ -434,7 +414,17 @@
         "inferred": false
       },
       {
+        "name": "Malbec",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Cabernet Franc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petit Verdot",
         "pct": null,
         "inferred": false
       },
@@ -444,7 +434,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages or dominance language provided; five varieties are currently planted in distinct blocks, with Cabernet Sauvignon appearing to occupy the most block allocation (12 blocks) but insufficient information to quantify."
   },
   {
     "name": "Brecon Estate Vineyard",
@@ -462,14 +452,9 @@
         "name": "Cabernet Franc",
         "pct": null,
         "inferred": false
-      },
-      {
-        "name": "Chardonnay",
-        "pct": null,
-        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Two separate plantings from different phases remain at the vineyard; acreages are given (13.28 and 2.43 acres) but not percentage composition of the total vineyard."
   },
   {
     "name": "Brovelli Ranch",
@@ -478,7 +463,7 @@
     "Decade": "1950s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Canard Vineyard/Czapleski Vineyard",
@@ -493,7 +478,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is identified as currently planted in this heritage vineyard; no percentages are stated or inferable from the description."
   },
   {
     "name": "Carlisle (Pelletti)",
@@ -508,12 +493,17 @@
         "inferred": false
       },
       {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
+        "name": "Grand Noir de la Calmette",
         "pct": null,
         "inferred": false
       },
@@ -523,17 +513,12 @@
         "inferred": false
       },
       {
-        "name": "Grand Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Peloursin",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Field blend planted 1927 with Zinfandel described as predominant; specific percentages not stated. A total of 43 varieties have been identified in the vineyard, but only the explicitly named varieties are listed."
   },
   {
     "name": "Casa Nuestra",
@@ -542,6 +527,16 @@
     "Decade": "1970s",
     "County": "Napa",
     "varieties": [
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      },
       {
         "name": "Cabernet Sauvignon",
         "pct": null,
@@ -553,12 +548,12 @@
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
+        "name": "Merlot",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Chenin Blanc",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
@@ -568,22 +563,17 @@
         "inferred": false
       },
       {
-        "name": "Riesling",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Refosco",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Merlot",
+        "name": "Tinto",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Acreage is provided for most parcels but no overall percentages given. Tinto is listed as a field mix without further specification of its component varieties."
   },
   {
     "name": "Casa Pacini Vineyard",
@@ -611,17 +601,17 @@
     "County": "Riverside",
     "varieties": [
       {
-        "name": "Zinfandel",
+        "name": "Mission",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Mission",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Mission and Zinfandel remain in the current 3-acre planting; individual percentages not specified in the description."
   },
   {
     "name": "Cederquist Vineyard",
@@ -632,11 +622,11 @@
     "varieties": [
       {
         "name": "Grenache",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is planted entirely with Grenache: 1.5 acres from the 1890s and 10 acres from the 1940s, totaling 11.5 acres of the 12-acre vineyard with no other varieties mentioned."
   },
   {
     "name": "Chalone Vineyard",
@@ -651,7 +641,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Chenin Blanc is explicitly identified as currently planted at Chalone Vineyard; no percentages are provided for any varieties."
   },
   {
     "name": "Chen Vineyard",
@@ -660,7 +650,7 @@
     "Decade": "1970s",
     "County": "San Luis Obispo",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Chianti Station (Seghesio)",
@@ -675,7 +665,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Described as a Sangiovese field blend planted in 1910, but no specific percentages or other constituent varieties are identified."
   },
   {
     "name": "Choral’s Vineyard",
@@ -695,7 +685,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel is clearly the dominant variety (described as 'old vine Zinfandel'), but no explicit percentage is given; Mission grapes and unidentified white and red varieties are mentioned as scattered in small percentages but cannot be identified or quantified."
   },
   {
     "name": "Church Block Vineyard",
@@ -705,22 +695,22 @@
     "County": "San Joaquin",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Petite Sirah",
-        "pct": null,
+        "pct": 33.3,
         "inferred": false
       },
       {
         "name": "Carignan",
-        "pct": null,
+        "pct": 33.3,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": 33.3,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Field blend explicitly described as approximately one-third each of Petite Sirah, Carignan, and Alicante Bouschet."
   },
   {
     "name": "Coffaro",
@@ -729,7 +719,7 @@
     "Decade": "1890s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No specific grape varieties are identified in this description. While Block 4 is noted as a field blend, the constituent varieties are not stated."
   },
   {
     "name": "Cole Ranch",
@@ -739,17 +729,17 @@
     "County": "Mendocino",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
+        "name": "Riesling",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Riesling",
+        "name": "Cabernet Sauvignon",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Two varieties currently planted with no percentage breakdown given; acreage ranges provided (7 acres Riesling, 4–7 acres Cabernet Sauvignon) but insufficient for precise calculation."
   },
   {
     "name": "Compagni-Portis",
@@ -764,7 +754,7 @@
         "inferred": false
       },
       {
-        "name": "Trousseau",
+        "name": "Trousseau Gris",
         "pct": null,
         "inferred": false
       },
@@ -774,7 +764,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Field blend with named varieties Gewürztraminer, Trousseau Gris, and Riesling; 'several others' mentioned but not identified, so only the three named varieties are listed with percentages unknown."
   },
   {
     "name": "Cox",
@@ -792,7 +782,7 @@
     "Decade": "1900s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape varieties are mentioned in this description. The text discusses the wine's character, its history, and planting dates, but does not identify what varieties are currently planted in the vineyard."
   },
   {
     "name": "D&D Ranch",
@@ -802,17 +792,17 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Zinfandel",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Acreages given (13.2 acres Carignan, 5.7 acres Zinfandel, 1.3 acres mixed) but no percentages stated or inferable; mixed block prevents precise calculation."
   },
   {
     "name": "Dante Dusi Ranch",
@@ -845,7 +835,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Mission variety is identified as currently planted in this vineyard; no percentage data provided."
   },
   {
     "name": "Deaver (Zinfandel)",
@@ -869,7 +859,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in Di Stasio Vineyards; the winery names listed are historical clients/purchasers, not current plantings."
   },
   {
     "name": "Dickerson Vineyard",
@@ -880,11 +870,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is explicitly identified as 'the last remaining old Zinfandel vineyard on Zinfandel Lane' and was planted entirely in 1920; no other varieties are mentioned as currently planted."
   },
   {
     "name": "Dolinsek Ranch (Frati Ranch)",
@@ -904,12 +894,12 @@
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
+        "name": "Tempranillo",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Tempranillo",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
@@ -919,7 +909,7 @@
         "inferred": false
       }
     ],
-    "notes": "Listed percentages sum to 70.0%; remainder not attributed to a specific variety"
+    "notes": "Zinfandel is explicitly stated at 70%; the remaining varieties (Alicante Bouschet, Tempranillo, Petite Sirah, Teroldego, and unidentified others) compose the remaining 30% but no individual percentages are given."
   },
   {
     "name": "Dommen Vineyard",
@@ -928,6 +918,16 @@
     "Decade": "1930s",
     "County": "Sonoma County",
     "varieties": [
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
       {
         "name": "Alicante Bouschet",
         "pct": null,
@@ -939,7 +939,7 @@
         "inferred": false
       },
       {
-        "name": "Zinfandel",
+        "name": "Clairette Blanche",
         "pct": null,
         "inferred": false
       },
@@ -949,17 +949,27 @@
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "St. Émilion",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
+        "name": "Beba",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Listan Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Durif Blanc",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Classic Italian field blend with over 16 varieties identified; primary varieties (Carignan, Zinfandel, Alicante Bouschet, Grand Noir) lack stated percentages, and the remaining varieties identified by DNA testing were not quantified."
   },
   {
     "name": "Doña Marcelinas",
@@ -969,17 +979,12 @@
     "County": "Santa Barbara",
     "varieties": [
       {
-        "name": "Pinot Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Mission",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Mission grapes are currently planted in this vineyard; Pinot Noir was planned for other property but not established here based on the description."
   },
   {
     "name": "Eden Rift Vineyards – Dickinson Block",
@@ -990,11 +995,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is explicitly described as a 'Zinfandel block' planted in 1906 with own-rooted, head-trained vines; no other varieties are mentioned as currently planted."
   },
   {
     "name": "Ellison Vineyard (formerly Herron Vineyard)",
@@ -1012,7 +1017,7 @@
     "Decade": "1920s",
     "County": "",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "The description provides no information about grape variety composition, only soil type, training method, pruning style, and farming practices."
   },
   {
     "name": "Ernesto Wickenden",
@@ -1032,11 +1037,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard."
   },
   {
     "name": "Eva Martinelli Block",
@@ -1046,12 +1051,12 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Abouriou",
+        "name": "Blue Portuguese",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "UC Davis DNA analysis confirmed the vineyard as Blue Portuguese, historically labeled as Early Burgundy or Abouriou."
   },
   {
     "name": "Evangelho",
@@ -1066,17 +1071,17 @@
         "inferred": false
       },
       {
-        "name": "Mourvèdre",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Mourvèdre",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Field-blend of multiple varieties with no percentages stated; 'and others' suggests additional varieties present but not named."
   },
   {
     "name": "Falleri",
@@ -1091,7 +1096,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in this vineyard; no percentages are stated."
   },
   {
     "name": "Fanucchi-Wood Road",
@@ -1106,7 +1111,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted; no percentage is stated."
   },
   {
     "name": "Fire Mountain Vineyard",
@@ -1121,7 +1126,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard; the reference to blending with other Zinfandels confirms its presence but does not provide a percentage."
   },
   {
     "name": "Floodgate / Starscape Vineyard",
@@ -1131,11 +1136,6 @@
     "County": "",
     "varieties": [
       {
-        "name": "Sauvignon Blanc",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Pinot Noir",
         "pct": null,
         "inferred": false
@@ -1144,9 +1144,14 @@
         "name": "Chardonnay",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Sauvignon Blanc",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The description identifies three varieties currently planted (Pinot Noir in multiple clones, Chardonnay, and Sauvignon Blanc) but provides no acreage or percentage breakdown among them."
   },
   {
     "name": "Foppiano Vineyards – Block #3",
@@ -1170,7 +1175,7 @@
     "Decade": "1910s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Forchini (RRV)",
@@ -1185,7 +1190,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard; no percentages or other varieties are specified."
   },
   {
     "name": "Fredericks (Weiss)",
@@ -1200,7 +1205,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is identified as currently planted in the vineyard (2008 planting). Ruby Cabernet was replaced and is no longer present; historic plantings in the 1937 and 1943 sections are not specified by variety."
   },
   {
     "name": "Fredson Ranch",
@@ -1210,17 +1215,17 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Zinfandel",
+        "name": "Carignane",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only the old vine blocks of Carignane and Zinfandel west of the railroad tracks are currently planted; east-side vines were removed due to decline and disease."
   },
   {
     "name": "Galleano-Cantu Ranch",
@@ -1235,12 +1240,12 @@
         "inferred": false
       },
       {
-        "name": "Zinfandel",
+        "name": "Cinsault",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Cinsaut",
+        "name": "Mataro",
         "pct": null,
         "inferred": false
       },
@@ -1250,12 +1255,12 @@
         "inferred": false
       },
       {
-        "name": "Mourvèdre",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Five varieties are currently planted on the estate vineyard, but no percentages or acreage breakdown is provided."
   },
   {
     "name": "Gaudi Carli",
@@ -1270,7 +1275,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Barbera is explicitly identified as currently planted in this vineyard; the tasting notes describe the wine's characteristics but do not specify percentages or additional varieties."
   },
   {
     "name": "Gibson Ranch",
@@ -1280,27 +1285,27 @@
     "County": "Mendocino",
     "varieties": [
       {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Trousseau",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grenache",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Syrah",
+        "name": "Grenache Gris",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages stated or inferable from the description; all varieties listed without composition details."
   },
   {
     "name": "Giorgi/Ferrari Vineyard",
@@ -1322,9 +1327,14 @@
         "name": "Carignan",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Mixed blacks",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Original Carignan planting from late 1800s was grafted over to 'mixed blacks' in 1910; specific varieties and proportions of the mixed black replanting are not identified."
   },
   {
     "name": "Gold Mine Ranch",
@@ -1333,7 +1343,7 @@
     "Decade": "1910s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Grande",
@@ -1344,11 +1354,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as an 'old Zinfandel vineyard' planted in 1920 with Zinfandel as the primary focus; pears, prunes, and walnuts are fruit crops, not wine grapes."
   },
   {
     "name": "Grandpa Bill Ranch",
@@ -1363,7 +1373,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in this vineyard (planted 1955). The winery names listed are historical purchasers/processors of the grapes, not indicators of vineyard composition."
   },
   {
     "name": "Graziano Vincenzo Vineyard",
@@ -1378,7 +1388,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Carignan is explicitly stated as currently planted in this vineyard (8 acres of the 15-acre total); the remaining 7 acres' composition is not specified in the description."
   },
   {
     "name": "Guglielmo",
@@ -1397,17 +1407,17 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Pinot Noir",
+        "name": "Chardonnay",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Chardonnay",
+        "name": "Pinot Noir",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The original 1953 planting consisted of four acres of Chardonnay and two acres of Pinot Noir (approximately 67% and 33% respectively), but the current forty-four acre total composition is not specified in the description."
   },
   {
     "name": "Hartford",
@@ -1416,7 +1426,7 @@
     "Decade": "1910s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Hawkeye Ranch",
@@ -1440,7 +1450,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Vineyard replanted with Zinfandel in 1903; no percentage information provided. Current ownership by multiple wineries (Chase Cellars, Turley Wine Cellars, Carlisle) noted but does not indicate vineyard composition changes."
   },
   {
     "name": "Haynes Vineyard",
@@ -1460,7 +1470,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard was first planted in 1967 with Pinot Noir and Chardonnay, but no specific percentages are provided in the description."
   },
   {
     "name": "Henderlong Nalle Vineyard",
@@ -1471,11 +1481,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as an 'old vine Zinfandel block' planted in 1927, with no other varieties mentioned as currently planted."
   },
   {
     "name": "HMR (Hoffman Mountain Ranch)",
@@ -1485,13 +1495,8 @@
     "County": "",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Pinot Noir",
-        "pct": null,
+        "pct": 34.0,
         "inferred": false
       },
       {
@@ -1505,12 +1510,57 @@
         "inferred": false
       },
       {
-        "name": "Gamay",
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsault",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Counoise",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Picpoul Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Terret Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Bourboulenc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Roussanne",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Pinot Noir acreage (34 acres) is stated explicitly; Zinfandel (20+ acres) is also explicitly noted. Description mentions 'a dozen Rhone varietals' without specific names or percentages; common varieties are listed but pct is null. Cabernet Sauvignon was removed and is not included. The 'Gamay' was recharacterized as Pinot Noir and is already counted in the Pinot Noir total."
   },
   {
     "name": "Hofer Ranch",
@@ -1528,9 +1578,19 @@
         "name": "Mission",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Pedro Ximenez",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Rose of Peru",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Four varieties are listed as currently planted in the 15 acres of old vines at Hofer Ranch, but no percentages or relative proportions are stated."
   },
   {
     "name": "Hooper Vineyard",
@@ -1550,7 +1610,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Ray Christensen's parcel composition is stated with percentages; Don Mattrick's adjacent parcel of Zinfandel is excluded as it is a separate ownership and not part of the Hooper Vineyard proper being restored."
   },
   {
     "name": "Hunter Vineyard",
@@ -1565,7 +1625,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Mission grapes are identified as currently planted in this vineyard; the description attributes their origin to cuttings from Mission San Luis Rey but provides no percentage composition."
   },
   {
     "name": "Ibarra-Young",
@@ -1575,7 +1635,7 @@
     "County": "Los Olivos",
     "varieties": [
       {
-        "name": "Tempranillo",
+        "name": "Syrah",
         "pct": null,
         "inferred": false
       },
@@ -1590,17 +1650,17 @@
         "inferred": false
       },
       {
-        "name": "Graciano",
+        "name": "Tempranillo",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Syrah",
+        "name": "Graciano",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages stated or inferable. Vineyard composition by planting date: Syrah and Mourvèdre (1971, 3 acres), Marsanne (1973, 3 acres), Tempranillo and Graciano (late 1990s, 4 acres), but individual variety acreages and percentages are not specified."
   },
   {
     "name": "Jackass Hill",
@@ -1615,12 +1675,12 @@
         "inferred": false
       },
       {
-        "name": "Muscat",
+        "name": "Muscat of Alexandria",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Two varieties are currently planted and harvested at Jackass Hill, but no percentages are stated or inferable from the description."
   },
   {
     "name": "Jackass Vineyard",
@@ -1629,7 +1689,7 @@
     "Decade": "1880s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Jackse",
@@ -1638,7 +1698,7 @@
     "Decade": "1930s",
     "County": "Napa",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Jimsomare",
@@ -1653,7 +1713,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is currently planted at this vineyard; historical mentions of Cabernet are not included as they reflect past ownership, not current plantings."
   },
   {
     "name": "Joaquin José Vineyard",
@@ -1675,9 +1735,49 @@
         "name": "Zinfandel",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mataro",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsault",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Heritage Block is described as a century-old Zinfandel block with eight other varietals in a classic field blend, but no specific percentages or varietal names are provided; Zinfandel is inferred as the dominant variety based on the block naming, and common field blend companions are listed but cannot be confirmed."
   },
   {
     "name": "Katushas’ Vineyard",
@@ -1686,7 +1786,7 @@
     "Decade": "1910s",
     "County": "",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Katz Vineyard",
@@ -1701,27 +1801,22 @@
         "inferred": false
       },
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Mixed Black (field blend)",
+        "name": "Carignane",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": "Listed percentages sum to 90.0%; remainder not attributed to a specific variety"
+    "notes": "Zinfandel stated as >90% primary variety in a Mixed Black planting; other named varieties present but percentages not specified. White varieties and unidentified varieties mentioned but not named specifically enough to list."
   },
   {
     "name": "Kirschenmann Vineyard",
@@ -1732,6 +1827,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
+        "pct": 75.0,
+        "inferred": true
+      },
+      {
+        "name": "Mondeuse",
         "pct": null,
         "inferred": false
       },
@@ -1741,12 +1841,12 @@
         "inferred": false
       },
       {
-        "name": "Cinsaut",
+        "name": "Cinsault",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel comprises 15 of 20 acres (75%); the remaining 5 acres are interplanted with Mondeuse, Carignan, and Cinsault in unspecified proportions."
   },
   {
     "name": "Kronos Vineyard",
@@ -1754,8 +1854,14 @@
     "AVA": "St. Helena",
     "Decade": "1970s",
     "County": "Napa County",
-    "varieties": [],
-    "notes": "no varieties identified"
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Only Cabernet is mentioned as currently planted; described as 'one of the last old Cabernet vineyards' with no percentage or other varieties specified."
   },
   {
     "name": "Kuchan Estate Lepi Bregi Vineyard",
@@ -1765,12 +1871,12 @@
     "County": "Santa Clara",
     "varieties": [
       {
-        "name": "Grand Noir",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Zinfandel",
+        "name": "Grenache",
         "pct": null,
         "inferred": false
       },
@@ -1780,12 +1886,12 @@
         "inferred": false
       },
       {
-        "name": "Grenache",
+        "name": "Grand Noir de la Calmette",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Field blend with no explicit percentages given; all varieties are confirmed as currently planted in mixed plots on the 17-acre vineyard."
   },
   {
     "name": "Library",
@@ -1795,22 +1901,7 @@
     "County": "Napa",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grand Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
@@ -1820,17 +1911,12 @@
         "inferred": false
       },
       {
-        "name": "Grenache",
+        "name": "Cinsault",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Cinsaut",
+        "name": "Syrah",
         "pct": null,
         "inferred": false
       },
@@ -1840,17 +1926,52 @@
         "inferred": false
       },
       {
-        "name": "Muscat",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Syrah",
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat of Alexandria",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscadelle",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Burger",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Green Hungarian",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No specific percentages provided; vineyard is described as 'primarily Petite Syrah' with 'a myriad of others' but no quantitative breakdown given."
   },
   {
     "name": "Limerick Lane Vineyard",
@@ -1859,7 +1980,7 @@
     "Decade": "1910s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "The description provides no information about grape variety composition currently planted in this vineyard; it only discusses ownership history and wine characteristics."
   },
   {
     "name": "Lizzy James",
@@ -1870,11 +1991,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Vineyard was grafted over to Zinfandel shortly after 1904 and has been producing Zinfandel fruit since then; currently farmed and harvested as Zinfandel."
   },
   {
     "name": "LJ Zin",
@@ -1885,16 +2006,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Carignan",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel grafted onto St. George rootstock in 1969 is the current planting; Carignan and Burger are noted only as previous uses of the farmland before this vineyard was established."
   },
   {
     "name": "Lolonis Family Vineyards & Winery, Inc.",
@@ -1912,7 +2028,7 @@
     "Decade": "1910s",
     "County": "San Bernardino",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Lyon Vineyard – Blocks 2 and 3",
@@ -1932,7 +2048,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Block 2 contains Cabernet Sauvignon (6 acres of original vines); Block 3 contains Sauvignon Blanc (8 acres). No percentage composition given for the two blocks combined."
   },
   {
     "name": "Lytton Estate",
@@ -1947,7 +2063,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is identified as currently planted at Lytton Estate; it is described as a Heritage Zinfandel Clone with no percentage stated."
   },
   {
     "name": "MacDonald/Horton",
@@ -1962,7 +2078,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Cabernet Sauvignon is explicitly identified as currently planted in this block; no percentages or other varieties are mentioned."
   },
   {
     "name": "Maffei Vineyard",
@@ -1971,7 +2087,7 @@
     "Decade": "1920s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Mancini",
@@ -1986,12 +2102,12 @@
         "inferred": false
       },
       {
-        "name": "Colombard",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Muscadelle",
         "pct": null,
         "inferred": false
       },
@@ -1999,9 +2115,14 @@
         "name": "Palomino",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "French Colombard",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard contains at least 20 different varieties with no explicit percentages given; only the dominant varieties in each section (Zinfandel overall, Carignan in NW, white varieties in SE) and named whites can be identified from the description."
   },
   {
     "name": "Maple",
@@ -2010,7 +2131,7 @@
     "Decade": "1910s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No specific grape varieties are mentioned in this description. The text discusses ownership history, training methods, rootstocks, and winemaking practices, but contains no information about which grape varieties are currently planted in the Maple vineyard."
   },
   {
     "name": "Marian’s (Mohr-Fry)",
@@ -2025,7 +2146,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is confirmed as currently planted in this vineyard, based on the award-winning wine produced from it; no percentages are stated."
   },
   {
     "name": "Martinelli Road (Banfield)",
@@ -2034,7 +2155,7 @@
     "Decade": "1880s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Massa Estate (formerly Durney Vineyards)",
@@ -2045,11 +2166,11 @@
     "varieties": [
       {
         "name": "Cabernet Sauvignon",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The original plantings are described as Cabernet Sauvignon; no other varieties are mentioned as currently planted in this vineyard."
   },
   {
     "name": "Mazzoni-Live Oak Vineyard",
@@ -2059,32 +2180,37 @@
     "County": "Contra Costa",
     "varieties": [
       {
-        "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Mataro",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Mourvèdre",
+        "name": "Carignane",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Muscat",
+        "name": "Muscat Alexandria",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Rose of Peru",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The old 2.5-acre block is a field blend consisting mainly of Zinfandel with rogue vines of Mataro, Carignane, Muscat Alexandria, and Rose of Peru; the 5.5-acre block planted in 1998 is Petite Sirah. Specific percentages for each variety are not provided."
   },
   {
     "name": "McCay Cellars Faith “Lot 13” Vineyard",
@@ -2099,7 +2225,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is identified as currently planted in this vineyard; no percentage is stated."
   },
   {
     "name": "Mohr-Fry",
@@ -2108,7 +2234,7 @@
     "Decade": "1940s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Montafi Ranch",
@@ -2116,14 +2242,8 @@
     "AVA": "Russian River Valley",
     "Decade": "1920s",
     "County": "Sonoma",
-    "varieties": [
-      {
-        "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
+    "varieties": [],
+    "notes": "Description contains only tasting notes and historical context (former use for White Zinfandel in the 1980s). No current vineyard composition is specified."
   },
   {
     "name": "Monte Bello",
@@ -2132,7 +2252,7 @@
     "Decade": "1940s",
     "County": "Santa Clara",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "Description provides tasting notes and historical context (William Short's planting, Ridge Vineyards' acquisition and winemaking) but contains no information about current grape variety composition of the Monte Bello vineyard block."
   },
   {
     "name": "Monte Rosso",
@@ -2142,12 +2262,17 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Zinfandel",
+        "name": "Semillon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Sauvignon",
         "pct": null,
         "inferred": false
       },
@@ -2157,7 +2282,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Description confirms four varieties currently planted at Monte Rosso (Zinfandel, Semillon, Cabernet Sauvignon, and Riesling), but states the vineyard has 10 varieties total without naming the remaining six or providing any percentage breakdown."
   },
   {
     "name": "Montecillo Vineyard",
@@ -2172,7 +2297,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Cabernet Sauvignon is identified as currently planted in this vineyard; no percentages are stated."
   },
   {
     "name": "Mori Vineyard",
@@ -2180,8 +2305,14 @@
     "AVA": "Contra Costa",
     "Decade": "1930s",
     "County": "Contra Costa",
-    "varieties": [],
-    "notes": "no varieties identified"
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Only Zinfandel is mentioned as currently planted; no percentage is stated or inferable from the description."
   },
   {
     "name": "Morisoli Vineyard",
@@ -2191,22 +2322,12 @@
     "County": "Napa",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grand Noir",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Valdiguié",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
@@ -2216,17 +2337,22 @@
         "inferred": false
       },
       {
+        "name": "Durif",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir de la Calmette",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat Hamburg",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Negrette",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Muscat",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
@@ -2234,9 +2360,14 @@
         "name": "Syrah",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Valdiguié",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "In 2001, ampelographer Jean Michel-Boursiquot identified nine varietals in this field-blend vineyard, but no percentages were stated or inferable from the description."
   },
   {
     "name": "Mule Plane",
@@ -2251,7 +2382,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Carignan is identified as currently planted in this vineyard; no percentage is stated or inferable from the description."
   },
   {
     "name": "Nervo Ranch",
@@ -2261,12 +2392,7 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Sauvignon Blanc",
+        "name": "Zinfandel",
         "pct": null,
         "inferred": false
       },
@@ -2276,22 +2402,17 @@
         "inferred": false
       },
       {
-        "name": "Chenin Blanc",
+        "name": "Negrette",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Grand Noir",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Trousseau",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
@@ -2301,7 +2422,17 @@
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Valdigue",
         "pct": null,
         "inferred": false
       },
@@ -2311,42 +2442,12 @@
         "inferred": false
       },
       {
-        "name": "Negrette",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
-  },
-  {
-    "name": "Nicolini Ranch",
-    "url": "https://historicvineyardsociety.org/vineyard/nicolini-ranch",
-    "AVA": "Lodi",
-    "Decade": "1930s",
-    "County": "San Joaquin",
-    "varieties": [
-      {
-        "name": "Flame Tokay",
+        "name": "Sémillon",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
-  },
-  {
-    "name": "Oakville Farmhouse Vineyard",
-    "url": "https://historicvineyardsociety.org/vineyard/oakville-farmhouse-vineyard",
-    "AVA": "Oakville",
-    "Decade": "1930s",
-    "County": "Napa",
-    "varieties": [
-      {
-        "name": "Petite Sirah",
+        "name": "Burger",
         "pct": null,
         "inferred": false
       },
@@ -2356,20 +2457,40 @@
         "inferred": false
       },
       {
-        "name": "Zinfandel",
+        "name": "Sauvignon Blanc",
         "pct": null,
         "inferred": false
-      },
-      {
-        "name": "Colombard",
-        "pct": null,
-        "inferred": false
-      },
+      }
+    ],
+    "notes": "The oldest blocks contain a complex patchwork of varieties with no explicit percentages provided; all percentages listed as null."
+  },
+  {
+    "name": "Nicolini Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/nicolini-ranch",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
       {
         "name": "Carignan",
         "pct": null,
         "inferred": false
       },
+      {
+        "name": "Flame Tokay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Only Carignan and Flame Tokay are explicitly identified as currently planted at Nicolini Ranch; no percentages are stated or inferable from the description."
+  },
+  {
+    "name": "Oakville Farmhouse Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/oakville-farmhouse-vineyard",
+    "AVA": "Oakville",
+    "Decade": "1930s",
+    "County": "Napa",
+    "varieties": [
       {
         "name": "Negrette",
         "pct": null,
@@ -2379,9 +2500,44 @@
         "name": "Mondeuse",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Semillon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Malvasia Bianca",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages provided for any variety; all percentages are null. Historical references to H.W. Crabb's 300+ varieties and Crabb's Black Burgundy are contextual and not part of current plantings."
   },
   {
     "name": "Old Crane/G.B. Crane Vineyard",
@@ -2390,7 +2546,7 @@
     "Decade": "1880s",
     "County": "Napa",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "Description provides historical context about Dr. Crane's pioneering efforts to plant European varieties starting in 1861, but does not specify which grape varieties are currently planted in this vineyard."
   },
   {
     "name": "Old Hill Ranch",
@@ -2398,14 +2554,8 @@
     "AVA": "Sonoma Valley",
     "Decade": "1880s",
     "County": "Sonoma",
-    "varieties": [
-      {
-        "name": "Mission",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
+    "varieties": [],
+    "notes": "Description mentions Old Hill Ranch as a historic field blend vineyard but does not specify which grape varieties are currently planted. Multiple wineries (Joe Swan, Topolos, Mount Eden, etc.) purchase fruit from it, but the description does not detail the current varietal composition."
   },
   {
     "name": "Old Kraft",
@@ -2420,7 +2570,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Petite Sirah is explicitly identified as currently planted in this vineyard; the original makeup is referenced but not detailed, and young interplanted vines are mentioned without specific varieties."
   },
   {
     "name": "Old School Vineyard",
@@ -2428,8 +2578,14 @@
     "AVA": "Lodi",
     "Decade": "1900s",
     "County": "",
-    "varieties": [],
-    "notes": "no varieties identified"
+    "varieties": [
+      {
+        "name": "Tokay",
+        "pct": 100.0,
+        "inferred": false
+      }
+    ],
+    "notes": "The vineyard is described as approximately 3+ acres of Tokay grapes planted around 1906. No other varieties are mentioned as currently planted in this vineyard."
   },
   {
     "name": "Old Stake 1901 Vineyard",
@@ -2439,12 +2595,12 @@
     "County": "Lake County",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Alicante Bouschet",
+        "name": "Touriga Nacional",
         "pct": null,
         "inferred": false
       },
@@ -2454,7 +2610,12 @@
         "inferred": false
       },
       {
-        "name": "Roussanne",
+        "name": "Cinsault",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Sauvignon",
         "pct": null,
         "inferred": false
       },
@@ -2464,12 +2625,17 @@
         "inferred": false
       },
       {
-        "name": "Cinsaut",
+        "name": "Roussanne",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Perlette",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Seven named varieties identified explicitly; sixteen total varieties exist in the vineyard but only eight are named. No percentages given for any variety."
   },
   {
     "name": "Pacini Vineyard",
@@ -2478,7 +2644,7 @@
     "Decade": "1900s",
     "County": "Mendocino",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Pagani Ranch",
@@ -2491,9 +2657,14 @@
         "name": "Zinfandel",
         "pct": null,
         "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No explicit percentages given; Zinfandel is clearly the dominant variety with Alicante used as a blending grape in secondary proportion."
   },
   {
     "name": "Palisades Vineyard",
@@ -2502,6 +2673,11 @@
     "Decade": "1960s",
     "County": "",
     "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
       {
         "name": "Cabernet Sauvignon",
         "pct": null,
@@ -2513,17 +2689,12 @@
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Chenin Blanc",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Petite Sirah is described as the dominant historical and current grape, with substantial old vine plantings (1964, early 1970s). Cabernet Sauvignon, Cabernet Franc, and Chenin Blanc were newly planted between 2015 and 2025, but no acreage or percentage breakdown is provided for any variety."
   },
   {
     "name": "Papera Ranch (Carlo’s)",
@@ -2541,7 +2712,7 @@
     "Decade": "1960s",
     "County": "Solano County",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Pastori Vineyard",
@@ -2551,12 +2722,7 @@
     "County": "",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Chardonnay",
+        "name": "Merlot",
         "pct": null,
         "inferred": false
       },
@@ -2566,17 +2732,22 @@
         "inferred": false
       },
       {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Merlot",
+        "name": "Chardonnay",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages stated; vineyard is described as a patchwork of five varieties planted in multiple blocks, with most replanted in the 1960s."
   },
   {
     "name": "Pato Vineyard",
@@ -2591,7 +2762,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Petite Sirah is explicitly identified as currently planted; other varieties are not mentioned for this vineyard."
   },
   {
     "name": "Peroni Ranch",
@@ -2600,7 +2771,7 @@
     "Decade": "1890s",
     "County": "Amador",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Pesenti",
@@ -2615,7 +2786,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in this vineyard; the description emphasizes the site's terroir and viticultural practices rather than providing a complete varietal composition or percentages."
   },
   {
     "name": "Picchetti",
@@ -2639,17 +2810,17 @@
         "inferred": false
       },
       {
-        "name": "Barbera",
+        "name": "Merlot",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Merlot",
+        "name": "Barbera",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Vineyard is described as 'primarily Zinfandel' with 'some interplanted Merlot and Barbera,' but no explicit percentages are provided for any variety."
   },
   {
     "name": "Puccini",
@@ -2658,7 +2829,7 @@
     "Decade": "1900s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Puccioni",
@@ -2673,7 +2844,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly mentioned as currently planted in the Old Block vineyard; no percentage is stated."
   },
   {
     "name": "R.W. Moore",
@@ -2688,7 +2859,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard; the list of wineries represents purchasers of its fruit, not varieties grown there."
   },
   {
     "name": "Rauser Vineyard",
@@ -2698,17 +2869,17 @@
     "County": "San Joaquin",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
+        "name": "Carignane",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as predominantly Carignane with a few Alicante Bouschet vines scattered throughout; no explicit percentages are provided."
   },
   {
     "name": "Ricetti Vineyard",
@@ -2718,12 +2889,17 @@
     "County": "Mendocino",
     "varieties": [
       {
-        "name": "Colombard",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "French Colombard",
         "pct": null,
         "inferred": false
       },
@@ -2733,7 +2909,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Carignan described as the dominant planting with others as smaller interplantings, but no explicit percentages provided; all varieties listed with null percentages."
   },
   {
     "name": "Rinaldi (Eschen)",
@@ -2742,7 +2918,7 @@
     "Decade": "1870s",
     "County": "Amador",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape varieties are specified in this vineyard description. While the vineyard has various plantings dating back to 1865 and blocks of different ages since the 1950s, and grapes are contracted to Rombauer and Terre Rouge & Easton Wines, no specific variety names are mentioned."
   },
   {
     "name": "Rochioli Old Block – Jungle",
@@ -2751,7 +2927,7 @@
     "Decade": "1950s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Rocky Top (Sobon Estates)",
@@ -2760,7 +2936,7 @@
     "Decade": "1920s",
     "County": "Amador",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Rogers Vineyard",
@@ -2770,17 +2946,12 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Sauvignon Blanc",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as 'all head-trained Zinfandel' with no other varieties mentioned as currently planted."
   },
   {
     "name": "Rorick Heritage Vineyard",
@@ -2791,11 +2962,11 @@
     "varieties": [
       {
         "name": "Chardonnay",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as 7 acres of Chardonnay (Old Wente clone); no other varieties are mentioned."
   },
   {
     "name": "Rossi Ranch",
@@ -2803,19 +2974,8 @@
     "AVA": "Sonoma Valley",
     "Decade": "1910s",
     "County": "Sonoma",
-    "varieties": [
-      {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grand Noir",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
+    "varieties": [],
+    "notes": "Description mentions historical plantings (Alicante Bouschet and Grand Noir) that were lost after 1999 and not replanted; current varietals are not specified."
   },
   {
     "name": "Rous",
@@ -2824,7 +2984,7 @@
     "Decade": "1900s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Rue Vineyard",
@@ -2844,16 +3004,21 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
+        "pct": 81.4,
+        "inferred": true
       },
       {
-        "name": "Carignan",
+        "name": "Carignane",
+        "pct": 18.6,
+        "inferred": true
+      },
+      {
+        "name": "St. Peter's Church",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel and Carignane percentages calculated from vine counts (700 and 160 of 860 total); St. Peter's Church clone replanted in 2018 but variety type unclear from description."
   },
   {
     "name": "Saini",
@@ -2862,7 +3027,7 @@
     "Decade": "1920s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape variety information provided in the description."
   },
   {
     "name": "Saint Marie Vineyard",
@@ -2873,11 +3038,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard is described as planted entirely with head-pruned Zinfandel vines; no other varieties are mentioned as currently planted."
   },
   {
     "name": "Saitone",
@@ -2887,12 +3052,7 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grand Noir",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
@@ -2902,17 +3062,7 @@
         "inferred": false
       },
       {
-        "name": "Colombard",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Chasselas",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Carignan",
+        "name": "Alicante Bouschet",
         "pct": null,
         "inferred": false
       },
@@ -2922,12 +3072,42 @@
         "inferred": false
       },
       {
-        "name": "Muscat",
+        "name": "Muscadelle",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat of Hamburg",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Aramon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petit Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Criolla Mediana",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages provided; Carignan, Zinfandel, Alicante Bouschet, and Palomino comprise the bulk of plantings, while others are interplanted in unknown proportions."
   },
   {
     "name": "Saucelito Canyon",
@@ -2936,7 +3116,7 @@
     "Decade": "1880s",
     "County": "San Luis Obispo",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Schmiedt – Dairy Vineyard",
@@ -2945,7 +3125,7 @@
     "Decade": "1910s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape varieties are mentioned in this description; only vineyard size, training method, and age are noted."
   },
   {
     "name": "Schmiedt Vineyard (Carl Schmiedt)",
@@ -2954,7 +3134,7 @@
     "Decade": "1900s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Schoolhouse Vineyard",
@@ -2969,7 +3149,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Mission is identified as currently planted in this vineyard; no percentage given."
   },
   {
     "name": "Seghesio Home Ranch",
@@ -2984,7 +3164,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "A field blend with other unspecified varietals interplanted, but only Zinfandel is named; the other varieties are not identified and cannot be quantified."
   },
   {
     "name": "Shadow Mountain",
@@ -2993,7 +3173,7 @@
     "Decade": "1970s",
     "County": "San Diego",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Sky Vineyards – 1973 St. George Block",
@@ -3004,11 +3184,11 @@
     "varieties": [
       {
         "name": "Zinfandel",
-        "pct": null,
+        "pct": 100.0,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The description explicitly identifies this as a Zinfandel planting with no mention of other varieties currently in the block."
   },
   {
     "name": "Sodini",
@@ -3017,7 +3197,7 @@
     "Decade": "1900s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Stags’ Leap Winery Block 5 – ‘Ne Cede Malis’",
@@ -3041,17 +3221,22 @@
         "inferred": false
       },
       {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Mourvèdre",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Mission",
+        "name": "Tokay",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Zinfandel is described as the dominant variety ('mostly'), but exact percentages are not stated. Mission and Mourvèdre are interplanted in unspecified amounts; Tokay vines are present but explicitly not used for wine."
   },
   {
     "name": "Star Valley Vineyard",
@@ -3066,7 +3251,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The vineyard was planted in 1962 with own-rooted vines from a family clone dating to the late 1800s; the description strongly suggests these original vines are Zinfandel (evidenced by 2016's 'Old Vine Zinfandel' vintage), but no explicit percentage is stated, only that 95% of the 8 acres remain from the original planting."
   },
   {
     "name": "Stony Hill Vineyard (1948 Block)",
@@ -3076,17 +3261,22 @@
     "County": "Napa County",
     "varieties": [
       {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Chardonnay",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Riesling",
+        "name": "Pinot Blanc",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Three varieties planted in 1948; no percentages stated or inferable from the description."
   },
   {
     "name": "Stubborn Scot",
@@ -3101,7 +3291,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in this vineyard; no percentages or other varieties are mentioned."
   },
   {
     "name": "Taylor Family Vineyard",
@@ -3110,7 +3300,7 @@
     "Decade": "1890s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No specific grape varieties are identified in this description. The text mentions vineyard history, ownership changes, and wine characteristics (dark berry flavors, chocolate, pepper hints) but does not name any grape varieties currently planted in the Taylor Family Vineyard."
   },
   {
     "name": "Teldeschi Ranch",
@@ -3119,7 +3309,7 @@
     "Decade": "1890s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Tofanelli",
@@ -3128,7 +3318,7 @@
     "Decade": "1920s",
     "County": "Napa",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Two Acres",
@@ -3173,17 +3363,12 @@
         "inferred": false
       },
       {
-        "name": "Mondeuse",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Helena",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": "Mourvèdre pct inferred as 100 − 25.0 = 75.0%"
+    "notes": "Mourvèdre inferred as 100 - (10+6+4+3+2) = 75% based on 'predominantly Mourvèdre' description; Zinfandel and Helena listed as trace plantings with unspecified percentages."
   },
   {
     "name": "Under the Mountain",
@@ -3198,17 +3383,17 @@
         "inferred": false
       },
       {
-        "name": "Petite Sirah",
+        "name": "Carignan",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No explicit percentages provided; Zinfandel described as dominant within the 'mixed blacks' but exact composition of the vineyard cannot be determined from the description."
   },
   {
     "name": "Valsecchi",
@@ -3223,7 +3408,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is identified as currently planted in this vineyard; no percentages are provided."
   },
   {
     "name": "van der Kamp Vineyard – Heritage Block",
@@ -3238,7 +3423,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Pinot Noir is identified as currently planted in this vineyard; winery names mentioned (Sebastiani, DeLoach, etc.) refer to historical purchasers of fruit, not current plantings."
   },
   {
     "name": "Varozza",
@@ -3248,6 +3433,11 @@
     "County": "Napa",
     "varieties": [
       {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
         "name": "Cabernet Sauvignon",
         "pct": null,
         "inferred": false
@@ -3256,14 +3446,9 @@
         "name": "Petite Sirah",
         "pct": null,
         "inferred": false
-      },
-      {
-        "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Three varieties are identified as currently planted in old-vine blocks, but no percentages are stated or inferable from the description."
   },
   {
     "name": "Venturi",
@@ -3281,7 +3466,7 @@
     "Decade": "1920s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "No grape varieties are mentioned in this description. While the vineyard is described as certified organic and producing aromatic, light wines with good acidity, no specific variety information is provided."
   },
   {
     "name": "Wegat Vineyard",
@@ -3296,7 +3481,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is mentioned as currently planted in this vineyard; St. George rootstock is mentioned but is a rootstock, not a grape variety for harvest."
   },
   {
     "name": "Wellington",
@@ -3306,42 +3491,7 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Alicante Bouschet",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Petite Sirah",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Tempranillo",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Mourvèdre",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Colombard",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Grenache",
         "pct": null,
         "inferred": false
       },
@@ -3351,12 +3501,27 @@
         "inferred": false
       },
       {
-        "name": "Palomino",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Monbadon",
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
         "pct": null,
         "inferred": false
       },
@@ -3366,12 +3531,47 @@
         "inferred": false
       },
       {
-        "name": "Syrah",
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Semillon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sauvignon Vert",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Burger",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sylvaner",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "No percentages provided. Multiple varieties are listed without proportions; three additional teinturiers are mentioned but not identified by name."
   },
   {
     "name": "Wheeler Vineyard",
@@ -3396,7 +3596,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Three distinct plantings on different sites and dates (1974, 1977, 2007); no acreage totals or percentages given, so all proportions are null."
   },
   {
     "name": "Whitton Ranch (Geyserville)",
@@ -3416,7 +3616,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The Old Patch block contains Zinfandel; the Old Carignane block contains Carignan. Both are described as core components of the Geyserville bottling, but no percentages are stated for either block or the overall vineyard composition."
   },
   {
     "name": "Wildwood Vineyards",
@@ -3426,22 +3626,12 @@
     "County": "Sonoma",
     "varieties": [
       {
-        "name": "Cabernet Sauvignon",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      },
-      {
-        "name": "Riesling",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is confirmed as currently planted in this vineyard; other varieties mentioned (Burgundy, Cabernet Sauvignon, Riesling, Sémillon) are historical wines made by Louis Kunde, not current vineyard plantings."
   },
   {
     "name": "William G Micke Vineyard",
@@ -3450,7 +3640,7 @@
     "Decade": "1920s",
     "County": "",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Williams-Rossi Vineyard",
@@ -3460,17 +3650,12 @@
     "County": "Napa",
     "varieties": [
       {
-        "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      },
-      {
         "name": "Valdiguié",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Valdiguié is mentioned as currently planted on the ranch; no percentage breakdown provided among the three plantings (0.5 acre from 1947, 1 acre from 1954, and acreage unknown for the remaining old-vine section)."
   },
   {
     "name": "Winberrie",
@@ -3479,7 +3664,7 @@
     "Decade": "1900s",
     "County": "Sonoma",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "Description lists only vineyard names and ownership periods with no grape variety information."
   },
   {
     "name": "Wirz Vineyard",
@@ -3488,7 +3673,7 @@
     "Decade": "1960s",
     "County": "San Benito County",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Zeigler",
@@ -3508,7 +3693,7 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Vineyard is described as 'primarily Zinfandel' with some interplanted red varieties including Alicante Bouschet, but no specific percentages are provided."
   },
   {
     "name": "ZinStar",
@@ -3516,14 +3701,8 @@
     "AVA": "Lodi",
     "Decade": "1930s",
     "County": "San Joaquin",
-    "varieties": [
-      {
-        "name": "Zinfandel",
-        "pct": null,
-        "inferred": false
-      }
-    ],
-    "notes": null
+    "varieties": [],
+    "notes": "Description discusses wine characteristics and vineyard properties but does not identify any grape varieties currently planted in this vineyard."
   },
   {
     "name": "The Original Grandpère Vineyard",
@@ -3532,7 +3711,7 @@
     "Decade": "1860s",
     "County": "Amador",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": "The description provides no information about grape variety composition, only vineyard ownership, soil type, aspect, farming practices, and planting date history."
   },
   {
     "name": "Alfred Frediani Vineyard",
@@ -3542,17 +3721,17 @@
     "County": "Napa County",
     "varieties": [
       {
-        "name": "Petite Sirah",
+        "name": "Carignane",
         "pct": null,
         "inferred": false
       },
       {
-        "name": "Carignan",
+        "name": "Petite Sirah",
         "pct": null,
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "The description states that Carignane (planted ~1901) and Petite Sirah (planted 1930s) made up 'a significant portion' of the vineyard's production, but no explicit percentages are given. As of December 2024, the vines have been removed or replanted, so the current composition is unknown."
   },
   {
     "name": "Bender Family Vineyard",
@@ -3561,7 +3740,7 @@
     "Decade": "1950s",
     "County": "",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Soucie Vineyard",
@@ -3570,7 +3749,7 @@
     "Decade": "1910s",
     "County": "San Joaquin",
     "varieties": [],
-    "notes": "no varieties identified"
+    "notes": null
   },
   {
     "name": "Viola’s Vineyard",
@@ -3585,6 +3764,6 @@
         "inferred": false
       }
     ],
-    "notes": null
+    "notes": "Only Zinfandel is explicitly identified as currently planted in this vineyard (planted 1949–50). Historical mention of Flame Tokays is excluded as those were replaced by the Zinfandel planting."
   }
 ]
