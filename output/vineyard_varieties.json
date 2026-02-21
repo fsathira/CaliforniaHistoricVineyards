@@ -1,0 +1,3590 @@
+[
+  {
+    "name": "Aldo’s",
+    "url": "https://historicvineyardsociety.org/vineyard/aldos",
+    "AVA": "Napa Valley",
+    "Decade": "1930s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Golden Chasselas",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chasselas",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Abouriou",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Refosco",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Alegría Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/alegria-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": 78.0,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": 11.0,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": 9.0,
+        "inferred": false
+      },
+      {
+        "name": "Muscat Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Plavac Mali",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sangiovese",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Negrette",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Monbadon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Graciano",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsaut",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tannat",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Béclan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Listed percentages sum to 98.0%; remainder not attributed to a specific variety"
+  },
+  {
+    "name": "Alta Vista Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/alta-vista-vineyard",
+    "AVA": "Sonoma Valley",
+    "Decade": "1930s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Gewürztraminer",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Amann Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/amann-ranch",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1940s",
+    "County": "Sonoma County",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Anacleto Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/anacleto-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1930s",
+    "County": "",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Aparicio",
+    "url": "https://historicvineyardsociety.org/vineyard/aparicio",
+    "AVA": "Amador",
+    "Decade": "1930s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Armor Plate (Stellwagen)",
+    "url": "https://historicvineyardsociety.org/vineyard/armor-plate",
+    "AVA": "Sonoma Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Bacchi Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/bacchi-ranch",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Bacigalupi",
+    "url": "https://historicvineyardsociety.org/vineyard/bacigalupi",
+    "AVA": "Russian River Valley",
+    "Decade": "1950s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Barricia",
+    "url": "https://historicvineyardsociety.org/vineyard/barricia",
+    "AVA": "Sonoma Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Beatty Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/beatty-ranch",
+    "AVA": "Napa Valley",
+    "Decade": "1910s",
+    "County": "Napa County",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Bechthold",
+    "url": "https://historicvineyardsociety.org/vineyard/bechthold",
+    "AVA": "Lodi",
+    "Decade": "1880s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Bedrock",
+    "url": "https://historicvineyardsociety.org/vineyard/bedrock",
+    "AVA": "Sonoma Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Belloni",
+    "url": "https://historicvineyardsociety.org/vineyard/belloni",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Benito Dusi",
+    "url": "https://historicvineyardsociety.org/vineyard/benito-dusi",
+    "AVA": "Paso Robles",
+    "Decade": "1920s",
+    "County": "San Luis Obispo",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Besson (Grenache)",
+    "url": "https://historicvineyardsociety.org/vineyard/besson",
+    "AVA": "Central Coast",
+    "Decade": "1910s",
+    "County": "Santa Clara",
+    "varieties": [
+      {
+        "name": "Grenache",
+        "pct": 100.0,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Besson (Zinfandel)",
+    "url": "https://historicvineyardsociety.org/vineyard/besson-2",
+    "AVA": "Central Coast",
+    "Decade": "1920s",
+    "County": "Santa Clara",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": 100.0,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Betty Ann Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/betty-ann-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma County",
+    "varieties": [
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Big Break Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/big-break",
+    "AVA": "Contra Costa",
+    "Decade": "1910s",
+    "County": "Contra Costa",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Brandlin Estate",
+    "url": "https://historicvineyardsociety.org/vineyard/brandlin-estate",
+    "AVA": "Mt. Veeder",
+    "Decade": "1920s",
+    "County": "Napa County",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Franc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Brecon Estate Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/brecon-estate-vineyard",
+    "AVA": "Paso Robles",
+    "Decade": "1970s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Franc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Brovelli Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/brovelli-ranch",
+    "AVA": "Lodi",
+    "Decade": "1950s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Canard Vineyard/Czapleski Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/canard-czapleski",
+    "AVA": "Napa Valley",
+    "Decade": "1880s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Carlisle (Pelletti)",
+    "url": "https://historicvineyardsociety.org/vineyard/carlisle-pelletti",
+    "AVA": "Russian River Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Casa Nuestra",
+    "url": "https://historicvineyardsociety.org/vineyard/casa-nuestra",
+    "AVA": "St. Helena",
+    "Decade": "1970s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Franc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Refosco",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Merlot",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Casa Pacini Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/casa-pacini",
+    "AVA": "Mendocino",
+    "Decade": "1950s",
+    "County": "Mendocino",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Casa Santinamaria/Maggies Reserve",
+    "url": "https://historicvineyardsociety.org/vineyard/casa-santinamariamaggies-reserve",
+    "AVA": "Sonoma Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Cazas Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/cazas-vineyard",
+    "AVA": "Temecula Valley",
+    "Decade": "1880s",
+    "County": "Riverside",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Cederquist Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/cederquist-vineyard",
+    "AVA": "California",
+    "Decade": "1890s",
+    "County": "Fresno County",
+    "varieties": [
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Chalone Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/chalone-vineyard",
+    "AVA": "Chalone",
+    "Decade": "1910s",
+    "County": "Monterey",
+    "varieties": [
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Chen Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/chen-vineyard",
+    "AVA": "Paso Robles",
+    "Decade": "1970s",
+    "County": "San Luis Obispo",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Chianti Station (Seghesio)",
+    "url": "https://historicvineyardsociety.org/vineyard/chianti-station",
+    "AVA": "Alexander Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Sangiovese",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Choral’s Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/chorals-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Church Block Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/church-block-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Coffaro",
+    "url": "https://historicvineyardsociety.org/vineyard/coffaro",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Cole Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/cole-ranch",
+    "AVA": "Cole Ranch",
+    "Decade": "1970s",
+    "County": "Mendocino",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Compagni-Portis",
+    "url": "https://historicvineyardsociety.org/vineyard/compagni-portis",
+    "AVA": "Sonoma Valley",
+    "Decade": "1950s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Gewürztraminer",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Cox",
+    "url": "https://historicvineyardsociety.org/vineyard/cox",
+    "AVA": "Mendocino",
+    "Decade": "1920s",
+    "County": "Mendocino",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Craighead Vineyards",
+    "url": "https://historicvineyardsociety.org/vineyard/craighead-vineyards",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "D&D Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/dd-ranch",
+    "AVA": "Alexander Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Dante Dusi Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/dante-dusi-ranch",
+    "AVA": "Paso Robles",
+    "Decade": "1940s",
+    "County": "San Luis Obispo",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "David Fulton",
+    "url": "https://historicvineyardsociety.org/vineyard/david-fulton",
+    "AVA": "Napa Valley",
+    "Decade": "1950s",
+    "County": "Napa",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Deaver (Mission)",
+    "url": "https://historicvineyardsociety.org/vineyard/deaver-mission",
+    "AVA": "Shenandoah Valley",
+    "Decade": "1870s",
+    "County": "Amador",
+    "varieties": [
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Deaver (Zinfandel)",
+    "url": "https://historicvineyardsociety.org/vineyard/deaver-zinfandel",
+    "AVA": "Shenandoah Valley",
+    "Decade": "1960s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Di Stasio Vineyards",
+    "url": "https://historicvineyardsociety.org/vineyard/di-stasio-vineyards",
+    "AVA": "Shenandoah Valley",
+    "Decade": "1960s",
+    "County": "Amador",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Dickerson Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/dickerson-vineyard",
+    "AVA": "Napa Valley",
+    "Decade": "1920s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Dolinsek Ranch (Frati Ranch)",
+    "url": "https://historicvineyardsociety.org/vineyard/dolinsek-ranch-frati-ranch",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": 70.0,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Teroldego",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Listed percentages sum to 70.0%; remainder not attributed to a specific variety"
+  },
+  {
+    "name": "Dommen Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/dommen-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1930s",
+    "County": "Sonoma County",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Doña Marcelinas",
+    "url": "https://historicvineyardsociety.org/vineyard/dona-marcelinas",
+    "AVA": "Santa Rita Hills",
+    "Decade": "1880s",
+    "County": "Santa Barbara",
+    "varieties": [
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Eden Rift Vineyards – Dickinson Block",
+    "url": "https://historicvineyardsociety.org/vineyard/eden-rift-vineyards-dickinson-block",
+    "AVA": "Cienega Valley",
+    "Decade": "1900s",
+    "County": "San Benito County",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Ellison Vineyard (formerly Herron Vineyard)",
+    "url": "https://historicvineyardsociety.org/vineyard/herron-vineyard",
+    "AVA": "Sonoma Valley",
+    "Decade": "1960s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Enz Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/enz-vineyard",
+    "AVA": "Lime Kiln Valley",
+    "Decade": "1920s",
+    "County": "",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Ernesto Wickenden",
+    "url": "https://historicvineyardsociety.org/vineyard/ernesto-wickenden",
+    "AVA": "Santa Maria Valley",
+    "Decade": "1960s",
+    "County": "",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Esola",
+    "url": "https://historicvineyardsociety.org/vineyard/esola",
+    "AVA": "Shenandoah Valley",
+    "Decade": "1960s",
+    "County": "Amador",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Eva Martinelli Block",
+    "url": "https://historicvineyardsociety.org/vineyard/eva-martinelli-block",
+    "AVA": "Russian River Valley",
+    "Decade": "1930s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Abouriou",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Evangelho",
+    "url": "https://historicvineyardsociety.org/vineyard/evangelho",
+    "AVA": "Contra Costa",
+    "Decade": "1890s",
+    "County": "Contra Costa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Falleri",
+    "url": "https://historicvineyardsociety.org/vineyard/falleri",
+    "AVA": "Calistoga",
+    "Decade": "1920s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Fanucchi-Wood Road",
+    "url": "https://historicvineyardsociety.org/vineyard/fanucchi-wood-road",
+    "AVA": "Russian River Valley",
+    "Decade": "1890s",
+    "County": "Sonoma County",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Fire Mountain Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/fire-mountain-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Floodgate / Starscape Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/floodgate-starscape-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1970s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Sauvignon Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Foppiano Vineyards – Block #3",
+    "url": "https://historicvineyardsociety.org/vineyard/foppiano-vineyards-block-3",
+    "AVA": "Russian River Valley",
+    "Decade": "1970s",
+    "County": "Sonoma County",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Forchini (DCV)",
+    "url": "https://historicvineyardsociety.org/vineyard/forchini-dcv",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Forchini (RRV)",
+    "url": "https://historicvineyardsociety.org/vineyard/forchini-rrv",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Fredericks (Weiss)",
+    "url": "https://historicvineyardsociety.org/vineyard/fredericks-weiss",
+    "AVA": "Sonoma Valley",
+    "Decade": "1930s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Fredson Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/fredson-ranch",
+    "AVA": "Alexander Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Galleano-Cantu Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/galleano-cantu-ranch",
+    "AVA": "Cucamonga Valley",
+    "Decade": "1890s",
+    "County": "Riverside",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsaut",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Gaudi Carli",
+    "url": "https://historicvineyardsociety.org/vineyard/gaudi-carli",
+    "AVA": "Napa Valley",
+    "Decade": "1920s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Barbera",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Gibson Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/gibson-ranch",
+    "AVA": "Mendocino",
+    "Decade": "1880s",
+    "County": "Mendocino",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Giorgi/Ferrari Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/georgi-ferrari-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1920s",
+    "County": "San Joaquin County",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Giovanetti Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/giovanetti-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Gold Mine Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/gold-mine-ranch",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Grande",
+    "url": "https://historicvineyardsociety.org/vineyard/grande",
+    "AVA": "Napa Valley",
+    "Decade": "1920s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Grandpa Bill Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/grandpa-bill-ranch",
+    "AVA": "Lodi",
+    "Decade": "1950s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Graziano Vincenzo Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/vincenzo-vineyard",
+    "AVA": "Mendocino",
+    "Decade": "1940s",
+    "County": "Mendocino",
+    "varieties": [
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Guglielmo",
+    "url": "https://historicvineyardsociety.org/vineyard/guglielmo",
+    "AVA": "Santa Clara Valley",
+    "Decade": "1930s",
+    "County": "",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Hanzell Vineyards",
+    "url": "https://historicvineyardsociety.org/vineyard/hanzell-vineyards",
+    "AVA": "Sonoma Valley",
+    "Decade": "1950s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Hartford",
+    "url": "https://historicvineyardsociety.org/vineyard/hartford",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Hawkeye Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/hawkeye-ranch",
+    "AVA": "Mendocino",
+    "Decade": "1960s",
+    "County": "",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Hayne Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/hayne-vineyard",
+    "AVA": "Napa Valley",
+    "Decade": "1900s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Haynes Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/haynes-vineyard",
+    "AVA": "Coombsville",
+    "Decade": "1960s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Henderlong Nalle Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/henderlong-nalle-vineyard",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "HMR (Hoffman Mountain Ranch)",
+    "url": "https://historicvineyardsociety.org/vineyard/hoffman-mountain-ranch",
+    "AVA": "Paso Robles",
+    "Decade": "1960s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Gamay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Hofer Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/hofer-ranch",
+    "AVA": "Cucamonga Valley",
+    "Decade": "1910s",
+    "County": "San Bernardino",
+    "varieties": [
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Hooper Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/hooper-vineyard",
+    "AVA": "Santa Cruz Mountains",
+    "Decade": "1890s",
+    "County": "San Mateo",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": 60.0,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": 40.0,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Hunter Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/hunter-vineyard",
+    "AVA": "Temecula Valley",
+    "Decade": "1900s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Ibarra-Young",
+    "url": "https://historicvineyardsociety.org/vineyard/ibarra-young",
+    "AVA": "Central Coast",
+    "Decade": "1970s",
+    "County": "Los Olivos",
+    "varieties": [
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Marsanne",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Graciano",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Jackass Hill",
+    "url": "https://historicvineyardsociety.org/vineyard/jackass-hill",
+    "AVA": "Russian River Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Jackass Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/jackass-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Jackse",
+    "url": "https://historicvineyardsociety.org/vineyard/jackse",
+    "AVA": "Napa Valley",
+    "Decade": "1930s",
+    "County": "Napa",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Jimsomare",
+    "url": "https://historicvineyardsociety.org/vineyard/jimsomare",
+    "AVA": "Santa Cruz Mountains",
+    "Decade": "1900s",
+    "County": "Santa Clara",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Joaquin José Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/joaquin-jose-vineyard",
+    "AVA": "Contra Costa",
+    "Decade": "1890s",
+    "County": "Contra Costa",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Justi Creek Vineyards Heritage Block (Mancuso)",
+    "url": "https://historicvineyardsociety.org/vineyard/justi-creek-vineyards-heritage-block",
+    "AVA": "Sonoma Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Katushas’ Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/katushas-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1910s",
+    "County": "",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Katz Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/katz-vineyard",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": 90.0,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mixed Black (field blend)",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Listed percentages sum to 90.0%; remainder not attributed to a specific variety"
+  },
+  {
+    "name": "Kirschenmann Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/kirschenmann-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1910s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsaut",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Kronos Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/kronos-vineyard",
+    "AVA": "St. Helena",
+    "Decade": "1970s",
+    "County": "Napa County",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Kuchan Estate Lepi Bregi Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/kuchan-estate-lepi-bregi-vineyard",
+    "AVA": "Santa Clara Valley",
+    "Decade": "1920s",
+    "County": "Santa Clara",
+    "varieties": [
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Library",
+    "url": "https://historicvineyardsociety.org/vineyard/library",
+    "AVA": "Napa Valley",
+    "Decade": "1880s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsaut",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Limerick Lane Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/limerick-lane-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Lizzy James",
+    "url": "https://historicvineyardsociety.org/vineyard/lizzy-james",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "LJ Zin",
+    "url": "https://historicvineyardsociety.org/vineyard/lj-zin",
+    "AVA": "Lodi",
+    "Decade": "1960s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Lolonis Family Vineyards & Winery, Inc.",
+    "url": "https://historicvineyardsociety.org/vineyard/lolonis-family-vineyards-winery-inc",
+    "AVA": "Mendocino",
+    "Decade": "1940s",
+    "County": "Mendocino",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Lopez",
+    "url": "https://historicvineyardsociety.org/vineyard/lopez",
+    "AVA": "Cucamonga Valley",
+    "Decade": "1910s",
+    "County": "San Bernardino",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Lyon Vineyard – Blocks 2 and 3",
+    "url": "https://historicvineyardsociety.org/vineyard/lyon-vineyard-blocks-2-and-3",
+    "AVA": "Alexander Valley",
+    "Decade": "1970s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sauvignon Blanc",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Lytton Estate",
+    "url": "https://historicvineyardsociety.org/vineyard/lytton-estate",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "MacDonald/Horton",
+    "url": "https://historicvineyardsociety.org/vineyard/macdonaldhorton",
+    "AVA": "Napa Valley",
+    "Decade": "1950s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Maffei Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/maffei-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Mancini",
+    "url": "https://historicvineyardsociety.org/vineyard/mancini",
+    "AVA": "Russian River Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Maple",
+    "url": "https://historicvineyardsociety.org/vineyard/maple",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Marian’s (Mohr-Fry)",
+    "url": "https://historicvineyardsociety.org/vineyard/marians",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Martinelli Road (Banfield)",
+    "url": "https://historicvineyardsociety.org/vineyard/martinelli-road",
+    "AVA": "Russian River Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Massa Estate (formerly Durney Vineyards)",
+    "url": "https://historicvineyardsociety.org/vineyard/massa-estate-formerly-durney-vineyards",
+    "AVA": "Carmel Valley",
+    "Decade": "1970s",
+    "County": "Monterey",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Mazzoni-Live Oak Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/live-oak",
+    "AVA": "Contra Costa",
+    "Decade": "1880s",
+    "County": "Contra Costa",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "McCay Cellars Faith “Lot 13” Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/mccay-cellars-faith-lot-13-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Mohr-Fry",
+    "url": "https://historicvineyardsociety.org/vineyard/mohr-fry",
+    "AVA": "Lodi",
+    "Decade": "1940s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Montafi Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/montafi-ranch-tom-feeney",
+    "AVA": "Russian River Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Monte Bello",
+    "url": "https://historicvineyardsociety.org/vineyard/monte-bello",
+    "AVA": "Santa Cruz Mountains",
+    "Decade": "1940s",
+    "County": "Santa Clara",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Monte Rosso",
+    "url": "https://historicvineyardsociety.org/vineyard/monte-rosso",
+    "AVA": "Moon Mountain",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Montecillo Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/montecillo-vineyard",
+    "AVA": "Moon Mountain",
+    "Decade": "1960s",
+    "County": "Sonoma County",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Mori Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/mori-vineyard",
+    "AVA": "Contra Costa",
+    "Decade": "1930s",
+    "County": "Contra Costa",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Morisoli Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/morisoli-vineyard",
+    "AVA": "Napa Valley",
+    "Decade": "1900s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Valdiguié",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Negrette",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Mule Plane",
+    "url": "https://historicvineyardsociety.org/vineyard/mule-plane",
+    "AVA": "Lodi",
+    "Decade": "1920s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Nervo Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/nervo-ranch",
+    "AVA": "Alexander Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sauvignon Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Trousseau",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Abouriou",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Negrette",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Nicolini Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/nicolini-ranch",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Flame Tokay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Oakville Farmhouse Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/oakville-farmhouse-vineyard",
+    "AVA": "Oakville",
+    "Decade": "1930s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Negrette",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mondeuse",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Old Crane/G.B. Crane Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/old-crane",
+    "AVA": "St. Helena",
+    "Decade": "1880s",
+    "County": "Napa",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Old Hill Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/old-hill-ranch",
+    "AVA": "Sonoma Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Old Kraft",
+    "url": "https://historicvineyardsociety.org/vineyard/old-kraft",
+    "AVA": "St. Helena",
+    "Decade": "1890s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Old School Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/old-school-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Old Stake 1901 Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/old-stake",
+    "AVA": "Kelsey Bench",
+    "Decade": "1900s",
+    "County": "Lake County",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Roussanne",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cinsaut",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Pacini Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/pacini",
+    "AVA": "Mendocino",
+    "Decade": "1900s",
+    "County": "Mendocino",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Pagani Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/pagani-ranch",
+    "AVA": "Sonoma Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Palisades Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/palisades-vineyard",
+    "AVA": "Calistoga",
+    "Decade": "1960s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Cabernet Franc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chenin Blanc",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Papera Ranch (Carlo’s)",
+    "url": "https://historicvineyardsociety.org/vineyard/papera-ranch-carlos",
+    "AVA": "Russian River Valley",
+    "Decade": "1930s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Parenti Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/parenti-vineyard",
+    "AVA": "Solano County Green Valley",
+    "Decade": "1960s",
+    "County": "Solano County",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Pastori Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/pastori-vineyard",
+    "AVA": "Alexander Valley",
+    "Decade": "1920s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Merlot",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Pato Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/pato-vineyard",
+    "AVA": "Contra Costa",
+    "Decade": "1900s",
+    "County": "Contra Costa",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Peroni Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/t-c-vineyard",
+    "AVA": "Amador",
+    "Decade": "1890s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Pesenti",
+    "url": "https://historicvineyardsociety.org/vineyard/pesenti",
+    "AVA": "Paso Robles",
+    "Decade": "1920s",
+    "County": "San Luis Obispo",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Picchetti",
+    "url": "https://historicvineyardsociety.org/vineyard/picchetti",
+    "AVA": "Santa Cruz Mountains",
+    "Decade": "1880s",
+    "County": "Santa Clara",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Planchon",
+    "url": "https://historicvineyardsociety.org/vineyard/planchon",
+    "AVA": "Contra Costa",
+    "Decade": "1900s",
+    "County": "Contra Costa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Barbera",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Merlot",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Puccini",
+    "url": "https://historicvineyardsociety.org/vineyard/puccini",
+    "AVA": "Sonoma Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Puccioni",
+    "url": "https://historicvineyardsociety.org/vineyard/puccioni",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "R.W. Moore",
+    "url": "https://historicvineyardsociety.org/vineyard/r-w-moore",
+    "AVA": "Coombsville",
+    "Decade": "1900s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Rauser Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/rauser-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Ricetti Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/ricetti-vineyard",
+    "AVA": "Redwood Valley",
+    "Decade": "1940s",
+    "County": "Mendocino",
+    "varieties": [
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Valdiguié",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Rinaldi (Eschen)",
+    "url": "https://historicvineyardsociety.org/vineyard/rinaldi",
+    "AVA": "Fiddletown",
+    "Decade": "1870s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Rochioli Old Block – Jungle",
+    "url": "https://historicvineyardsociety.org/vineyard/rochioli-old-block-jungle",
+    "AVA": "Russian River Valley",
+    "Decade": "1950s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Rocky Top (Sobon Estates)",
+    "url": "https://historicvineyardsociety.org/vineyard/rocky-top",
+    "AVA": "Shenandoah Valley",
+    "Decade": "1920s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Rogers Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/rogers-vineyard",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Sauvignon Blanc",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Rorick Heritage Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/rorick-heritage-vineyard",
+    "AVA": "Sierra Foothills",
+    "Decade": "1970s",
+    "County": "Calaveras",
+    "varieties": [
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Rossi Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/rossi-ranch",
+    "AVA": "Sonoma Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Rous",
+    "url": "https://historicvineyardsociety.org/vineyard/rous",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Rue Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/rue-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Russi Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/russi-vineyard",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Saini",
+    "url": "https://historicvineyardsociety.org/vineyard/saini",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Saint Marie Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/saint-marie-vineyard",
+    "AVA": "Paso Robles",
+    "Decade": "1960s",
+    "County": "Paso Robles",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Saitone",
+    "url": "https://historicvineyardsociety.org/vineyard/saitone",
+    "AVA": "Russian River Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grand Noir",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chasselas",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Muscat",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Saucelito Canyon",
+    "url": "https://historicvineyardsociety.org/vineyard/saucelito-canyon",
+    "AVA": "Arroyo Grande Valley",
+    "Decade": "1880s",
+    "County": "San Luis Obispo",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Schmiedt – Dairy Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/schmiedt-dairy-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1910s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Schmiedt Vineyard (Carl Schmiedt)",
+    "url": "https://historicvineyardsociety.org/vineyard/schmiedt",
+    "AVA": "Lodi",
+    "Decade": "1900s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Schoolhouse Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/schoolhouse-vineyard",
+    "AVA": "California",
+    "Decade": "1890s",
+    "County": "Los Angeles County",
+    "varieties": [
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Seghesio Home Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/home-ranch",
+    "AVA": "Alexander Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Shadow Mountain",
+    "url": "https://historicvineyardsociety.org/vineyard/shadow-mountain",
+    "AVA": "San Diego",
+    "Decade": "1970s",
+    "County": "San Diego",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Sky Vineyards – 1973 St. George Block",
+    "url": "https://historicvineyardsociety.org/vineyard/sky-vineyard-1973-st-george-block",
+    "AVA": "Mt. Veeder",
+    "Decade": "1970s",
+    "County": "Napa County",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Sodini",
+    "url": "https://historicvineyardsociety.org/vineyard/sodini",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Stags’ Leap Winery Block 5 – ‘Ne Cede Malis’",
+    "url": "https://historicvineyardsociety.org/vineyard/stags-leap-winery-block-5-ne-cede-malis",
+    "AVA": "Stags Leap District",
+    "Decade": "1920s",
+    "County": "Napa County",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Stampede Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/stampede-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1920s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Star Valley Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/star-valley-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1960s",
+    "County": "San Joaquin County",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Stony Hill Vineyard (1948 Block)",
+    "url": "https://historicvineyardsociety.org/vineyard/stony-hill-vineyard-1948-block",
+    "AVA": "St. Helena",
+    "Decade": "1940s",
+    "County": "Napa County",
+    "varieties": [
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Stubborn Scot",
+    "url": "https://historicvineyardsociety.org/vineyard/stubborn-scot",
+    "AVA": "Lodi",
+    "Decade": "1960s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Taylor Family Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/taylor-family-vineyard",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Teldeschi Ranch",
+    "url": "https://historicvineyardsociety.org/vineyard/teldeschi-ranch",
+    "AVA": "Dry Creek Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Tofanelli",
+    "url": "https://historicvineyardsociety.org/vineyard/tofanelli",
+    "AVA": "Napa Valley",
+    "Decade": "1920s",
+    "County": "Napa",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Two Acres",
+    "url": "https://historicvineyardsociety.org/vineyard/two-acres",
+    "AVA": "Russian River Valley",
+    "Decade": "1910s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Mourvèdre",
+        "pct": 75.0,
+        "inferred": true
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": 10.0,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": 6.0,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": 4.0,
+        "inferred": false
+      },
+      {
+        "name": "Peloursin",
+        "pct": 3.0,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": 2.0,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mondeuse",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Helena",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": "Mourvèdre pct inferred as 100 − 25.0 = 75.0%"
+  },
+  {
+    "name": "Under the Mountain",
+    "url": "https://historicvineyardsociety.org/vineyard/under-the-mountain",
+    "AVA": "Santa Clara Valley",
+    "Decade": "1910s",
+    "County": "Santa Clara",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Valsecchi",
+    "url": "https://historicvineyardsociety.org/vineyard/valsecchi",
+    "AVA": "Sonoma Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "van der Kamp Vineyard – Heritage Block",
+    "url": "https://historicvineyardsociety.org/vineyard/van-der-kamp-vineyard",
+    "AVA": "Sonoma Valley",
+    "Decade": "1950s",
+    "County": "",
+    "varieties": [
+      {
+        "name": "Pinot Noir",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Varozza",
+    "url": "https://historicvineyardsociety.org/vineyard/varozza",
+    "AVA": "St. Helena",
+    "Decade": "1900s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Venturi",
+    "url": "https://historicvineyardsociety.org/vineyard/venturi",
+    "AVA": "Mendocino",
+    "Decade": "1970s",
+    "County": "",
+    "varieties": [],
+    "notes": "no description"
+  },
+  {
+    "name": "Vineyard 101",
+    "url": "https://historicvineyardsociety.org/vineyard/vineyard-101",
+    "AVA": "Alexander Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Wegat Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/wegat-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1950s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Wellington",
+    "url": "https://historicvineyardsociety.org/vineyard/wellington",
+    "AVA": "Sonoma Valley",
+    "Decade": "1890s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Tempranillo",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mourvèdre",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Colombard",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Grenache",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Palomino",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Monbadon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Mission",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Syrah",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Wheeler Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/wheeler-vineyard",
+    "AVA": "San Benito",
+    "Decade": "1970s",
+    "County": "San Benito County",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Chardonnay",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Sangiovese",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Whitton Ranch (Geyserville)",
+    "url": "https://historicvineyardsociety.org/vineyard/whitton-ranch-geyserville",
+    "AVA": "Alexander Valley",
+    "Decade": "1880s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Wildwood Vineyards",
+    "url": "https://historicvineyardsociety.org/vineyard/wildwood-vineyards",
+    "AVA": "Sonoma Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Cabernet Sauvignon",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Riesling",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "William G Micke Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/william-g-micke-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1920s",
+    "County": "",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Williams-Rossi Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/williams-rossi-vineyard",
+    "AVA": "Rutherford",
+    "Decade": "1940s",
+    "County": "Napa",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Valdiguié",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Winberrie",
+    "url": "https://historicvineyardsociety.org/vineyard/winberrie",
+    "AVA": "Russian River Valley",
+    "Decade": "1900s",
+    "County": "Sonoma",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Wirz Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/wirz-vineyard",
+    "AVA": "Cienega Valley",
+    "Decade": "1960s",
+    "County": "San Benito County",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Zeigler",
+    "url": "https://historicvineyardsociety.org/vineyard/zeigler",
+    "AVA": "Russian River Valley",
+    "Decade": "1920s",
+    "County": "Sonoma",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Alicante Bouschet",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "ZinStar",
+    "url": "https://historicvineyardsociety.org/vineyard/zinstar",
+    "AVA": "Lodi",
+    "Decade": "1930s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "The Original Grandpère Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/grandpere",
+    "AVA": "Amador",
+    "Decade": "1860s",
+    "County": "Amador",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Alfred Frediani Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/alfred-frediani-vineyard",
+    "AVA": "Calistoga",
+    "Decade": "1900s",
+    "County": "Napa County",
+    "varieties": [
+      {
+        "name": "Petite Sirah",
+        "pct": null,
+        "inferred": false
+      },
+      {
+        "name": "Carignan",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  },
+  {
+    "name": "Bender Family Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/bender-family-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1950s",
+    "County": "",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Soucie Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/soucie",
+    "AVA": "Lodi",
+    "Decade": "1910s",
+    "County": "San Joaquin",
+    "varieties": [],
+    "notes": "no varieties identified"
+  },
+  {
+    "name": "Viola’s Vineyard",
+    "url": "https://historicvineyardsociety.org/vineyard/violas-vineyard",
+    "AVA": "Lodi",
+    "Decade": "1940s",
+    "County": "San Joaquin",
+    "varieties": [
+      {
+        "name": "Zinfandel",
+        "pct": null,
+        "inferred": false
+      }
+    ],
+    "notes": null
+  }
+]
