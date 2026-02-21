@@ -1,0 +1,2602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>California Historic Vineyards – Interactive Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+/* ── Reset & base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark:  #1e3d18;
+  --green-mid:   #2d5a20;
+  --green-light: #4a7c35;
+  --gold:        #b8923a;
+  --gold-light:  #d4a84b;
+  --cream:       #f4efe4;
+  --parchment:   #ede5d0;
+  --text:        #2a1f14;
+  --text-muted:  #6b5d4f;
+  --white:       #ffffff;
+  --border:      #d8ccb8;
+  --card-shadow: 0 2px 12px rgba(30,61,24,.10);
+  --radius:      10px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ── Header ───────────────────────────────────── */
+header {
+  background: var(--green-dark);
+  color: var(--white);
+  padding: 0;
+  border-bottom: 4px solid var(--gold);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.logo-wrap {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+.logo-wrap svg { width: 72px; height: 72px; }
+.logo-text {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: .68rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  text-align: center;
+  line-height: 1.3;
+}
+.header-copy h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1.2;
+}
+.header-copy .tagline {
+  font-size: .9rem;
+  opacity: .75;
+  margin-top: .35rem;
+  font-weight: 300;
+}
+.stat-row {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 1.3rem;
+  flex-wrap: wrap;
+}
+.stat-box {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 7px;
+  padding: .55rem 1rem;
+  text-align: center;
+  min-width: 80px;
+}
+.stat-box .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: block;
+}
+.stat-box .lbl {
+  font-size: .7rem;
+  opacity: .75;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  display: block;
+}
+
+/* ── Sticky nav ──────────────────────────────── */
+nav.sticky-nav {
+  background: var(--green-mid);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--gold);
+}
+nav.sticky-nav ul {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 0;
+  list-style: none;
+  overflow-x: auto;
+}
+nav.sticky-nav a {
+  display: block;
+  padding: .75rem 1.1rem;
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color .15s, border-bottom .15s;
+  border-bottom: 2px solid transparent;
+}
+nav.sticky-nav a:hover {
+  color: var(--gold-light);
+  border-bottom: 2px solid var(--gold-light);
+}
+
+/* ── Main layout ─────────────────────────────── */
+main {
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Section card ────────────────────────────── */
+section.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.card-header {
+  background: var(--green-dark);
+  padding: 1rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+.card-header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--white);
+  flex: 1;
+}
+.card-header .section-icon {
+  font-size: 1.2rem;
+  opacity: .8;
+}
+.card-body {
+  padding: 1.5rem 1.6rem;
+}
+.subtitle {
+  font-size: .87rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+
+/* ── Ornamental divider ──────────────────────── */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  letter-spacing: .5em;
+  font-size: .9rem;
+  margin: .4rem 0 1.2rem;
+  user-select: none;
+}
+
+/* ── Decade slider control ───────────────────── */
+.slider-wrap {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.1rem 1.5rem 1rem;
+  margin-bottom: 1.4rem;
+}
+.slider-wrap label {
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: .5rem;
+}
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .72rem;
+  color: var(--text-muted);
+  margin-top: .35rem;
+  user-select: none;
+}
+.decade-display {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-align: center;
+  margin-bottom: .5rem;
+}
+.decade-display small {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: .8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: .4rem;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--green-mid) 0%, var(--green-mid) 0%, var(--border) 0%);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  background: var(--green-dark);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+input[type=range]::-moz-range-thumb {
+  width: 20px; height: 20px;
+  background: var(--green-dark);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ── Two-column grid for county/AVA ─────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; }
+  .header-inner { flex-direction: column; text-align: center; }
+}
+
+/* ── Accordion (region tables) ───────────────── */
+details.accordion {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  margin-bottom: .5rem;
+  overflow: hidden;
+}
+details.accordion summary {
+  cursor: pointer;
+  padding: .65rem 1rem;
+  font-weight: 600;
+  font-size: .9rem;
+  background: var(--parchment);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  user-select: none;
+}
+details.accordion summary::-webkit-details-marker { display: none; }
+details.accordion summary::before {
+  content: '▶';
+  font-size: .65rem;
+  transition: transform .15s;
+  color: var(--gold);
+}
+details[open].accordion summary::before { transform: rotate(90deg); }
+.badge {
+  font-size: .72rem;
+  background: var(--green-dark);
+  color: var(--gold-light);
+  border-radius: 10px;
+  padding: .1rem .55rem;
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* ── Tables ──────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .86rem;
+}
+th {
+  background: var(--parchment);
+  text-align: left;
+  padding: .45rem .7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+td {
+  padding: .38rem .7rem;
+  border-bottom: 1px solid #f0ede6;
+  vertical-align: middle;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #faf6ee; }
+.rank { color: var(--gold); font-size: .8rem; width: 28px; font-weight: 700; }
+.bar-bg {
+  background: var(--parchment);
+  border-radius: 3px;
+  height: 9px;
+  display: inline-block;
+  width: 120px;
+  vertical-align: middle;
+}
+.bar-fill {
+  background: var(--green-mid);
+  border-radius: 3px;
+  height: 9px;
+  display: inline-block;
+}
+.count-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* ── Notes & footer ──────────────────────────── */
+.note {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: .9rem;
+  font-style: italic;
+}
+footer {
+  background: var(--green-dark);
+  color: rgba(255,255,255,.6);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: .82rem;
+  border-top: 3px solid var(--gold);
+}
+footer a { color: var(--gold-light); text-decoration: none; }
+
+/* ── Summary image grid ──────────────────────── */
+.img-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.img-grid img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <!-- Grapevine SVG logo inspired by HVS aesthetic -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Historic Vineyard Society">
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#b8923a" stroke-width="2"/>
+        <!-- Vine trunk -->
+        <path d="M50 82 Q50 60 50 40" stroke="#d4a84b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Left branch -->
+        <path d="M50 62 Q38 56 30 50" stroke="#d4a84b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Right branch -->
+        <path d="M50 54 Q62 48 70 44" stroke="#d4a84b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Left leaf -->
+        <path d="M30 50 Q22 40 28 34 Q36 38 30 50Z" fill="#4a7c35" opacity=".85"/>
+        <!-- Right leaf -->
+        <path d="M70 44 Q78 34 72 28 Q64 32 70 44Z" fill="#4a7c35" opacity=".85"/>
+        <!-- Top leaf -->
+        <path d="M50 40 Q44 30 50 24 Q56 30 50 40Z" fill="#4a7c35" opacity=".85"/>
+        <!-- Grapes left cluster -->
+        <circle cx="26" cy="58" r="4.5" fill="#c0392b" opacity=".8"/>
+        <circle cx="34" cy="62" r="4.5" fill="#9b2335" opacity=".8"/>
+        <circle cx="22" cy="64" r="4"   fill="#a52a2a" opacity=".8"/>
+        <circle cx="30" cy="68" r="4"   fill="#c0392b" opacity=".8"/>
+        <!-- Grapes right cluster -->
+        <circle cx="74" cy="52" r="4.5" fill="#c0392b" opacity=".8"/>
+        <circle cx="82" cy="56" r="4.5" fill="#9b2335" opacity=".8"/>
+        <circle cx="70" cy="59" r="4"   fill="#a52a2a" opacity=".8"/>
+        <circle cx="78" cy="63" r="4"   fill="#c0392b" opacity=".8"/>
+        <!-- Years text -->
+        <text x="50" y="95" text-anchor="middle" font-family="Georgia,serif"
+              font-size="7" fill="#b8923a" letter-spacing="1">CALIFORNIA</text>
+      </svg>
+      <div class="logo-text">Historic<br>Vineyard Society</div>
+    </div>
+    <div class="header-copy">
+      <h1>California Historic Vineyards</h1>
+      <p class="tagline">Data source: <a href="https://historicvineyardsociety.org" style="color:var(--gold-light)">historicvineyardsociety.org</a> &nbsp;·&nbsp; 197 vineyards catalogued</p>
+      <div class="stat-row">
+        <div class="stat-box"><span class="num">197</span><span class="lbl">Vineyards</span></div>
+        <div class="stat-box"><span class="num">40</span><span class="lbl">AVAs</span></div>
+        <div class="stat-box"><span class="num">25</span><span class="lbl">Counties</span></div>
+        <div class="stat-box"><span class="num">91</span><span class="lbl">Varieties</span></div>
+        <div class="stat-box"><span class="num">26</span><span class="lbl">With % data</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ STICKY NAV ═══════════════════════════════════════════════════════ -->
+<nav class="sticky-nav">
+  <ul>
+    <li><a href="#sec-timeline">Planting Timeline</a></li>
+    <li><a href="#sec-decade">By Decade</a></li>
+    <li><a href="#sec-county">By County</a></li>
+    <li><a href="#sec-ava">By AVA</a></li>
+    <li><a href="#sec-pct">Variety %</a></li>
+    <li><a href="#sec-overall">Overall</a></li>
+    <li><a href="#sec-tables">Region Tables</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ══ SHARED DECADE SLIDER (controls sec-decade, sec-county, sec-ava) ═ -->
+<section class="card" style="border-color:var(--gold)">
+  <div class="card-header" style="background:var(--green-mid)">
+    <span class="section-icon">🗓</span>
+    <h2>Filter by Decade Planted</h2>
+  </div>
+  <div class="card-body">
+    <div class="slider-wrap">
+      <label for="decade-slider">Select a decade – charts below update automatically</label>
+      <div class="decade-display" id="decade-display">
+        All Decades <small id="vy-count"></small>
+      </div>
+      <input type="range" id="decade-slider" min="0" max="12" value="0" step="1">
+      <div class="slider-label-row">
+        <span>All</span><span>1860s</span><span>1870s</span><span>1880s</span><span>1890s</span>
+        <span>1900s</span><span>1910s</span><span>1920s</span><span>1930s</span><span>1940s</span>
+        <span>1950s</span><span>1960s</span><span>1970s</span>
+      </div>
+    </div>
+    <p class="note">
+      Drag the slider to filter the three charts below (Variety, County, and AVA)
+      to a specific planting decade. "All" shows data for all 197 vineyards.
+    </p>
+  </div>
+</section>
+
+<!-- ══ SEC 1: PLANTING TIMELINE ════════════════════════════════════════ -->
+<section class="card" id="sec-timeline">
+  <div class="card-header">
+    <span class="section-icon">📅</span>
+    <h2>Planting Timeline – Vineyards per Decade</h2>
+  </div>
+  <div class="card-body">
+    <p class="subtitle">Number of vineyards planted in each decade, across all 197 catalogued sites.</p>
+    <div class="ornament">❧ ✦ ❧</div>
+    <div id="timeline-chart"></div>
+  </div>
+</section>
+
+<!-- ══ SEC 2: VARIETY BY DECADE ════════════════════════════════════════ -->
+<section class="card" id="sec-decade">
+  <div class="card-header">
+    <span class="section-icon">🍇</span>
+    <h2>Variety Distribution — filtered by decade</h2>
+  </div>
+  <div class="card-body">
+    <p class="subtitle">
+      Top grape varieties by number of vineyards containing them.
+      Use the slider above to filter by planting decade.
+    </p>
+    <div class="ornament">❧ ✦ ❧</div>
+    <div id="variety-chart"></div>
+  </div>
+</section>
+
+<!-- ══ SEC 3 & 4: COUNTY + AVA STACKED BARS ════════════════════════════ -->
+<div class="two-col">
+
+  <section class="card" id="sec-county">
+    <div class="card-header">
+      <span class="section-icon">🗺</span>
+      <h2>County Breakdown</h2>
+    </div>
+    <div class="card-body">
+      <p class="subtitle">
+        Top 15 counties. Bars stacked by variety — each segment = number of
+        vineyards in that county containing that variety. Bar height exceeds
+        vineyard count where multiple varieties coexist.
+      </p>
+      <div id="county-chart"></div>
+    </div>
+  </section>
+
+  <section class="card" id="sec-ava">
+    <div class="card-header">
+      <span class="section-icon">📍</span>
+      <h2>AVA Breakdown</h2>
+    </div>
+    <div class="card-body">
+      <p class="subtitle">
+        Top 15 AVAs. Same stacking convention as County chart — segments
+        show variety appearances, not unique vineyards.
+      </p>
+      <div id="ava-chart"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══ SEC 5: VARIETY % ══════════════════════════════════════════════════ -->
+<section class="card" id="sec-pct">
+  <div class="card-header">
+    <span class="section-icon">📊</span>
+    <h2>Variety Composition — Vineyards with Percentage Data</h2>
+  </div>
+  <div class="card-body">
+    <p class="subtitle">
+      26 vineyards have explicit variety percentages. Only varieties ≥ 5 % are shown.
+    </p>
+    <div class="ornament">❧ ✦ ❧</div>
+    <div id="pct-chart"></div>
+    <table style="margin-top:1.4rem; font-size:.84rem">
+      <thead>
+        <tr><th>Vineyard</th><th>AVA</th><th>County</th><th>Decade</th><th>Varieties (≥5%)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Alegría Vineyard</b></td>
+          <td>Russian River Valley</td>
+          <td>Sonoma</td>
+          <td>1890s</td>
+          <td>Zinfandel (78%), Alicante Bouschet (11%), Petite Sirah (9%)</td>
+        </tr>
+        <tr>
+          <td><b>Alta Vista Vineyard</b></td>
+          <td>Sonoma Valley</td>
+          <td>Sonoma</td>
+          <td>1930s</td>
+          <td>Gewürztraminer (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Besson (Grenache)</b></td>
+          <td>Central Coast</td>
+          <td>Santa Clara</td>
+          <td>1910s</td>
+          <td>Grenache (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Besson (Zinfandel)</b></td>
+          <td>Central Coast</td>
+          <td>Santa Clara</td>
+          <td>1920s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Cederquist Vineyard</b></td>
+          <td>California</td>
+          <td>Fresno County</td>
+          <td>1890s</td>
+          <td>Grenache (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Church Block Vineyard</b></td>
+          <td>Lodi</td>
+          <td>San Joaquin</td>
+          <td>1930s</td>
+          <td>Petite Sirah (33%), Carignan (33%), Alicante Bouschet (33%)</td>
+        </tr>
+        <tr>
+          <td><b>Dickerson Vineyard</b></td>
+          <td>Napa Valley</td>
+          <td>Napa</td>
+          <td>1920s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Dolinsek Ranch (Frati Ranch)</b></td>
+          <td>Russian River Valley</td>
+          <td>Sonoma</td>
+          <td>1910s</td>
+          <td>Zinfandel (70%)</td>
+        </tr>
+        <tr>
+          <td><b>Eden Rift Vineyards – Dickinson Block</b></td>
+          <td>Cienega Valley</td>
+          <td>San Benito County</td>
+          <td>1900s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Esola</b></td>
+          <td>Shenandoah Valley</td>
+          <td>Amador</td>
+          <td>1960s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Grande</b></td>
+          <td>Napa Valley</td>
+          <td>Napa</td>
+          <td>1920s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Henderlong Nalle Vineyard</b></td>
+          <td>Dry Creek Valley</td>
+          <td>Sonoma</td>
+          <td>1920s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>HMR (Hoffman Mountain Ranch)</b></td>
+          <td>Paso Robles</td>
+          <td></td>
+          <td>1960s</td>
+          <td>Pinot Noir (34%)</td>
+        </tr>
+        <tr>
+          <td><b>Hooper Vineyard</b></td>
+          <td>Santa Cruz Mountains</td>
+          <td>San Mateo</td>
+          <td>1890s</td>
+          <td>Cabernet Sauvignon (60%), Zinfandel (40%)</td>
+        </tr>
+        <tr>
+          <td><b>Katz Vineyard</b></td>
+          <td>Dry Creek Valley</td>
+          <td>Sonoma</td>
+          <td>1900s</td>
+          <td>Zinfandel (90%)</td>
+        </tr>
+        <tr>
+          <td><b>Kirschenmann Vineyard</b></td>
+          <td>Lodi</td>
+          <td>San Joaquin</td>
+          <td>1910s</td>
+          <td>Zinfandel (75%)</td>
+        </tr>
+        <tr>
+          <td><b>Lizzy James</b></td>
+          <td>Lodi</td>
+          <td>San Joaquin</td>
+          <td>1900s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>LJ Zin</b></td>
+          <td>Lodi</td>
+          <td>San Joaquin</td>
+          <td>1960s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Massa Estate (formerly Durney Vineyards)</b></td>
+          <td>Carmel Valley</td>
+          <td>Monterey</td>
+          <td>1970s</td>
+          <td>Cabernet Sauvignon (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Old School Vineyard</b></td>
+          <td>Lodi</td>
+          <td></td>
+          <td>1900s</td>
+          <td>Tokay (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Rogers Vineyard</b></td>
+          <td>Dry Creek Valley</td>
+          <td>Sonoma</td>
+          <td>1890s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Rorick Heritage Vineyard</b></td>
+          <td>Sierra Foothills</td>
+          <td>Calaveras</td>
+          <td>1970s</td>
+          <td>Chardonnay (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Russi Vineyard</b></td>
+          <td>Russian River Valley</td>
+          <td>Sonoma</td>
+          <td>1900s</td>
+          <td>Zinfandel (81%), Carignan (19%)</td>
+        </tr>
+        <tr>
+          <td><b>Saint Marie Vineyard</b></td>
+          <td>Paso Robles</td>
+          <td>Paso Robles</td>
+          <td>1960s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Sky Vineyards – 1973 St. George Block</b></td>
+          <td>Mt. Veeder</td>
+          <td>Napa County</td>
+          <td>1970s</td>
+          <td>Zinfandel (100%)</td>
+        </tr>
+        <tr>
+          <td><b>Two Acres</b></td>
+          <td>Russian River Valley</td>
+          <td>Sonoma</td>
+          <td>1910s</td>
+          <td>Mourvèdre (75%), Petite Sirah (10%), Syrah (6%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ SEC 6: OVERALL TOP 10 ════════════════════════════════════════════ -->
+<section class="card" id="sec-overall">
+  <div class="card-header">
+    <span class="section-icon">🏆</span>
+    <h2>Top 10 Grape Varieties — All 197 Vineyards</h2>
+  </div>
+  <div class="card-body">
+    <p class="subtitle">Ranked by number of vineyards containing each variety, regardless of percentage.</p>
+    <div class="ornament">❧ ✦ ❧</div>
+    <div id="overall-chart"></div>
+  </div>
+</section>
+
+<!-- ══ SEC 7: REGION TABLES (accordion) ════════════════════════════════ -->
+<section class="card" id="sec-tables">
+  <div class="card-header">
+    <span class="section-icon">📋</span>
+    <h2>Top Varieties by AVA — Detailed Tables</h2>
+  </div>
+  <div class="card-body">
+    <p class="subtitle">Expand an AVA to see how many of its vineyards contain each variety.</p>
+
+    <details class="accordion">
+      <summary>Alexander Valley <span class="badge">29 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              6
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:100px"></div></div>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Sauvignon Blanc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Sangiovese</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Negrette</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Grand Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:20px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>California <span class="badge">2 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Calistoga <span class="badge">7 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Cabernet Franc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Chenin Blanc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Carmel Valley <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Central Coast <span class="badge">10 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Muscat</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Mourvèdre</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Marsanne</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Tempranillo</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Graciano</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Chalone <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Chenin Blanc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Cienega Valley <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Cole Ranch <span class="badge">2 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Riesling</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Contra Costa <span class="badge">14 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              4
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Mourvèdre</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Mataro</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Muscat Alexandria</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Rose of Peru</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Merlot</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Barbera</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Coombsville <span class="badge">3 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Pinot Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Cucamonga Valley <span class="badge">9 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Cinsault</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Mataro</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Palomino</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Pedro Ximenez</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Rose of Peru</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Dry Creek Valley <span class="badge">8 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:24px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:24px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:24px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Kelsey Bench <span class="badge">8 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Touriga Nacional</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Cinsault</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Roussanne</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Perlette</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Lodi <span class="badge">29 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              13
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:46px"></div></div>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Tokay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:9px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Mondeuse</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:9px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Cinsault</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:9px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Flame Tokay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:9px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Mourvèdre</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:9px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Mendocino <span class="badge">5 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Trousseau Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Grenache Gris</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Moon Mountain <span class="badge">5 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Semillon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Riesling</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Mt. Veeder <span class="badge">6 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Malbec</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Cabernet Franc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Petit Verdot</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Napa Valley <span class="badge">39 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              8
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:45px"></div></div>
+              3
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Abouriou</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:15px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Grand noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:15px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Tempranillo</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:15px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Refosco</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:15px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Alicante</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:15px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Oakville <span class="badge">9 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Negrette</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Mondeuse</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Colombard</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Chenin Blanc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Semillon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Malvasia Bianca</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Paso Robles <span class="badge">18 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              4
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Cabernet Franc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Pinot Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Mourvèdre</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Cinsault</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:30px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Redwood Valley <span class="badge">4 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>French Colombard</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Valdiguié</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Russian River Valley <span class="badge">87 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              13
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:73px"></div></div>
+              8
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:73px"></div></div>
+              8
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:55px"></div></div>
+              6
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Peloursin</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:36px"></div></div>
+              4
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Palomino</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:27px"></div></div>
+              3
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Pinot Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>French Colombard</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:18px"></div></div>
+              2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Rutherford <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Valdiguié</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>San Benito <span class="badge">3 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Sangiovese</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Santa Clara Valley <span class="badge">7 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Grand Noir de la Calmette</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Santa Cruz Mountains <span class="badge">3 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Santa Rita Hills <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Shenandoah Valley <span class="badge">3 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Sierra Foothills <span class="badge">1 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Sonoma Valley <span class="badge">38 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              7
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Alicante Bouschet</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:51px"></div></div>
+              3
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Gewürztraminer</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Pinot Noir</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Carignan</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Mourvèdre</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Syrah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Grenache</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:34px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Trousseau Gris</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:17px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>St. Helena <span class="badge">17 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Cabernet Sauvignon</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              3
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Petite Sirah</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              3
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>Riesling</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:80px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:80px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>Chenin Blanc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>Cabernet Franc</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>Merlot</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>Refosco</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>Tinto</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>Chardonnay</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:40px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="accordion">
+      <summary>Temecula Valley <span class="badge">3 variety appearances</span></summary>
+      <table>
+        <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>Mission</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:120px"></div></div>
+              2
+            </td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>Zinfandel</td>
+            <td class="count-cell">
+              <div class="bar-bg"><div class="bar-fill" style="width:60px"></div></div>
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>Data sourced from <a href="https://historicvineyardsociety.org">Historic Vineyard Society</a> · California Historic Vineyard Analysis · Built with Plotly.js</p>
+</footer>
+
+<!-- ══ JAVASCRIPT ════════════════════════════════════════════════════════ -->
+<script>
+// ── Embedded data ─────────────────────────────────────────────────────
+const PER_DECADE    = {"All": {"n_vineyards": 197, "var_bar": {"vars": ["Zinfandel", "Carignan", "Petite Sirah", "Alicante Bouschet", "Cabernet Sauvignon", "Grenache", "Mission", "Syrah", "Chardonnay", "Mourv\u00e8dre"], "counts": [81, 33, 23, 19, 17, 11, 11, 9, 9, 7]}, "county": {"Zinfandel": [29, 11, 12, 2, 1, 3, 5, 4, 2, 2, 1, 2, 0, 1, 0], "Carignan": [14, 5, 4, 0, 2, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0], "Petite Sirah": [9, 1, 6, 0, 1, 1, 1, 2, 1, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [12, 2, 2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0], "Cabernet Sauvignon": [3, 0, 3, 0, 1, 2, 0, 0, 1, 0, 1, 0, 1, 0, 0], "Grenache": [4, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1], "Mission": [1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1], "Syrah": [4, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [2, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0], "Mourv\u00e8dre": [3, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Tempranillo": [3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Peloursin": [3, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Other": [50, 2, 29, 0, 5, 5, 2, 5, 7, 0, 1, 1, 1, 0, 2]}, "ava": {"Zinfandel": [13, 13, 7, 8, 5, 6, 0, 4, 4, 2, 2, 2, 0, 2, 1], "Carignan": [8, 5, 2, 3, 1, 5, 1, 1, 2, 0, 0, 0, 0, 0, 1], "Petite Sirah": [6, 1, 2, 2, 1, 1, 1, 0, 2, 3, 0, 0, 0, 0, 2], "Alicante Bouschet": [8, 2, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 1, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 0, 1], "Grenache": [1, 0, 2, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0], "Mission": [0, 2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0], "Syrah": [2, 0, 2, 2, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0], "Chardonnay": [2, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [1, 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0], "Pinot Noir": [2, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [2, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Palomino": [3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [4, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [35, 4, 10, 16, 0, 12, 2, 6, 5, 8, 0, 0, 0, 3, 2]}}, "1860s": {"n_vineyards": 1, "var_bar": {"vars": [], "counts": []}, "county": {"Zinfandel": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1870s": {"n_vineyards": 2, "var_bar": {"vars": ["Mission"], "counts": [1]}, "county": {"Zinfandel": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1880s": {"n_vineyards": 17, "var_bar": {"vars": ["Zinfandel", "Mission", "Petite Sirah", "Carignan", "Syrah", "Muscat of Alexandria", "Trousseau Noir", "Grenache Gris", "Peloursin", "Cinsault"], "counts": [7, 3, 3, 3, 2, 2, 1, 1, 1, 1]}, "county": {"Zinfandel": [3, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0], "Carignan": [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Syrah": [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [3, 0, 5, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [1, 0, 0, 2, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [1, 0, 0, 5, 0, 0, 2, 0, 3, 0, 0, 0, 0, 0, 0]}}, "1890s": {"n_vineyards": 21, "var_bar": {"vars": ["Zinfandel", "Carignan", "Alicante Bouschet", "Petite Sirah", "Palomino", "Grenache", "Negrette", "Syrah", "Mourv\u00e8dre", "Cabernet Sauvignon"], "counts": [11, 6, 5, 4, 4, 4, 2, 2, 2, 2]}, "county": {"Zinfandel": [7, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0], "Carignan": [5, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Cabernet Sauvignon": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Tempranillo": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]}, "ava": {"Zinfandel": [3, 0, 2, 0, 1, 2, 0, 0, 1, 0, 0, 1, 0, 0, 0], "Carignan": [3, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Petite Sirah": [1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0], "Alicante Bouschet": [2, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], "Grenache": [1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [18, 0, 5, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1900s": {"n_vineyards": 35, "var_bar": {"vars": ["Zinfandel", "Carignan", "Alicante Bouschet", "Petite Sirah", "Cabernet Sauvignon", "Mataro", "French Colombard", "Mission", "Durif", "Grand Noir de la Calmette"], "counts": [20, 7, 6, 5, 2, 1, 1, 1, 1, 1]}, "county": {"Zinfandel": [9, 3, 4, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0], "Carignan": [4, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [2, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [2, 0, 5, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [2, 3, 3, 2, 3, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0], "Carignan": [2, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1], "Petite Sirah": [1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1], "Alicante Bouschet": [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [3, 1, 0, 5, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0]}}, "1910s": {"n_vineyards": 23, "var_bar": {"vars": ["Zinfandel", "Petite Sirah", "Carignan", "Grenache", "Alicante Bouschet", "Mourv\u00e8dre", "Syrah", "Cinsault", "Muscat", "Chenin Blanc"], "counts": [8, 4, 4, 3, 3, 2, 2, 2, 1, 1]}, "county": {"Zinfandel": [4, 1, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [2, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "Syrah": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [4, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 2]}, "ava": {"Zinfandel": [3, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Carignan": [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [2, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0]}}, "1920s": {"n_vineyards": 28, "var_bar": {"vars": ["Zinfandel", "Carignan", "Mission", "Cabernet Sauvignon", "Alicante Bouschet", "Grand Noir de la Calmette", "Malbec", "Cabernet Franc", "Petit Verdot", "Petite Sirah"], "counts": [15, 5, 2, 2, 2, 2, 1, 1, 1, 1]}, "county": {"Zinfandel": [5, 0, 3, 0, 0, 1, 2, 0, 0, 2, 0, 0, 0, 0, 0], "Carignan": [2, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [3, 0, 1, 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [3, 1, 0, 2, 1, 2, 0, 2, 0, 0, 0, 0, 0, 1, 1], "Carignan": [1, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [3, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1930s": {"n_vineyards": 17, "var_bar": {"vars": ["Zinfandel", "Carignan", "Petite Sirah", "Alicante Bouschet", "Abouriou", "Grand noir", "Tempranillo", "Refosco", "Alicante", "Golden Chasselas"], "counts": [7, 5, 3, 2, 1, 1, 1, 1, 1, 1]}, "county": {"Zinfandel": [1, 2, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0], "Carignan": [0, 2, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Other": [2, 1, 11, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [1, 2, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Carignan": [1, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [7, 1, 1, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1940s": {"n_vineyards": 10, "var_bar": {"vars": ["Carignan", "Zinfandel", "Valdigui\u00e9", "French Colombard", "Riesling", "Chardonnay", "Pinot Blanc"], "counts": [2, 2, 2, 1, 1, 1, 1]}, "county": {"Zinfandel": [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 1, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0]}}, "1950s": {"n_vineyards": 12, "var_bar": {"vars": ["Pinot Noir", "Chardonnay", "Zinfandel", "Gew\u00fcrztraminer", "Trousseau Gris", "Riesling", "Cabernet Sauvignon"], "counts": [3, 2, 2, 1, 1, 1, 1]}, "county": {"Zinfandel": [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}, "1960s": {"n_vineyards": 16, "var_bar": {"vars": ["Zinfandel", "Pinot Noir", "Chardonnay", "Cabernet Sauvignon", "Grenache", "Syrah", "Mourv\u00e8dre", "Cinsault", "Carignan", "Counoise"], "counts": [7, 2, 2, 2, 1, 1, 1, 1, 1, 1]}, "county": {"Zinfandel": [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], "Grenache": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2]}}, "1970s": {"n_vineyards": 15, "var_bar": {"vars": ["Cabernet Sauvignon", "Chardonnay", "Cabernet Franc", "Riesling", "Petite Sirah", "Zinfandel", "Sauvignon Blanc", "Chenin Blanc", "Merlot", "Refosco"], "counts": [7, 3, 2, 2, 2, 2, 2, 1, 1, 1]}, "county": {"Zinfandel": [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Chardonnay": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [1, 0, 6, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]}, "ava": {"Zinfandel": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "Carignan": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Petite Sirah": [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], "Alicante Bouschet": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0], "Grenache": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mission": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Syrah": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Chardonnay": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Mourv\u00e8dre": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Pinot Noir": [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Cinsault": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0], "Palomino": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Other": [1, 0, 0, 0, 0, 1, 0, 1, 0, 6, 0, 0, 0, 2, 0]}}};
+const TOP_VARIETIES = ["Zinfandel", "Carignan", "Petite Sirah", "Alicante Bouschet", "Cabernet Sauvignon", "Grenache", "Mission", "Syrah", "Chardonnay", "Mourv\u00e8dre", "Pinot Noir", "Cinsault", "Tempranillo", "Palomino", "Peloursin"];
+const TOP_COUNTIES  = ["Sonoma", "San Joaquin", "Napa", "Amador", "Mendocino", "Napa County", "Santa Clara", "Contra Costa", "Sonoma County", "San Luis Obispo", "San Benito County", "Riverside", "Monterey", "San Joaquin County", "San Bernardino"];
+const TOP_AVAS      = ["Russian River Valley", "Lodi", "Sonoma Valley", "Napa Valley", "Dry Creek Valley", "Alexander Valley", "Mendocino", "Paso Robles", "Contra Costa", "St. Helena", "Shenandoah Valley", "Santa Cruz Mountains", "Amador", "Central Coast", "Calistoga"];
+const VAR_COLOR     = {"Zinfandel": "#c0392b", "Carignan": "#8e44ad", "Petite Sirah": "#2471a3", "Alicante Bouschet": "#76448a", "Cabernet Sauvignon": "#e67e22", "Grenache": "#b7950b", "Mission": "#117a65", "Syrah": "#512e5f", "Chardonnay": "#0b5345", "Mourv\u00e8dre": "#784212", "Pinot Noir": "#1a5276", "Cinsault": "#6e2f1a", "Tempranillo": "#7d6608", "Palomino": "#4a235a", "Peloursin": "#196f3d", "Other": "#aab7b8"};
+const DEC_TIMELINE  = {"1860s": 1, "1870s": 2, "1880s": 17, "1890s": 21, "1900s": 35, "1910s": 23, "1920s": 28, "1930s": 17, "1940s": 10, "1950s": 12, "1960s": 16, "1970s": 15};
+const PCT_TRACES    = [{"type": "bar", "name": "Alicante Bouschet", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [11.0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#76448a"}, "hovertemplate": "<b>%{y}</b><br>Alicante Bouschet: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Cabernet Sauvignon", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#e67e22"}, "hovertemplate": "<b>%{y}</b><br>Cabernet Sauvignon: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Carignan", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18.6, 0, 0, 0], "marker": {"color": "#8e44ad"}, "hovertemplate": "<b>%{y}</b><br>Carignan: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Chardonnay", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0], "marker": {"color": "#0b5345"}, "hovertemplate": "<b>%{y}</b><br>Chardonnay: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Gew\u00fcrztraminer", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 100.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#aab7b8"}, "hovertemplate": "<b>%{y}</b><br>Gew\u00fcrztraminer: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Grenache", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 100.0, 0, 100.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#b7950b"}, "hovertemplate": "<b>%{y}</b><br>Grenache: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Mourv\u00e8dre", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75.0], "marker": {"color": "#784212"}, "hovertemplate": "<b>%{y}</b><br>Mourv\u00e8dre: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Petite Sirah", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [9.0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10.0], "marker": {"color": "#2471a3"}, "hovertemplate": "<b>%{y}</b><br>Petite Sirah: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Pinot Noir", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#1a5276"}, "hovertemplate": "<b>%{y}</b><br>Pinot Noir: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Syrah", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.0], "marker": {"color": "#512e5f"}, "hovertemplate": "<b>%{y}</b><br>Syrah: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Tokay", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0, 0, 0], "marker": {"color": "#aab7b8"}, "hovertemplate": "<b>%{y}</b><br>Tokay: %{x:.1f}%<extra></extra>"}, {"type": "bar", "name": "Zinfandel", "orientation": "h", "y": ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"], "x": [78.0, 0, 0, 100.0, 0, 0, 100.0, 70.0, 100.0, 100.0, 100.0, 100.0, 0, 40.0, 90.0, 75.0, 100.0, 100.0, 0, 0, 100.0, 0, 81.4, 100.0, 100.0, 0], "marker": {"color": "#c0392b"}, "hovertemplate": "<b>%{y}</b><br>Zinfandel: %{x:.1f}%<extra></extra>"}];
+const PCT_NAMES     = ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"];
+const DECADES       = ["All", "1860s", "1870s", "1880s", "1890s", "1900s", "1910s", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s"];
+
+// ── Color helper ──────────────────────────────────────────────────────
+function varColor(v) { return VAR_COLOR[v] || VAR_COLOR['Other']; }
+
+// ── Common Plotly config ──────────────────────────────────────────────
+const PLY_CFG = {responsive: true, displayModeBar: false};
+
+// ── Timeline chart (static) ───────────────────────────────────────────
+Plotly.newPlot('timeline-chart', [{
+  type: 'bar',
+  x: Object.keys(DEC_TIMELINE),
+  y: Object.values(DEC_TIMELINE),
+  marker: {
+    color: Object.values(DEC_TIMELINE).map((_, i) =>
+      `hsl(${200 - i * 12}, 45%, ${35 + i * 2}%)`),
+    line: {color: '#b8923a', width: 1}
+  },
+  hovertemplate: '<b>%{x}</b><br>%{y} vineyards<extra></extra>'
+}], {
+  xaxis: {title: 'Decade planted', tickangle: -30},
+  yaxis: {title: 'Number of vineyards', dtick: 5},
+  height: 340,
+  margin: {l: 60, r: 20, t: 20, b: 60},
+  plot_bgcolor: '#faf9f5',
+  paper_bgcolor: '#ffffff',
+  font: {family: 'Source Sans 3, sans-serif', color: '#2a1f14'},
+  hoverlabel: {bgcolor: '#1e3d18', font: {color: '#fff'}}
+}, PLY_CFG);
+
+// ── Variety bar chart ─────────────────────────────────────────────────
+function buildVarietyChart(decade) {
+  const d = PER_DECADE[decade];
+  const vars   = d.var_bar.vars;
+  const counts = d.var_bar.counts;
+  // Sort ascending for horizontal bar (Plotly shows bottom-to-top)
+  const pairs = vars.map((v,i) => [v, counts[i]])
+                    .sort((a,b) => a[1] - b[1]);
+  Plotly.react('variety-chart', [{
+    type: 'bar',
+    orientation: 'h',
+    y: pairs.map(p => p[0]),
+    x: pairs.map(p => p[1]),
+    marker: {
+      color: pairs.map(p => varColor(p[0])),
+      line: {color: 'rgba(0,0,0,.15)', width: .5}
+    },
+    hovertemplate: '<b>%{y}</b><br>%{x} vineyards<extra></extra>',
+    text: pairs.map(p => p[1]),
+    textposition: 'outside',
+    textfont: {size: 11, color: '#2a1f14'}
+  }], {
+    xaxis: {title: 'Number of vineyards', rangemode: 'tozero'},
+    yaxis: {automargin: true},
+    height: Math.max(300, pairs.length * 36 + 80),
+    margin: {l: 180, r: 60, t: 20, b: 50},
+    plot_bgcolor: '#faf9f5',
+    paper_bgcolor: '#ffffff',
+    font: {family: 'Source Sans 3, sans-serif', color: '#2a1f14'},
+    hoverlabel: {bgcolor: '#1e3d18', font: {color: '#fff'}},
+    showlegend: false
+  }, PLY_CFG);
+}
+
+// ── Stacked bar (county or AVA) ───────────────────────────────────────
+function buildStackedChart(elemId, decade, regionKey, topRegions) {
+  const d = PER_DECADE[decade][regionKey];
+  // Build traces: one per variety in TOP_VARIETIES + Other
+  const allVars = [...TOP_VARIETIES, 'Other'];
+  const traces = allVars.map(v => {
+    const counts = d[v] || topRegions.map(() => 0);
+    return {
+      type: 'bar',
+      name: v,
+      x: topRegions,
+      y: counts,
+      marker: {color: varColor(v), line: {color: 'rgba(255,255,255,.3)', width: .5}},
+      hovertemplate: `<b>%{x}</b><br>${v}: %{y} vineyards<extra></extra>`
+    };
+  }).filter(t => t.y.some(c => c > 0));  // drop zero-only traces
+
+  Plotly.react(elemId, traces, {
+    barmode: 'stack',
+    xaxis: {title: '', tickangle: -35, automargin: true},
+    yaxis: {title: 'Variety appearances'},
+    height: 460,
+    margin: {l: 50, r: 20, t: 20, b: 120},
+    plot_bgcolor: '#faf9f5',
+    paper_bgcolor: '#ffffff',
+    font: {family: 'Source Sans 3, sans-serif', color: '#2a1f14', size: 11},
+    legend: {
+      orientation: 'h', y: -0.55, x: 0,
+      font: {size: 10},
+      bgcolor: 'rgba(0,0,0,0)'
+    },
+    hoverlabel: {bgcolor: '#1e3d18', font: {color: '#fff'}}
+  }, PLY_CFG);
+}
+
+// ── PCT chart (static) ────────────────────────────────────────────────
+Plotly.newPlot('pct-chart', PCT_TRACES, {
+  barmode: 'stack',
+  xaxis: {title: 'Percentage (%)', range: [0, 100]},
+  yaxis: {automargin: true},
+  height: Math.max(400, PCT_NAMES.length * 28 + 100),
+  legend: {title: {text: 'Variety'}, orientation: 'v', x: 1.02},
+  margin: {l: 240, r: 160, t: 20, b: 50},
+  plot_bgcolor: '#faf9f5',
+  paper_bgcolor: '#ffffff',
+  font: {family: 'Source Sans 3, sans-serif', color: '#2a1f14'},
+  hoverlabel: {bgcolor: '#1e3d18', font: {color: '#fff'}}
+}, PLY_CFG);
+
+// ── Overall top-10 (static) ───────────────────────────────────────────
+const OV_VARS   = ["Mourv\u00e8dre", "Chardonnay", "Syrah", "Mission", "Grenache", "Cabernet Sauvignon", "Alicante Bouschet", "Petite Sirah", "Carignan", "Zinfandel"];
+const OV_COUNTS = [7, 9, 9, 11, 11, 17, 19, 23, 33, 81];
+const OV_COLORS = ["#784212", "#0b5345", "#512e5f", "#117a65", "#b7950b", "#e67e22", "#76448a", "#2471a3", "#8e44ad", "#c0392b"];
+Plotly.newPlot('overall-chart', [{
+  type: 'bar',
+  orientation: 'h',
+  y: OV_VARS,
+  x: OV_COUNTS,
+  marker: {color: OV_COLORS, line: {color: '#b8923a', width: .8}},
+  hovertemplate: '<b>%{y}</b><br>%{x} vineyards<extra></extra>',
+  text: OV_COUNTS,
+  textposition: 'outside',
+  textfont: {size: 12, color: '#2a1f14'}
+}], {
+  xaxis: {title: 'Number of vineyards', dtick: 10},
+  yaxis: {automargin: true},
+  height: 440,
+  margin: {l: 200, r: 60, t: 20, b: 50},
+  plot_bgcolor: '#faf9f5',
+  paper_bgcolor: '#ffffff',
+  font: {family: 'Source Sans 3, sans-serif', color: '#2a1f14'},
+  hoverlabel: {bgcolor: '#1e3d18', font: {color: '#fff'}},
+  showlegend: false
+}, PLY_CFG);
+
+// ── Slider logic ──────────────────────────────────────────────────────
+const slider  = document.getElementById('decade-slider');
+const display = document.getElementById('decade-display');
+const vyCount = document.getElementById('vy-count');
+
+function updateAll(idx) {
+  const decade = DECADES[idx];
+  const d = PER_DECADE[decade];
+  display.textContent = decade === 'All' ? 'All Decades' : decade;
+  vyCount.textContent = `(${d.n_vineyards} vineyard${d.n_vineyards !== 1 ? 's' : ''})`;
+
+  // Update slider track fill
+  const pct = (idx / (DECADES.length - 1)) * 100;
+  slider.style.background =
+    `linear-gradient(to right, var(--green-mid) 0%, var(--green-mid) ${pct}%, var(--border) ${pct}%, var(--border) 100%)`;
+
+  buildVarietyChart(decade);
+  buildStackedChart('county-chart', decade, 'county', TOP_COUNTIES);
+  buildStackedChart('ava-chart',    decade, 'ava',    TOP_AVAS);
+}
+
+slider.addEventListener('input', e => updateAll(+e.target.value));
+
+// ── Initial render ────────────────────────────────────────────────────
+updateAll(0);
+</script>
+</body>
+</html>
