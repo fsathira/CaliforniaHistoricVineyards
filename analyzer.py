@@ -203,6 +203,7 @@ def _normalise_variety(name: str) -> str:
         "bastardo": "Trousseau",   # Trousseau (Bastardo) is the same grape
         "beclan": "Béclan",
         "albarino": "Albariño",
+        "carignane": "Carignan",   # Carignane is the older American spelling
     }
     return synonyms.get(name.strip().lower(), name.strip().title())
 

@@ -103,8 +103,8 @@ details.accordion table { margin: 0; }
     <div class="stat-box"><div class="num">40</div><div class="lbl">AVAs</div></div>
     <div class="stat-box"><div class="num">25</div><div class="lbl">Counties</div></div>
     <div class="stat-box"><div class="num">30</div><div class="lbl">Sub-appellations</div></div>
-    <div class="stat-box"><div class="num">47</div><div class="lbl">Grape varieties</div></div>
-    <div class="stat-box"><div class="num">7</div><div class="lbl">With % data</div></div>
+    <div class="stat-box"><div class="num">91</div><div class="lbl">Grape varieties</div></div>
+    <div class="stat-box"><div class="num">26</div><div class="lbl">With % data</div></div>
   </div>
 </header>
 
@@ -114,7 +114,7 @@ details.accordion table { margin: 0; }
 <section>
   <h2>Vineyards with percentage data</h2>
   <p class="subtitle">
-    7 of 197 vineyards have explicit variety percentages.
+    26 of 197 vineyards have explicit variety percentages.
     Only varieties representing more than 5% are shown.
   </p>
   
@@ -125,8 +125,8 @@ Plotly.newPlot('pct-chart', [
             type: 'bar',
             name: "Zinfandel",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [78.0, 0, 100.0, 70.0, 40.0, 90.0, 0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [78.0, 0, 0, 100.0, 0, 0, 100.0, 70.0, 100.0, 100.0, 100.0, 100.0, 0, 40.0, 90.0, 75.0, 100.0, 100.0, 0, 0, 100.0, 0, 81.4, 100.0, 100.0, 0],
             marker: {color: "#e6194b"},
             hovertemplate: '<b>%{y}</b><br>Zinfandel: %{x:.1f}%<extra></extra>'
         },
@@ -134,8 +134,8 @@ Plotly.newPlot('pct-chart', [
             type: 'bar',
             name: "Alicante Bouschet",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [11.0, 0, 0, 0, 0, 0, 0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [11.0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             marker: {color: "#800000"},
             hovertemplate: '<b>%{y}</b><br>Alicante Bouschet: %{x:.1f}%<extra></extra>'
         },
@@ -143,35 +143,80 @@ Plotly.newPlot('pct-chart', [
             type: 'bar',
             name: "Petite Sirah",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [9.0, 0, 0, 0, 0, 0, 10.0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [9.0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10.0],
             marker: {color: "#4363d8"},
             hovertemplate: '<b>%{y}</b><br>Petite Sirah: %{x:.1f}%<extra></extra>'
         },
 {
             type: 'bar',
+            name: "Gew\u00fcrztraminer",
+            orientation: 'h',
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 100.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            marker: {color: "#e6194b"},
+            hovertemplate: '<b>%{y}</b><br>Gewürztraminer: %{x:.1f}%<extra></extra>'
+        },
+{
+            type: 'bar',
             name: "Grenache",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [0, 100.0, 0, 0, 0, 0, 0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 100.0, 0, 100.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             marker: {color: "#9a6324"},
             hovertemplate: '<b>%{y}</b><br>Grenache: %{x:.1f}%<extra></extra>'
         },
 {
             type: 'bar',
+            name: "Carignan",
+            orientation: 'h',
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 33.3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18.6, 0, 0, 0],
+            marker: {color: "#f58231"},
+            hovertemplate: '<b>%{y}</b><br>Carignan: %{x:.1f}%<extra></extra>'
+        },
+{
+            type: 'bar',
+            name: "Pinot Noir",
+            orientation: 'h',
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            marker: {color: "#3cb44b"},
+            hovertemplate: '<b>%{y}</b><br>Pinot Noir: %{x:.1f}%<extra></extra>'
+        },
+{
+            type: 'bar',
             name: "Cabernet Sauvignon",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [0, 0, 0, 0, 60.0, 0, 0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60.0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0, 0, 0, 0],
             marker: {color: "#3cb44b"},
             hovertemplate: '<b>%{y}</b><br>Cabernet Sauvignon: %{x:.1f}%<extra></extra>'
         },
 {
             type: 'bar',
+            name: "Tokay",
+            orientation: 'h',
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0, 0, 0],
+            marker: {color: "#4363d8"},
+            hovertemplate: '<b>%{y}</b><br>Tokay: %{x:.1f}%<extra></extra>'
+        },
+{
+            type: 'bar',
+            name: "Chardonnay",
+            orientation: 'h',
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.0, 0, 0, 0, 0],
+            marker: {color: "#ffe119"},
+            hovertemplate: '<b>%{y}</b><br>Chardonnay: %{x:.1f}%<extra></extra>'
+        },
+{
+            type: 'bar',
             name: "Mourv\u00e8dre",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [0, 0, 0, 0, 0, 0, 75.0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75.0],
             marker: {color: "#42d4f4"},
             hovertemplate: '<b>%{y}</b><br>Mourvèdre: %{x:.1f}%<extra></extra>'
         },
@@ -179,8 +224,8 @@ Plotly.newPlot('pct-chart', [
             type: 'bar',
             name: "Syrah",
             orientation: 'h',
-            y: ["Alegr\u00eda Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Dolinsek Ranch (Frati Ranch)", "Hooper Vineyard", "Katz Vineyard", "Two Acres"],
-            x: [0, 0, 0, 0, 0, 0, 6.0],
+            y: ["Alegr\u00eda Vineyard", "Alta Vista Vineyard", "Besson (Grenache)", "Besson (Zinfandel)", "Cederquist Vineyard", "Church Block Vineyard", "Dickerson Vineyard", "Dolinsek Ranch (Frati Ranch)", "Eden Rift Vineyards \u2013 Dickinson Block", "Esola", "Grande", "Henderlong Nalle Vineyard", "HMR (Hoffman Mountain Ranch)", "Hooper Vineyard", "Katz Vineyard", "Kirschenmann Vineyard", "Lizzy James", "LJ Zin", "Massa Estate (formerly Durney Vineyards)", "Old School Vineyard", "Rogers Vineyard", "Rorick Heritage Vineyard", "Russi Vineyard", "Saint Marie Vineyard", "Sky Vineyards \u2013 1973 St. George Block", "Two Acres"],
+            x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6.0],
             marker: {color: "#911eb4"},
             hovertemplate: '<b>%{y}</b><br>Syrah: %{x:.1f}%<extra></extra>'
         }
@@ -188,7 +233,7 @@ Plotly.newPlot('pct-chart', [
   barmode: 'stack',
   xaxis: {title: 'Percentage (%)', range: [0, 100]},
   yaxis: {automargin: true},
-  height: 535,
+  height: 1580,
   legend: {title: {text: 'Variety'}},
   margin: {l: 220, r: 20, t: 20, b: 50},
   template: 'plotly_white'
@@ -199,7 +244,7 @@ Plotly.newPlot('pct-chart', [
     <thead>
       <tr><th>Vineyard</th><th>AVA</th><th>County</th><th>Varieties (&gt;5%)</th></tr>
     </thead>
-    <tbody><tr><td><b>Alegría Vineyard</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Zinfandel (78%), Alicante Bouschet (11%), Petite Sirah (9%)</td></tr><tr><td><b>Besson (Grenache)</b></td><td>Central Coast</td><td>Santa Clara</td><td>Grenache (100%)</td></tr><tr><td><b>Besson (Zinfandel)</b></td><td>Central Coast</td><td>Santa Clara</td><td>Zinfandel (100%)</td></tr><tr><td><b>Dolinsek Ranch (Frati Ranch)</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Zinfandel (70%)</td></tr><tr><td><b>Hooper Vineyard</b></td><td>Santa Cruz Mountains</td><td>San Mateo</td><td>Cabernet Sauvignon (60%), Zinfandel (40%)</td></tr><tr><td><b>Katz Vineyard</b></td><td>Dry Creek Valley</td><td>Sonoma</td><td>Zinfandel (90%)</td></tr><tr><td><b>Two Acres</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Mourvèdre (75%), Petite Sirah (10%), Syrah (6%)</td></tr></tbody>
+    <tbody><tr><td><b>Alegría Vineyard</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Zinfandel (78%), Alicante Bouschet (11%), Petite Sirah (9%)</td></tr><tr><td><b>Alta Vista Vineyard</b></td><td>Sonoma Valley</td><td>Sonoma</td><td>Gewürztraminer (100%)</td></tr><tr><td><b>Besson (Grenache)</b></td><td>Central Coast</td><td>Santa Clara</td><td>Grenache (100%)</td></tr><tr><td><b>Besson (Zinfandel)</b></td><td>Central Coast</td><td>Santa Clara</td><td>Zinfandel (100%)</td></tr><tr><td><b>Cederquist Vineyard</b></td><td>California</td><td>Fresno County</td><td>Grenache (100%)</td></tr><tr><td><b>Church Block Vineyard</b></td><td>Lodi</td><td>San Joaquin</td><td>Petite Sirah (33%), Carignan (33%), Alicante Bouschet (33%)</td></tr><tr><td><b>Dickerson Vineyard</b></td><td>Napa Valley</td><td>Napa</td><td>Zinfandel (100%)</td></tr><tr><td><b>Dolinsek Ranch (Frati Ranch)</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Zinfandel (70%)</td></tr><tr><td><b>Eden Rift Vineyards – Dickinson Block</b></td><td>Cienega Valley</td><td>San Benito County</td><td>Zinfandel (100%)</td></tr><tr><td><b>Esola</b></td><td>Shenandoah Valley</td><td>Amador</td><td>Zinfandel (100%)</td></tr><tr><td><b>Grande</b></td><td>Napa Valley</td><td>Napa</td><td>Zinfandel (100%)</td></tr><tr><td><b>Henderlong Nalle Vineyard</b></td><td>Dry Creek Valley</td><td>Sonoma</td><td>Zinfandel (100%)</td></tr><tr><td><b>HMR (Hoffman Mountain Ranch)</b></td><td>Paso Robles</td><td></td><td>Pinot Noir (34%)</td></tr><tr><td><b>Hooper Vineyard</b></td><td>Santa Cruz Mountains</td><td>San Mateo</td><td>Cabernet Sauvignon (60%), Zinfandel (40%)</td></tr><tr><td><b>Katz Vineyard</b></td><td>Dry Creek Valley</td><td>Sonoma</td><td>Zinfandel (90%)</td></tr><tr><td><b>Kirschenmann Vineyard</b></td><td>Lodi</td><td>San Joaquin</td><td>Zinfandel (75%)</td></tr><tr><td><b>Lizzy James</b></td><td>Lodi</td><td>San Joaquin</td><td>Zinfandel (100%)</td></tr><tr><td><b>LJ Zin</b></td><td>Lodi</td><td>San Joaquin</td><td>Zinfandel (100%)</td></tr><tr><td><b>Massa Estate (formerly Durney Vineyards)</b></td><td>Carmel Valley</td><td>Monterey</td><td>Cabernet Sauvignon (100%)</td></tr><tr><td><b>Old School Vineyard</b></td><td>Lodi</td><td></td><td>Tokay (100%)</td></tr><tr><td><b>Rogers Vineyard</b></td><td>Dry Creek Valley</td><td>Sonoma</td><td>Zinfandel (100%)</td></tr><tr><td><b>Rorick Heritage Vineyard</b></td><td>Sierra Foothills</td><td>Calaveras</td><td>Chardonnay (100%)</td></tr><tr><td><b>Russi Vineyard</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Zinfandel (81%), Carignan (19%)</td></tr><tr><td><b>Saint Marie Vineyard</b></td><td>Paso Robles</td><td>Paso Robles</td><td>Zinfandel (100%)</td></tr><tr><td><b>Sky Vineyards – 1973 St. George Block</b></td><td>Mt. Veeder</td><td>Napa County</td><td>Zinfandel (100%)</td></tr><tr><td><b>Two Acres</b></td><td>Russian River Valley</td><td>Sonoma</td><td>Mourvèdre (75%), Petite Sirah (10%), Syrah (6%)</td></tr></tbody>
   </table>
 </section>
 
@@ -216,9 +261,9 @@ Plotly.newPlot('pct-chart', [
 Plotly.newPlot('overall-chart', [{
   type: 'bar',
   orientation: 'h',
-  y: ["Mourv\u00e8dre", "Grand Noir", "Grenache", "Chardonnay", "Mission", "Alicante Bouschet", "Cabernet Sauvignon", "Petite Sirah", "Carignan", "Zinfandel"],
-  x: [8, 9, 11, 11, 13, 17, 19, 24, 32, 82],
-  marker: {color: ["#42d4f4", "#e6194b", "#9a6324", "#ffe119", "#aaffc3", "#800000", "#3cb44b", "#4363d8", "#f58231", "#e6194b"]},
+  y: ["Mourv\u00e8dre", "Chardonnay", "Syrah", "Mission", "Grenache", "Cabernet Sauvignon", "Alicante Bouschet", "Petite Sirah", "Carignan", "Zinfandel"],
+  x: [7, 9, 9, 11, 11, 17, 19, 23, 33, 81],
+  marker: {color: ["#42d4f4", "#ffe119", "#911eb4", "#aaffc3", "#9a6324", "#3cb44b", "#800000", "#4363d8", "#f58231", "#e6194b"]},
   hovertemplate: '<b>%{y}</b><br>Vineyards: %{x}<extra></extra>'
 }], {
   title: "Top 10 grape varieties \u2013 all historic vineyards",
@@ -298,16 +343,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Alicante Bouschet</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:23px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">7</td>
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -317,8 +352,18 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">7</td>
+              <td>Negrette</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:23px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">8</td>
-              <td>Chenin Blanc</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:23px"></div>
@@ -328,7 +373,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Grand Noir</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:23px"></div>
@@ -338,7 +383,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Trousseau</td>
+              <td>Grand Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:23px"></div>
@@ -464,13 +509,13 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Central Coast <span class="badge">11 variety appearances</span></summary>
+  <summary>Central Coast <span class="badge">10 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Grenache</td>
+              <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -480,12 +525,12 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Zinfandel</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
@@ -510,7 +555,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Tempranillo</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -540,7 +585,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Graciano</td>
+              <td>Tempranillo</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -550,7 +595,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Syrah</td>
+              <td>Graciano</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -604,7 +649,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -614,7 +659,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Riesling</td>
+              <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -626,7 +671,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Contra Costa <span class="badge">12 variety appearances</span></summary>
+  <summary>Contra Costa <span class="badge">14 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -637,65 +682,85 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                3
+                4
               </td>
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Mourvèdre</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Carignan</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Petite Sirah</td>
+              <td>Mourvèdre</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Muscat</td>
+              <td>Mataro</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Barbera</td>
+              <td>Muscat Alexandria</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
+              <td>Rose of Peru</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
               <td>Merlot</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Barbera</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
@@ -742,7 +807,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Cucamonga Valley <span class="badge">7 variety appearances</span></summary>
+  <summary>Cucamonga Valley <span class="badge">9 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -758,7 +823,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Zinfandel</td>
+              <td>Cinsault</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -768,7 +833,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Cinsaut</td>
+              <td>Mataro</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -788,7 +853,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Mourvèdre</td>
+              <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -815,12 +880,32 @@ Plotly.newPlot('overall-chart', [{
                 </div>
                 1
               </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Pedro Ximenez</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Rose of Peru</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
             </tr></tbody>
   </table>
 </details>
 
 <details class="accordion">
-  <summary>Dry Creek Valley <span class="badge">10 variety appearances</span></summary>
+  <summary>Dry Creek Valley <span class="badge">8 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -836,16 +921,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Alicante Bouschet</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:28px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -855,17 +930,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">4</td>
-              <td>Mixed Black (field blend)</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:28px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">5</td>
+              <td class="rank">3</td>
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -875,8 +940,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Sauvignon Blanc</td>
+              <td class="rank">4</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:28px"></div>
@@ -888,12 +953,52 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Kelsey Bench <span class="badge">6 variety appearances</span></summary>
+  <summary>Kelsey Bench <span class="badge">8 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
+              <td>Alicante Bouschet</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">2</td>
+              <td>Touriga Nacional</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td>Zinfandel</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
               <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -903,37 +1008,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">2</td>
-              <td>Alicante Bouschet</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
-              <td>Zinfandel</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
-              <td>Roussanne</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">5</td>
+              <td class="rank">6</td>
               <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -943,8 +1018,18 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Cinsaut</td>
+              <td class="rank">7</td>
+              <td>Roussanne</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Perlette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -956,7 +1041,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Lodi <span class="badge">28 variety appearances</span></summary>
+  <summary>Lodi <span class="badge">29 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -967,7 +1052,7 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                14
+                13
               </td>
             </tr>
             <tr>
@@ -975,9 +1060,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:60px"></div>
+                  <div class="bar-fill" style="width:53px"></div>
                 </div>
-                6
+                5
               </td>
             </tr>
             <tr>
@@ -985,7 +1070,7 @@ Plotly.newPlot('overall-chart', [{
               <td>Mission</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:20px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
                 2
               </td>
@@ -995,13 +1080,23 @@ Plotly.newPlot('overall-chart', [{
               <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:20px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">5</td>
+              <td>Tokay</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:21px"></div>
+                </div>
+                2
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1011,18 +1106,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Cinsaut</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:10px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
               <td class="rank">7</td>
-              <td>Flame Tokay</td>
+              <td>Mondeuse</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:10px"></div>
@@ -1032,6 +1117,26 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:10px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Flame Tokay</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:10px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
               <td>Mourvèdre</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1050,7 +1155,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Petite Sirah</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1060,7 +1165,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Trousseau</td>
+              <td>Trousseau Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1070,7 +1175,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Grenache</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1080,7 +1185,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Syrah</td>
+              <td>Grenache Gris</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1102,7 +1207,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Moon Mountain <span class="badge">4 variety appearances</span></summary>
+  <summary>Moon Mountain <span class="badge">5 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1128,6 +1233,16 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
+              <td>Semillon</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
               <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1140,7 +1255,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Mt. Veeder <span class="badge">4 variety appearances</span></summary>
+  <summary>Mt. Veeder <span class="badge">6 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1166,7 +1281,27 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
+              <td>Malbec</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
               <td>Cabernet Franc</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td>Petit Verdot</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -1178,7 +1313,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Napa Valley <span class="badge">27 variety appearances</span></summary>
+  <summary>Napa Valley <span class="badge">22 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1194,26 +1329,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Petite Sirah</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:52px"></div>
-                </div>
-                3
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
-              <td>Grand Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:52px"></div>
-                </div>
-                3
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1223,8 +1338,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">5</td>
-              <td>Cabernet Sauvignon</td>
+              <td class="rank">3</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:35px"></div>
@@ -1233,27 +1348,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Alicante Bouschet</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:35px"></div>
-                </div>
-                2
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">7</td>
-              <td>Muscat</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:35px"></div>
-                </div>
-                2
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">8</td>
+              <td class="rank">4</td>
               <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1263,8 +1358,48 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">5</td>
+              <td>Alicante Bouschet</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                2
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td>Abouriou</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:17px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Grand noir</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:17px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Tempranillo</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:17px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">9</td>
-              <td>Golden Chasselas</td>
+              <td>Refosco</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:17px"></div>
@@ -1274,7 +1409,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Tempranillo</td>
+              <td>Alicante</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:17px"></div>
@@ -1286,13 +1421,13 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Oakville <span class="badge">7 variety appearances</span></summary>
+  <summary>Oakville <span class="badge">9 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Petite Sirah</td>
+              <td>Negrette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1302,7 +1437,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Chenin Blanc</td>
+              <td>Mondeuse</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1322,7 +1457,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Colombard</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1342,7 +1477,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Negrette</td>
+              <td>Colombard</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1352,7 +1487,27 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Mondeuse</td>
+              <td>Chenin Blanc</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Semillon</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Malvasia Bianca</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1364,7 +1519,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Paso Robles <span class="badge">11 variety appearances</span></summary>
+  <summary>Paso Robles <span class="badge">13 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1383,23 +1538,13 @@ Plotly.newPlot('overall-chart', [{
               <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Chardonnay</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
-                </div>
-                2
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
               <td>Cabernet Franc</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1409,7 +1554,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">5</td>
+              <td class="rank">4</td>
               <td>Pinot Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1419,8 +1564,58 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">5</td>
+              <td>Chardonnay</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">6</td>
-              <td>Gamay</td>
+              <td>Grenache</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Syrah</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Mourvèdre</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:35px"></div>
@@ -1432,22 +1627,12 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Redwood Valley <span class="badge">3 variety appearances</span></summary>
+  <summary>Redwood Valley <span class="badge">4 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Colombard</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1457,7 +1642,27 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">2</td>
+              <td>Zinfandel</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">3</td>
+              <td>French Colombard</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
               <td>Valdiguié</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1470,7 +1675,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Russian River Valley <span class="badge">54 variety appearances</span></summary>
+  <summary>Russian River Valley <span class="badge">50 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1481,27 +1686,27 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                14
+                13
               </td>
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Carignan</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:80px"></div>
+                  <div class="bar-fill" style="width:86px"></div>
                 </div>
                 8
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Alicante Bouschet</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:86px"></div>
                 </div>
-                7
+                8
               </td>
             </tr>
             <tr>
@@ -1509,9 +1714,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:64px"></div>
                 </div>
-                7
+                6
               </td>
             </tr>
             <tr>
@@ -1519,7 +1724,7 @@ Plotly.newPlot('overall-chart', [{
               <td>Peloursin</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:40px"></div>
+                  <div class="bar-fill" style="width:43px"></div>
                 </div>
                 4
               </td>
@@ -1529,47 +1734,47 @@ Plotly.newPlot('overall-chart', [{
               <td>Palomino</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:30px"></div>
+                  <div class="bar-fill" style="width:32px"></div>
                 </div>
                 3
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Muscat</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:30px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
-                3
+                2
               </td>
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Colombard</td>
+              <td>Chardonnay</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:30px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
-                3
+                2
               </td>
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Grand Noir</td>
+              <td>Pinot Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:30px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
-                3
+                2
               </td>
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Syrah</td>
+              <td>French Colombard</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:20px"></div>
+                  <div class="bar-fill" style="width:21px"></div>
                 </div>
                 2
               </td>
@@ -1578,22 +1783,12 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Rutherford <span class="badge">2 variety appearances</span></summary>
+  <summary>Rutherford <span class="badge">1 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Zinfandel</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
               <td>Valdiguié</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1670,7 +1865,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Grand Noir</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -1680,7 +1875,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Grenache</td>
+              <td>Grand Noir de la Calmette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -1730,22 +1925,12 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Santa Rita Hills <span class="badge">2 variety appearances</span></summary>
+  <summary>Santa Rita Hills <span class="badge">1 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Pinot Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
               <td>Mission</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1804,7 +1989,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Sonoma Valley <span class="badge">22 variety appearances</span></summary>
+  <summary>Sonoma Valley <span class="badge">25 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -1820,17 +2005,17 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Gewürztraminer</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:40px"></div>
+                  <div class="bar-fill" style="width:60px"></div>
                 </div>
-                2
+                3
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Riesling</td>
+              <td>Gewürztraminer</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:40px"></div>
@@ -1850,7 +2035,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Mission</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:40px"></div>
@@ -1860,7 +2045,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Alicante Bouschet</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:40px"></div>
@@ -1870,7 +2055,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Mourvèdre</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:40px"></div>
@@ -1880,27 +2065,27 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Trousseau</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:20px"></div>
+                  <div class="bar-fill" style="width:40px"></div>
                 </div>
-                1
+                2
               </td>
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Chardonnay</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:20px"></div>
+                  <div class="bar-fill" style="width:40px"></div>
                 </div>
-                1
+                2
               </td>
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Grand Noir</td>
+              <td>Trousseau Gris</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:20px"></div>
@@ -1912,13 +2097,13 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>St. Helena <span class="badge">14 variety appearances</span></summary>
+  <summary>St. Helena <span class="badge">16 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Petite Sirah</td>
+              <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -1928,26 +2113,16 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:140px"></div>
                 </div>
-                2
+                3
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Zinfandel</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
-                </div>
-                2
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
               <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1957,17 +2132,17 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">5</td>
-              <td>Cabernet Franc</td>
+              <td class="rank">4</td>
+              <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:93px"></div>
                 </div>
-                1
+                2
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
+              <td class="rank">5</td>
               <td>Chenin Blanc</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1977,8 +2152,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">7</td>
-              <td>Refosco</td>
+              <td class="rank">6</td>
+              <td>Cabernet Franc</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
@@ -1987,7 +2162,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">8</td>
+              <td class="rank">7</td>
               <td>Merlot</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -1997,7 +2172,27 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">8</td>
+              <td>Refosco</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">9</td>
+              <td>Tinto</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
               <td>Chardonnay</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2092,7 +2287,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Contra Costa <span class="badge">12 variety appearances</span></summary>
+  <summary>Contra Costa <span class="badge">14 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2103,65 +2298,85 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                3
+                4
               </td>
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Mourvèdre</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Carignan</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Petite Sirah</td>
+              <td>Mourvèdre</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:93px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Muscat</td>
+              <td>Mataro</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Barbera</td>
+              <td>Muscat Alexandria</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
+              <td>Rose of Peru</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
               <td>Merlot</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Barbera</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 1
               </td>
@@ -2188,13 +2403,13 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Lake County <span class="badge">6 variety appearances</span></summary>
+  <summary>Lake County <span class="badge">8 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2204,7 +2419,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Alicante Bouschet</td>
+              <td>Touriga Nacional</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2224,7 +2439,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Roussanne</td>
+              <td>Cinsault</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2234,7 +2449,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Grenache</td>
+              <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2244,7 +2459,27 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Cinsaut</td>
+              <td>Grenache</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Roussanne</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Perlette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2280,7 +2515,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Tempranillo</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2310,7 +2545,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Graciano</td>
+              <td>Tempranillo</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2320,7 +2555,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Syrah</td>
+              <td>Graciano</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -2332,7 +2567,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Mendocino <span class="badge">10 variety appearances</span></summary>
+  <summary>Mendocino <span class="badge">11 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2348,16 +2583,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Cabernet Sauvignon</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
               <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2367,37 +2592,17 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">3</td>
+              <td>Cabernet Sauvignon</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">4</td>
-              <td>Petite Sirah</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">5</td>
-              <td>Trousseau</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">6</td>
-              <td>Grenache</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">7</td>
               <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2407,8 +2612,38 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">5</td>
+              <td>Trousseau Noir</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td>Petite Sirah</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Grenache Gris</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">8</td>
-              <td>Colombard</td>
+              <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -2418,6 +2653,16 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">9</td>
+              <td>French Colombard</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
               <td>Valdiguié</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2458,7 +2703,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Napa <span class="badge">41 variety appearances</span></summary>
+  <summary>Napa <span class="badge">37 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2469,7 +2714,7 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                13
+                12
               </td>
             </tr>
             <tr>
@@ -2477,87 +2722,87 @@ Plotly.newPlot('overall-chart', [{
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:75px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
-                7
+                6
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:43px"></div>
+                  <div class="bar-fill" style="width:46px"></div>
                 </div>
                 4
               </td>
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Carignan</td>
+              <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:43px"></div>
-                </div>
-                4
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">5</td>
-              <td>Grand Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:32px"></div>
+                  <div class="bar-fill" style="width:35px"></div>
                 </div>
                 3
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Chardonnay</td>
+              <td class="rank">5</td>
+              <td>Refosco</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:21px"></div>
+                  <div class="bar-fill" style="width:23px"></div>
+                </div>
+                2
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">6</td>
+              <td>Chenin Blanc</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:23px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Refosco</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:21px"></div>
+                  <div class="bar-fill" style="width:23px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Chenin Blanc</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:21px"></div>
+                  <div class="bar-fill" style="width:23px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Alicante Bouschet</td>
+              <td>Negrette</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:21px"></div>
+                  <div class="bar-fill" style="width:23px"></div>
                 </div>
                 2
               </td>
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Muscat</td>
+              <td>Valdiguié</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:21px"></div>
+                  <div class="bar-fill" style="width:23px"></div>
                 </div>
                 2
               </td>
@@ -2566,7 +2811,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Napa County <span class="badge">9 variety appearances</span></summary>
+  <summary>Napa County <span class="badge">13 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2585,13 +2830,23 @@ Plotly.newPlot('overall-chart', [{
               <td>Cabernet Sauvignon</td>
               <td class="count-cell">
                 <div class="bar-bg">
+                  <div class="bar-fill" style="width:93px"></div>
+                </div>
+                2
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td>Malbec</td>
+              <td class="count-cell">
+                <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
-              <td class="rank">3</td>
+              <td class="rank">4</td>
               <td>Cabernet Franc</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2601,18 +2856,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">4</td>
-              <td>Chardonnay</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
               <td class="rank">5</td>
-              <td>Riesling</td>
+              <td>Petit Verdot</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
@@ -2622,7 +2867,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Petite Sirah</td>
+              <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
@@ -2632,7 +2877,37 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
+              <td>Chardonnay</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Pinot Blanc</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
               <td>Carignan</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
@@ -2698,7 +2973,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Cinsaut</td>
+              <td>Cinsault</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -2708,7 +2983,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Palomino</td>
+              <td>Mataro</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -2718,7 +2993,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Mourvèdre</td>
+              <td>Palomino</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -2778,7 +3053,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>San Bernardino <span class="badge">2 variety appearances</span></summary>
+  <summary>San Bernardino <span class="badge">4 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2801,12 +3076,32 @@ Plotly.newPlot('overall-chart', [{
                 </div>
                 1
               </td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td>Pedro Ximenez</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td>Rose of Peru</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
             </tr></tbody>
   </table>
 </details>
 
 <details class="accordion">
-  <summary>San Joaquin <span class="badge">24 variety appearances</span></summary>
+  <summary>San Joaquin <span class="badge">23 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2817,7 +3112,7 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                12
+                11
               </td>
             </tr>
             <tr>
@@ -2825,9 +3120,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:63px"></div>
                 </div>
-                6
+                5
               </td>
             </tr>
             <tr>
@@ -2835,7 +3130,7 @@ Plotly.newPlot('overall-chart', [{
               <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:23px"></div>
+                  <div class="bar-fill" style="width:25px"></div>
                 </div>
                 2
               </td>
@@ -2845,7 +3140,7 @@ Plotly.newPlot('overall-chart', [{
               <td>Mission</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:11px"></div>
+                  <div class="bar-fill" style="width:12px"></div>
                 </div>
                 1
               </td>
@@ -2855,27 +3150,37 @@ Plotly.newPlot('overall-chart', [{
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:11px"></div>
+                  <div class="bar-fill" style="width:12px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Cinsaut</td>
+              <td>Mondeuse</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:11px"></div>
+                  <div class="bar-fill" style="width:12px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:12px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
               <td>Flame Tokay</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:11px"></div>
+                  <div class="bar-fill" style="width:12px"></div>
                 </div>
                 1
               </td>
@@ -2948,22 +3253,12 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Santa Barbara <span class="badge">2 variety appearances</span></summary>
+  <summary>Santa Barbara <span class="badge">1 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Pinot Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
               <td>Mission</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -2976,7 +3271,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Santa Clara <span class="badge">14 variety appearances</span></summary>
+  <summary>Santa Clara <span class="badge">13 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -2995,9 +3290,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:84px"></div>
+                  <div class="bar-fill" style="width:56px"></div>
                 </div>
-                3
+                2
               </td>
             </tr>
             <tr>
@@ -3032,7 +3327,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Grand Noir</td>
+              <td>Grand Noir de la Calmette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:28px"></div>
@@ -3054,7 +3349,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Sonoma <span class="badge">82 variety appearances</span></summary>
+  <summary>Sonoma <span class="badge">85 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3065,7 +3360,7 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                30
+                29
               </td>
             </tr>
             <tr>
@@ -3073,9 +3368,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:60px"></div>
+                  <div class="bar-fill" style="width:67px"></div>
                 </div>
-                13
+                14
               </td>
             </tr>
             <tr>
@@ -3083,9 +3378,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:46px"></div>
+                  <div class="bar-fill" style="width:57px"></div>
                 </div>
-                10
+                12
               </td>
             </tr>
             <tr>
@@ -3093,9 +3388,9 @@ Plotly.newPlot('overall-chart', [{
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:37px"></div>
+                  <div class="bar-fill" style="width:43px"></div>
                 </div>
-                8
+                9
               </td>
             </tr>
             <tr>
@@ -3103,27 +3398,27 @@ Plotly.newPlot('overall-chart', [{
               <td>Palomino</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:18px"></div>
+                  <div class="bar-fill" style="width:19px"></div>
                 </div>
                 4
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Grand Noir</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:18px"></div>
+                  <div class="bar-fill" style="width:19px"></div>
                 </div>
                 4
               </td>
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:18px"></div>
+                  <div class="bar-fill" style="width:19px"></div>
                 </div>
                 4
               </td>
@@ -3140,7 +3435,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Trousseau</td>
+              <td>Tempranillo</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:14px"></div>
@@ -3150,7 +3445,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Grenache</td>
+              <td>Mourvèdre</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:14px"></div>
@@ -3162,7 +3457,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Sonoma County <span class="badge">10 variety appearances</span></summary>
+  <summary>Sonoma County <span class="badge">11 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3178,17 +3473,17 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Petite Sirah</td>
+              <td>French Colombard</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
+                  <div class="bar-fill" style="width:70px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Colombard</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -3218,7 +3513,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Peloursin</td>
+              <td>Clairette Blanche</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -3228,7 +3523,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Carignan</td>
+              <td>Peloursin</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -3238,7 +3533,27 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Cabernet Sauvignon</td>
+              <td>St. Émilion</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Beba</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:70px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td>Listan Blanc</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:70px"></div>
@@ -3259,7 +3574,7 @@ Plotly.newPlot('overall-chart', [{
   </p>
   
 <details class="accordion">
-  <summary>Adelaida District <span class="badge">8 variety appearances</span></summary>
+  <summary>Adelaida District <span class="badge">10 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3270,35 +3585,35 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Chardonnay</td>
+              <td>Cabernet Franc</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                2
+                1
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Cabernet Franc</td>
+              <td>Pinot Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:140px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Pinot Noir</td>
+              <td>Chardonnay</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:140px"></div>
                 </div>
                 1
               </td>
@@ -3308,17 +3623,57 @@ Plotly.newPlot('overall-chart', [{
               <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:140px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
-              <td>Gamay</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Syrah</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Mourvèdre</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">10</td>
+              <td>Carignan</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
                 </div>
                 1
               </td>
@@ -3391,7 +3746,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Clements Hills <span class="badge">6 variety appearances</span></summary>
+  <summary>Clements Hills <span class="badge">7 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3418,6 +3773,16 @@ Plotly.newPlot('overall-chart', [{
             <tr>
               <td class="rank">3</td>
               <td>Mourvèdre</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:46px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">4</td>
+              <td>Tokay</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:46px"></div>
@@ -3453,7 +3818,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Petite Sirah</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3463,7 +3828,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Trousseau</td>
+              <td>Trousseau Noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3473,7 +3838,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Grenache</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3483,7 +3848,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Syrah</td>
+              <td>Grenache Gris</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3495,7 +3860,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Mokelumne River <span class="badge">16 variety appearances</span></summary>
+  <summary>Mokelumne River <span class="badge">15 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3506,7 +3871,7 @@ Plotly.newPlot('overall-chart', [{
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
                 </div>
-                8
+                7
               </td>
             </tr>
             <tr>
@@ -3514,47 +3879,57 @@ Plotly.newPlot('overall-chart', [{
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:70px"></div>
+                  <div class="bar-fill" style="width:60px"></div>
                 </div>
-                4
+                3
               </td>
             </tr>
             <tr>
               <td class="rank">3</td>
-              <td>Alicante Bouschet</td>
+              <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:17px"></div>
+                  <div class="bar-fill" style="width:20px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">4</td>
-              <td>Petite Sirah</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:17px"></div>
+                  <div class="bar-fill" style="width:20px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Cinsaut</td>
+              <td>Mondeuse</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:17px"></div>
+                  <div class="bar-fill" style="width:20px"></div>
                 </div>
                 1
               </td>
             </tr>
             <tr>
               <td class="rank">6</td>
+              <td>Cinsault</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:20px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
               <td>Flame Tokay</td>
               <td class="count-cell">
                 <div class="bar-bg">
-                  <div class="bar-fill" style="width:17px"></div>
+                  <div class="bar-fill" style="width:20px"></div>
                 </div>
                 1
               </td>
@@ -3569,7 +3944,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Alicante Bouschet</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3579,7 +3954,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Carignan</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3591,7 +3966,7 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Oak Knoll District <span class="badge">10 variety appearances</span></summary>
+  <summary>Oak Knoll District <span class="badge">9 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
@@ -3607,26 +3982,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Cabernet Sauvignon</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
-              <td>Golden Chasselas</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">4</td>
               <td>Petite Sirah</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -3636,8 +3991,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">5</td>
-              <td>Tempranillo</td>
+              <td class="rank">3</td>
+              <td>Abouriou</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3646,27 +4001,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">6</td>
-              <td>Chardonnay</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">7</td>
-              <td>Grand Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">8</td>
+              <td class="rank">4</td>
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -3676,8 +4011,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">9</td>
-              <td>Chasselas</td>
+              <td class="rank">5</td>
+              <td>Grand noir</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3686,8 +4021,38 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">10</td>
-              <td>Abouriou</td>
+              <td class="rank">6</td>
+              <td>Tempranillo</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">7</td>
+              <td>Refosco</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">8</td>
+              <td>Alicante</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">9</td>
+              <td>Golden Chasselas</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3751,26 +4116,6 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Alicante Bouschet</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">2</td>
-              <td>Grand Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
               <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -3780,8 +4125,8 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">4</td>
-              <td>Valdiguié</td>
+              <td class="rank">2</td>
+              <td>Alicante Bouschet</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3790,7 +4135,7 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
-              <td class="rank">5</td>
+              <td class="rank">3</td>
               <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -3800,8 +4145,28 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">4</td>
+              <td>Durif</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">5</td>
+              <td>Grand Noir de la Calmette</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">6</td>
-              <td>Negrette</td>
+              <td>Muscat Hamburg</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3811,7 +4176,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Muscat</td>
+              <td>Negrette</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3821,7 +4186,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Petite Sirah</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3831,7 +4196,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">9</td>
-              <td>Syrah</td>
+              <td>Valdiguié</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3849,7 +4214,7 @@ Plotly.newPlot('overall-chart', [{
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Colombard</td>
+              <td>French Colombard</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3877,16 +4242,6 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Pinot Noir</td>
-              <td class="count-cell">
-                <div class="bar-bg">
-                  <div class="bar-fill" style="width:140px"></div>
-                </div>
-                1
-              </td>
-            </tr>
-            <tr>
-              <td class="rank">3</td>
               <td>Chardonnay</td>
               <td class="count-cell">
                 <div class="bar-bg">
@@ -3896,8 +4251,18 @@ Plotly.newPlot('overall-chart', [{
               </td>
             </tr>
             <tr>
+              <td class="rank">3</td>
+              <td>Pinot Noir</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
               <td class="rank">4</td>
-              <td>Cabernet Sauvignon</td>
+              <td>Zinfandel</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3907,7 +4272,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">5</td>
-              <td>Alicante Bouschet</td>
+              <td>Carignan</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3927,7 +4292,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">7</td>
-              <td>Tempranillo</td>
+              <td>Syrah</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3937,7 +4302,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">8</td>
-              <td>Zinfandel</td>
+              <td>Grenache</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3957,7 +4322,7 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">10</td>
-              <td>Colombard</td>
+              <td>Tempranillo</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3969,13 +4334,13 @@ Plotly.newPlot('overall-chart', [{
 </details>
 
 <details class="accordion">
-  <summary>Spring Mountain District <span class="badge">2 variety appearances</span></summary>
+  <summary>Spring Mountain District <span class="badge">3 variety appearances</span></summary>
   <table class="region-table compact">
     <thead><tr><th>#</th><th>Variety</th><th>Vineyards</th></tr></thead>
     <tbody>
             <tr>
               <td class="rank">1</td>
-              <td>Chardonnay</td>
+              <td>Riesling</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
@@ -3985,7 +4350,17 @@ Plotly.newPlot('overall-chart', [{
             </tr>
             <tr>
               <td class="rank">2</td>
-              <td>Riesling</td>
+              <td>Chardonnay</td>
+              <td class="count-cell">
+                <div class="bar-bg">
+                  <div class="bar-fill" style="width:140px"></div>
+                </div>
+                1
+              </td>
+            </tr>
+            <tr>
+              <td class="rank">3</td>
+              <td>Pinot Blanc</td>
               <td class="count-cell">
                 <div class="bar-bg">
                   <div class="bar-fill" style="width:140px"></div>
