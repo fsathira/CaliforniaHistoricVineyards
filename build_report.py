@@ -80,15 +80,33 @@ for vy in vineyards:
             "decade": vy["d"], "varieties": pcts
         })
 
-# ── Color palette (15 varieties + Other) ──────────────────────────────────
-PALETTE = [
-    "#c0392b","#8e44ad","#2471a3","#76448a","#e67e22",
-    "#b7950b","#117a65","#512e5f","#0b5345","#784212",
-    "#1a5276","#6e2f1a","#7d6608","#4a235a","#196f3d",
-    "#7f8c8d",
+# ── Japanese traditional colour palette (和色 wa-shoku) ────────────────────
+# User-specified assignments adjusted to fit traditional Japanese pigments.
+JP_SPECIFIC = {
+    "Zinfandel":          "#F47B20",  # 柿色 kaki-iro    – persimmon orange
+    "Carignan":           "#C4A46B",  # 砂色 suna-iro    – sand / light brown
+    "Petite Sirah":       "#C0273F",  # 紅色 beni-iro    – crimson
+    "Cabernet Sauvignon": "#E8B218",  # 山吹色 yamabuki  – golden yellow
+    "Pinot Noir":         "#6B1E3C",  # 葡萄色 budō-iro  – grape / burgundy
+    "Grenache":           "#E8A0B4",  # 桜色 sakura-iro  – cherry-blossom pink
+    "Syrah":              "#81AD52",  # 若草色 wakakusa  – young-grass green
+}
+# Remaining slots filled from a curated wa-shoku fallback sequence
+JP_FALLBACK = [
+    "#4B2660",  # 紫紺 shikon       – indigo-purple
+    "#B5294F",  # 茜色 akane-iro    – madder red
+    "#9B8EC4",  # 藤色 fuji-iro     – wisteria purple
+    "#2B6EA8",  # 縹色 hanada-iro   – sail-canvas blue
+    "#DC6B56",  # 珊瑚色 sango-iro  – coral
+    "#C88B2A",  # 黄金色 kogane     – amber gold
+    "#5BB0B0",  # 浅葱色 asagi      – pale teal
+    "#2A7A5A",  # 常磐色 tokiwa     – evergreen
 ]
-VAR_COLOR = {v: PALETTE[i % len(PALETTE)] for i, v in enumerate(TOP_VARIETIES)}
-VAR_COLOR["Other"] = "#aab7b8"
+_fb = iter(JP_FALLBACK)
+VAR_COLOR = {}
+for v in TOP_VARIETIES:
+    VAR_COLOR[v] = JP_SPECIFIC.get(v) or next(_fb)
+VAR_COLOR["Other"] = "#B0A8A0"   # 銀鼠 gin-nezumi – silver grey
 
 # ── Helpers ────────────────────────────────────────────────────────────────
 def filter_by_decade(decade):
@@ -104,21 +122,36 @@ def variety_counts(subset):
     return ctr
 
 def stacked_data(subset, region_key, top_regions, top_vars):
-    """Returns {variety: [count_per_region]} for Plotly stacked bar."""
-    region_data = {r: collections.Counter() for r in top_regions}
+    """Normalized stacked data for Plotly.
+
+    Each vineyard contributes exactly 1.0 total across its varieties so bar
+    heights equal the number of vineyards (not raw variety appearances):
+      • If explicit pct data exists, use pct / sum(pcts) as weights.
+      • Otherwise each of its N varieties contributes 1/N.
+    """
+    region_data = {r: collections.defaultdict(float) for r in top_regions}
     for vy in subset:
         r = vy[region_key]
-        if r in region_data:
-            for v in vy["v"]:
-                region_data[r][v] += 1
+        if r not in region_data:
+            continue
+        if vy["pct"]:
+            total = sum(vy["pct"].values())
+            if total > 0:
+                for v, p in vy["pct"].items():
+                    region_data[r][v] += p / total
+        else:
+            n = len(vy["v"])
+            if n:
+                w = 1.0 / n
+                for v in vy["v"]:
+                    region_data[r][v] += w
     result = {}
     for v in top_vars:
-        result[v] = [region_data[r][v] for r in top_regions]
-    # Other
+        result[v] = [round(region_data[r][v], 4) for r in top_regions]
     result["Other"] = []
     for r in top_regions:
         other = sum(cnt for var, cnt in region_data[r].items() if var not in top_vars)
-        result["Other"].append(other)
+        result["Other"].append(round(other, 4))
     return result
 
 # ── Pre-compute data for all decades (embed in JS) ─────────────────────────
@@ -320,7 +353,7 @@ nav.site-nav ul {{
   padding: 0 var(--pad);
   display: flex;
   list-style: none;
-  overflow-x: auto;
+  flex-wrap: wrap;
 }}
 nav.site-nav a {{
   display: block;
@@ -372,45 +405,55 @@ nav.site-nav a:hover {{ color: #fff; border-bottom-color: rgba(255,255,255,.6); 
   margin-top: 0;
 }}
 
-/* ── Decade slider ─────────────────────────────────── */
-.slider-card {{
+/* ── Inline decade strip (lives inside the chart section) ─────────────── */
+.decade-strip {{
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
   background: var(--bg-light);
   border: 1px solid var(--border);
-  border-top: 3px solid var(--sienna);
-  padding: 1.5em 1.5em 1.2em;
+  border-left: 3px solid var(--sienna);
+  padding: .55em 1.2em .55em .9em;
+  margin-bottom: 1.8em;
 }}
-.slider-card label {{
-  font-size: 14px;
-  letter-spacing: .5px;
+.ds-label {{
+  font-size: .72em;
   text-transform: uppercase;
-  font-weight: 600;
+  letter-spacing: .5px;
   color: var(--text-light);
-  display: block;
-  margin-bottom: .6em;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
 }}
-.decade-display {{
+.ds-value {{
   font-family: var(--font-serif);
-  font-size: 1.6em;
+  font-size: 1.1em;
   color: var(--walnut);
-  text-align: center;
-  margin-bottom: .5em;
-  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 7.5em;
 }}
-.decade-display small {{
+.ds-value small {{
   font-family: var(--font-sans);
-  font-size: .5em;
+  font-size: .65em;
   color: var(--text-light);
   font-weight: 300;
-  margin-left: .4em;
+  margin-left: .3em;
+}}
+.ds-slider-wrap {{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .1em;
+  min-width: 0;
 }}
 .slider-label-row {{
   display: flex;
   justify-content: space-between;
-  font-size: .68em;
+  font-size: .62em;
   color: var(--text-light);
-  margin-top: .4em;
   user-select: none;
-  letter-spacing: .3px;
+  letter-spacing: .2px;
 }}
 input[type=range] {{
   -webkit-appearance: none;
@@ -423,7 +466,7 @@ input[type=range] {{
 }}
 input[type=range]::-webkit-slider-thumb {{
   -webkit-appearance: none;
-  width: 18px; height: 18px;
+  width: 16px; height: 16px;
   background: var(--walnut);
   border: 3px solid var(--sienna);
   border-radius: 50%;
@@ -431,17 +474,11 @@ input[type=range]::-webkit-slider-thumb {{
   box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }}
 input[type=range]::-moz-range-thumb {{
-  width: 18px; height: 18px;
+  width: 16px; height: 16px;
   background: var(--walnut);
   border: 3px solid var(--sienna);
   border-radius: 50%;
   cursor: pointer;
-}}
-.note {{
-  font-size: .8em;
-  color: var(--text-light);
-  margin-top: .8em;
-  font-style: italic;
 }}
 
 /* ── Two-column ────────────────────────────────────── */
@@ -549,6 +586,8 @@ tr:hover td {{ border-top-style: solid; }}
   nav.site-nav ul {{ padding: 0 1em; }}
   .stats-inner {{ flex-wrap: wrap; }}
   .stat-box {{ min-width: 90px; }}
+  .decade-strip {{ flex-direction: column; align-items: flex-start; gap: .4em; }}
+  .ds-slider-wrap {{ width: 100%; }}
 }}
 </style>
 </head>
@@ -584,9 +623,7 @@ tr:hover td {{ border-top-style: solid; }}
 <nav class="site-nav">
   <ul>
     <li><a href="#sec-timeline">Planting Timeline</a></li>
-    <li><a href="#sec-decade">By Decade</a></li>
-    <li><a href="#sec-county">By County</a></li>
-    <li><a href="#sec-ava">By AVA</a></li>
+    <li><a href="#sec-interactive">By Decade</a></li>
     <li><a href="#sec-pct">Variety %</a></li>
     <li><a href="#sec-overall">Overall Top 10</a></li>
     <li><a href="#sec-tables">Region Tables</a></li>
@@ -594,21 +631,6 @@ tr:hover td {{ border-top-style: solid; }}
 </nav>
 
 <div class="main">
-
-<!-- DECADE SLIDER -->
-<div class="slider-card">
-  <label for="decade-slider">Filter charts by decade planted</label>
-  <div class="decade-display" id="decade-display">
-    All Decades <small id="vy-count"></small>
-  </div>
-  <input type="range" id="decade-slider" min="0" max="12" value="0" step="1">
-  <div class="slider-label-row">
-    <span>All</span><span>1860s</span><span>1870s</span><span>1880s</span><span>1890s</span>
-    <span>1900s</span><span>1910s</span><span>1920s</span><span>1930s</span><span>1940s</span>
-    <span>1950s</span><span>1960s</span><span>1970s</span>
-  </div>
-  <p class="note">Drag to simultaneously filter the Variety, County, and AVA charts. "All" shows all {n_total} vineyards.</p>
-</div>
 
 <!-- TIMELINE -->
 <section class="sc" id="sec-timeline">
@@ -620,33 +642,46 @@ tr:hover td {{ border-top-style: solid; }}
   </div>
 </section>
 
-<!-- VARIETY BY DECADE -->
-<section class="sc" id="sec-decade">
-  <div class="sc-head"><h2>Variety Distribution</h2></div>
+<!-- VARIETY + COUNTY + AVA — all controlled by the inline decade slider -->
+<section class="sc" id="sec-interactive">
+  <div class="sc-head"><h2>Variety &amp; Geographic Distribution</h2></div>
   <div class="sc-body">
-    <p class="subtitle">Top grape varieties by number of vineyards — filtered by the decade slider above.</p>
-    <hr class="sc-rule">
+
+    <!-- Compact inline decade filter -->
+    <div class="decade-strip">
+      <span class="ds-label">Decade planted</span>
+      <span class="ds-value" id="decade-display">All Decades<small id="vy-count"></small></span>
+      <div class="ds-slider-wrap">
+        <input type="range" id="decade-slider" min="0" max="12" value="0" step="1">
+        <div class="slider-label-row">
+          <span>All</span><span>1860s</span><span>1870s</span><span>1880s</span><span>1890s</span>
+          <span>1900s</span><span>1910s</span><span>1920s</span><span>1930s</span><span>1940s</span>
+          <span>1950s</span><span>1960s</span><span>1970s</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Variety bar -->
+    <h3 id="sec-decade" style="margin-top:0">Top Varieties</h3>
+    <p class="subtitle">Number of vineyards containing each variety — filtered by decade above.</p>
     <div id="variety-chart"></div>
+
+    <!-- County + AVA two-col -->
+    <div class="two-col" style="margin-top:2.5em">
+      <div>
+        <h3 id="sec-county">By County</h3>
+        <p class="subtitle">Top 15 counties, stacked by variety. Bar height = vineyard equivalents (each vineyard contributes&nbsp;1 total, split&nbsp;1/N across its N varieties).</p>
+        <div id="county-chart"></div>
+      </div>
+      <div>
+        <h3 id="sec-ava">By AVA</h3>
+        <p class="subtitle">Top 15 AVAs, same normalization as County chart.</p>
+        <div id="ava-chart"></div>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- COUNTY + AVA -->
-<div class="two-col">
-  <section class="sc" id="sec-county">
-    <div class="sc-head"><h2>By County</h2></div>
-    <div class="sc-body">
-      <p class="subtitle">Top 15 counties, bars stacked by variety. Each segment = vineyards in that county containing that variety. Bar height may exceed unique-vineyard count where multiple varieties coexist.</p>
-      <div id="county-chart"></div>
-    </div>
-  </section>
-  <section class="sc" id="sec-ava">
-    <div class="sc-head"><h2>By AVA</h2></div>
-    <div class="sc-body">
-      <p class="subtitle">Top 15 AVAs, stacked by variety. Same stacking convention as County chart.</p>
-      <div id="ava-chart"></div>
-    </div>
-  </section>
-</div>
 
 <!-- VARIETY % -->
 <section class="sc" id="sec-pct">
@@ -830,7 +865,7 @@ function buildStackedChart(elemId, decade, regionKey, topRegions) {{
   Plotly.react(elemId, traces, Object.assign({{}}, PLY_LAYOUT_BASE, {{
     barmode: 'stack',
     xaxis: {{tickangle: -40, automargin: true}},
-    yaxis: {{title: 'Variety appearances'}},
+    yaxis: {{title: 'Vineyard equivalents (normalized)'}},
     height: 460,
     margin: {{l: 50, r: 10, t: 10, b: 130}},
     legend: {{orientation:'h', y:-0.6, x:0, font:{{size:10}}, bgcolor:'rgba(0,0,0,0)'}},
@@ -871,8 +906,9 @@ const vyCount = document.getElementById('vy-count');
 function updateAll(idx) {{
   const decade = DECADES[idx];
   const d = PER_DECADE[decade];
-  display.firstChild.textContent = decade === 'All' ? 'All Decades' : decade;
-  vyCount.textContent = `(${{d.n_vineyards}} vineyard${{d.n_vineyards!==1?'s':''}})`;
+  // display is a <span> whose first text node precedes the <small> child
+  display.childNodes[0].textContent = decade === 'All' ? 'All Decades' : decade;
+  vyCount.textContent = ` (${{d.n_vineyards}} vineyard${{d.n_vineyards!==1?'s':''}})`;
   const pct = (idx / (DECADES.length-1)) * 100;
   slider.style.background =
     `linear-gradient(to right, #786b58 0%, #786b58 ${{pct}}%, #ccc ${{pct}}%, #ccc 100%)`;
