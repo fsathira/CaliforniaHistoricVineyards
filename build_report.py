@@ -3,6 +3,19 @@ build_report.py
 ---------------
 Generates output/index.html – a polished, interactive analytics page
 styled after historicvineyardsociety.org.
+
+Design tokens derived from the live HVS theme stylesheet:
+  - Font:    CheltenhamOldSty (licensed) → Playfair Display (Google, closest free match)
+             Nunito Sans for body/UI (explicitly referenced in hvs/style.css)
+  - Colors:  #473b2b  dark walnut  (logo, primary text, headings)
+             #9d5b37  sienna/rust  (accent, hovers, highlights)
+             #786b58  warm brown   (buttons, secondary UI)
+             #796C58  mid brown    (logo SVG fill colour)
+             #ffffff  white        (page background)
+             #ccc     light grey   (borders, dotted rules)
+  - h1/h2:  font-weight normal, Playfair Display
+  - h3:     uppercase, letter-spacing 1px
+  - Buttons: uppercase, letter-spacing .5px, padding 10px 15px
 """
 
 import csv, json, collections, re
@@ -92,7 +105,6 @@ def variety_counts(subset):
 
 def stacked_data(subset, region_key, top_regions, top_vars):
     """Returns {variety: [count_per_region]} for Plotly stacked bar."""
-    # region_key: 'c' or 'a'
     region_data = {r: collections.Counter() for r in top_regions}
     for vy in subset:
         r = vy[region_key]
@@ -130,7 +142,6 @@ for dec in DECADES_ORDERED:
 
 # ── Section 1: pct stacked bar traces ─────────────────────────────────────
 pct_vineyard_names = [p["name"] for p in PCT_VINEYARDS]
-# Build traces for varieties that appear
 pct_var_set = set()
 for p in PCT_VINEYARDS:
     pct_var_set.update(p["varieties"].keys())
@@ -155,7 +166,6 @@ js_dec_timeline = json.dumps(dec_timeline)
 js_pct_traces   = json.dumps(pct_traces)
 js_pct_names    = json.dumps(pct_vineyard_names)
 js_dec_ordered  = json.dumps(DECADES_ORDERED)
-js_all_var_ctr  = json.dumps({v: c for v, c in all_var_ctr.most_common(10)})
 
 # Overall top10 for static chart
 ov_top10 = all_var_ctr.most_common(10)
@@ -163,7 +173,15 @@ js_ov_vars   = json.dumps([v for v,_ in reversed(ov_top10)])
 js_ov_counts = json.dumps([c for _,c in reversed(ov_top10)])
 js_ov_colors = json.dumps([VAR_COLOR.get(v, VAR_COLOR["Other"]) for v,_ in reversed(ov_top10)])
 
-# ── HTML Template ──────────────────────────────────────────────────────────
+# ── Load and inline the official HVS logo ─────────────────────────────────
+logo_raw = open("logo_hvs_full.svg", encoding="utf-8").read()
+logo_raw = re.sub(r'<\?xml[^>]+\?>', '', logo_raw)
+logo_raw = re.sub(r'<!DOCTYPE[^>]+>', '', logo_raw).strip()
+logo_raw = re.sub(r'\bwidth="[^"]*"', '', logo_raw, count=1)
+logo_raw = re.sub(r'\bheight="[^"]*"', '', logo_raw, count=1)
+logo_raw = logo_raw.replace('<svg ', '<svg aria-label="Historic Vineyard Society" ', 1)
+
+# ── HTML Template – Part 1: head, CSS, body open, static sections ──────────
 HTML = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,569 +190,484 @@ HTML = f"""<!DOCTYPE html>
 <title>California Historic Vineyards – Interactive Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <style>
-/* ── Reset & base ─────────────────────────────── */
+/* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+h1, h2, h3, h4, p, ol, ul {{ margin: 0; padding: 0; }}
+img {{ border: 0; max-width: 100%; height: auto; vertical-align: bottom; }}
+html {{ scroll-behavior: smooth; overflow-y: scroll; }}
 
+/* ── HVS design tokens ─────────────────────────────── */
+/* Sourced from historicvineyardsociety.org/wp-content/themes/hvs/style.css */
 :root {{
-  --green-dark:  #1e3d18;
-  --green-mid:   #2d5a20;
-  --green-light: #4a7c35;
-  --gold:        #b8923a;
-  --gold-light:  #d4a84b;
-  --cream:       #f4efe4;
-  --parchment:   #ede5d0;
-  --text:        #2a1f14;
-  --text-muted:  #6b5d4f;
-  --white:       #ffffff;
-  --border:      #d8ccb8;
-  --card-shadow: 0 2px 12px rgba(30,61,24,.10);
-  --radius:      10px;
+  --walnut:     #473b2b;  /* logo, headings, primary text */
+  --sienna:     #9d5b37;  /* accent, hovers, highlights   */
+  --brown:      #786b58;  /* buttons, secondary UI        */
+  --bg:         #ffffff;
+  --bg-light:   #f5f2ee;  /* section backgrounds          */
+  --border:     #cccccc;
+  --text:       #473b2b;
+  --text-light: #777777;
+  --white:      #ffffff;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Nunito Sans', Helvetica, Arial, sans-serif;
+  --max-w:      1100px;
+  --pad:        60px;
 }}
-
-html {{ scroll-behavior: smooth; }}
 
 body {{
-  font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
-  background: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5em;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
-  font-size: 15px;
 }}
+h1, h2, h3 {{
+  font-family: var(--font-serif);
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}}
+h1 {{ font-size: 2.5em; line-height: 1em; }}
+h2 {{ font-size: 1.5em; line-height: 1em; margin-top: 1.5em; margin-bottom: 1em; }}
+h2:first-child {{ margin-top: 0; }}
+h3 {{
+  font-size: 1.25em;
+  line-height: 1.125em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}}
+a {{ text-decoration: none; color: var(--sienna); transition: color .25s ease-out; }}
+a:hover {{ color: var(--walnut); }}
+p {{ margin-bottom: 1em; }}
+p:last-child {{ margin-bottom: 0; }}
 
-/* ── Header ───────────────────────────────────── */
-header {{
-  background: var(--green-dark);
-  color: var(--white);
-  padding: 0;
-  border-bottom: 4px solid var(--gold);
+/* ── Site header ───────────────────────────────────── */
+.site-header {{
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5em var(--pad);
 }}
 .header-inner {{
-  max-width: 1200px;
+  max-width: var(--max-w);
   margin: 0 auto;
-  padding: 2rem 2rem 1.6rem;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
 }}
-.logo-wrap {{
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .4rem;
-}}
-.logo-wrap svg {{ width: 72px; height: 72px; }}
-.logo-text {{
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: .68rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  text-align: center;
-  line-height: 1.3;
-}}
+.logo-header {{ flex-shrink: 0; line-height: 0; }}
+.logo-header svg {{ width: auto; height: 100px; display: block; }}
 .header-copy h1 {{
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: .01em;
-  line-height: 1.2;
+  color: var(--walnut);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 1.8em;
 }}
 .header-copy .tagline {{
-  font-size: .9rem;
-  opacity: .75;
-  margin-top: .35rem;
-  font-weight: 300;
-}}
-.stat-row {{
-  display: flex;
-  gap: 1.1rem;
-  margin-top: 1.3rem;
-  flex-wrap: wrap;
-}}
-.stat-box {{
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.15);
-  border-radius: 7px;
-  padding: .55rem 1rem;
-  text-align: center;
-  min-width: 80px;
-}}
-.stat-box .num {{
-  font-family: 'Playfair Display', serif;
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--gold-light);
-  display: block;
-}}
-.stat-box .lbl {{
-  font-size: .7rem;
-  opacity: .75;
+  font-size: .85em;
+  color: var(--text-light);
+  margin-top: .5em;
   text-transform: uppercase;
-  letter-spacing: .06em;
-  display: block;
+  letter-spacing: .5px;
 }}
 
-/* ── Sticky nav ──────────────────────────────── */
-nav.sticky-nav {{
-  background: var(--green-mid);
+/* ── Stats strip ───────────────────────────────────── */
+.stats-strip {{
+  background: var(--walnut);
+  padding: .8em var(--pad);
+}}
+.stats-inner {{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+}}
+.stat-box {{
+  flex: 1;
+  text-align: center;
+  padding: .3em .5em;
+  border-right: 1px solid rgba(255,255,255,.2);
+}}
+.stat-box:last-child {{ border-right: none; }}
+.stat-box .num {{
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.6em;
+  color: #fff;
+  line-height: 1;
+}}
+.stat-box .lbl {{
+  display: block;
+  font-size: .65em;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}}
+
+/* ── Sticky nav ────────────────────────────────────── */
+nav.site-nav {{
+  background: var(--walnut);
   position: sticky;
   top: 0;
-  z-index: 100;
-  border-bottom: 2px solid var(--gold);
+  z-index: 200;
+  border-bottom: 3px solid var(--sienna);
 }}
-nav.sticky-nav ul {{
-  max-width: 1200px;
+nav.site-nav ul {{
+  max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--pad);
   display: flex;
-  gap: 0;
   list-style: none;
   overflow-x: auto;
 }}
-nav.sticky-nav a {{
+nav.site-nav a {{
   display: block;
-  padding: .75rem 1.1rem;
-  color: rgba(255,255,255,.8);
-  text-decoration: none;
-  font-size: .82rem;
-  letter-spacing: .04em;
+  padding: .6em 10px;
+  font-size: 14px;
+  letter-spacing: .5px;
   text-transform: uppercase;
+  color: rgba(255,255,255,.8);
   white-space: nowrap;
-  transition: color .15s, border-bottom .15s;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: color .25s ease-out, border-color .25s ease-out;
 }}
-nav.sticky-nav a:hover {{
-  color: var(--gold-light);
-  border-bottom: 2px solid var(--gold-light);
-}}
+nav.site-nav a:hover {{ color: #fff; border-bottom-color: rgba(255,255,255,.6); }}
 
-/* ── Main layout ─────────────────────────────── */
-main {{
-  max-width: 1200px;
-  margin: 2.5rem auto;
-  padding: 0 1.5rem 5rem;
+/* ── Main ──────────────────────────────────────────── */
+.main {{
+  max-width: var(--max-w);
+  margin: 3em auto;
+  padding: 0 var(--pad) 5em;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3em;
 }}
 
-/* ── Section card ────────────────────────────── */
-section.card {{
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--card-shadow);
+/* ── Section card ──────────────────────────────────── */
+.sc {{
+  background: var(--bg);
   border: 1px solid var(--border);
-  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(71,59,43,.08);
 }}
-.card-header {{
-  background: var(--green-dark);
-  padding: 1rem 1.6rem;
-  display: flex;
-  align-items: center;
-  gap: .8rem;
+.sc-head {{
+  padding: 1em 1.5em .7em;
+  border-bottom: 1px solid var(--border);
 }}
-.card-header h2 {{
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--white);
-  flex: 1;
+.sc-head h2 {{ color: var(--walnut); margin: 0; font-size: 1.35em; }}
+.sc-rule {{
+  border: none;
+  border-top: 2px solid var(--sienna);
+  width: 50px;
+  margin: .6em 0 1.2em;
 }}
-.card-header .section-icon {{
-  font-size: 1.2rem;
-  opacity: .8;
-}}
-.card-body {{
-  padding: 1.5rem 1.6rem;
-}}
+.sc-body {{ padding: 1.5em 1.5em 2em; }}
 .subtitle {{
-  font-size: .87rem;
-  color: var(--text-muted);
-  margin-bottom: 1.2rem;
+  font-size: .875em;
+  color: var(--text-light);
+  margin-bottom: 1.2em;
   font-style: italic;
+  margin-top: 0;
 }}
 
-/* ── Ornamental divider ──────────────────────── */
-.ornament {{
-  text-align: center;
-  color: var(--gold);
-  letter-spacing: .5em;
-  font-size: .9rem;
-  margin: .4rem 0 1.2rem;
-  user-select: none;
-}}
-
-/* ── Decade slider control ───────────────────── */
-.slider-wrap {{
-  background: var(--parchment);
+/* ── Decade slider ─────────────────────────────────── */
+.slider-card {{
+  background: var(--bg-light);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.1rem 1.5rem 1rem;
-  margin-bottom: 1.4rem;
+  border-top: 3px solid var(--sienna);
+  padding: 1.5em 1.5em 1.2em;
 }}
-.slider-wrap label {{
-  font-size: .8rem;
-  font-weight: 600;
+.slider-card label {{
+  font-size: 14px;
+  letter-spacing: .5px;
   text-transform: uppercase;
-  letter-spacing: .08em;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text-light);
   display: block;
-  margin-bottom: .5rem;
+  margin-bottom: .6em;
+}}
+.decade-display {{
+  font-family: var(--font-serif);
+  font-size: 1.6em;
+  color: var(--walnut);
+  text-align: center;
+  margin-bottom: .5em;
+  line-height: 1;
+}}
+.decade-display small {{
+  font-family: var(--font-sans);
+  font-size: .5em;
+  color: var(--text-light);
+  font-weight: 300;
+  margin-left: .4em;
 }}
 .slider-label-row {{
   display: flex;
   justify-content: space-between;
-  font-size: .72rem;
-  color: var(--text-muted);
-  margin-top: .35rem;
+  font-size: .68em;
+  color: var(--text-light);
+  margin-top: .4em;
   user-select: none;
+  letter-spacing: .3px;
 }}
-.decade-display {{
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--green-dark);
-  text-align: center;
-  margin-bottom: .5rem;
-}}
-.decade-display small {{
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: .8rem;
-  color: var(--text-muted);
-  font-weight: 400;
-  margin-left: .4rem;
-}}
-
 input[type=range] {{
   -webkit-appearance: none;
   width: 100%;
-  height: 5px;
-  background: linear-gradient(to right, var(--green-mid) 0%, var(--green-mid) 0%, var(--border) 0%);
-  border-radius: 3px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
 }}
 input[type=range]::-webkit-slider-thumb {{
   -webkit-appearance: none;
-  width: 20px; height: 20px;
-  background: var(--green-dark);
-  border: 3px solid var(--gold);
+  width: 18px; height: 18px;
+  background: var(--walnut);
+  border: 3px solid var(--sienna);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }}
 input[type=range]::-moz-range-thumb {{
-  width: 20px; height: 20px;
-  background: var(--green-dark);
-  border: 3px solid var(--gold);
+  width: 18px; height: 18px;
+  background: var(--walnut);
+  border: 3px solid var(--sienna);
   border-radius: 50%;
   cursor: pointer;
 }}
+.note {{
+  font-size: .8em;
+  color: var(--text-light);
+  margin-top: .8em;
+  font-style: italic;
+}}
 
-/* ── Two-column grid for county/AVA ─────────── */
+/* ── Two-column ────────────────────────────────────── */
 .two-col {{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}}
-@media (max-width: 900px) {{
-  .two-col {{ grid-template-columns: 1fr; }}
-  .header-inner {{ flex-direction: column; text-align: center; }}
+  gap: 2em;
 }}
 
-/* ── Accordion (region tables) ───────────────── */
+/* ── Accordion ─────────────────────────────────────── */
 details.accordion {{
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  margin-bottom: .5rem;
-  overflow: hidden;
+  border-top: 2px dotted var(--border);
 }}
+details.accordion:last-child {{ border-bottom: 2px dotted var(--border); }}
 details.accordion summary {{
   cursor: pointer;
-  padding: .65rem 1rem;
+  padding: .6em 0;
   font-weight: 600;
-  font-size: .9rem;
-  background: var(--parchment);
+  font-size: .95em;
   list-style: none;
   display: flex;
   align-items: center;
-  gap: .6rem;
+  gap: .5em;
   user-select: none;
+  color: var(--walnut);
+  transition: color .25s ease-out;
 }}
+details.accordion summary:hover {{ color: var(--sienna); }}
 details.accordion summary::-webkit-details-marker {{ display: none; }}
 details.accordion summary::before {{
   content: '▶';
-  font-size: .65rem;
+  font-size: .6em;
   transition: transform .15s;
-  color: var(--gold);
+  color: var(--sienna);
+  flex-shrink: 0;
 }}
 details[open].accordion summary::before {{ transform: rotate(90deg); }}
+details.accordion table {{ margin: .5em 0 1em; }}
 .badge {{
-  font-size: .72rem;
-  background: var(--green-dark);
-  color: var(--gold-light);
-  border-radius: 10px;
-  padding: .1rem .55rem;
+  font-size: .72em;
+  background: var(--bg-light);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: .1em .5em;
   margin-left: auto;
   font-weight: 400;
+  letter-spacing: .3px;
 }}
 
-/* ── Tables ──────────────────────────────────── */
-table {{
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .86rem;
-}}
+/* ── Tables ────────────────────────────────────────── */
+table {{ width: 100%; border-collapse: collapse; font-size: .875em; }}
 th {{
-  background: var(--parchment);
   text-align: left;
-  padding: .45rem .7rem;
+  padding: .5em 1em;
   font-weight: 600;
-  color: var(--text-muted);
-  border-bottom: 2px solid var(--border);
-  font-size: .8rem;
+  color: var(--text-light);
+  font-size: .8em;
   text-transform: uppercase;
-  letter-spacing: .04em;
+  letter-spacing: .5px;
 }}
 td {{
-  padding: .38rem .7rem;
-  border-bottom: 1px solid #f0ede6;
+  padding: .5em 1em;
+  border-top: 2px dotted var(--border);
   vertical-align: middle;
+  transition: border-top-style .25s ease;
 }}
-tr:last-child td {{ border-bottom: none; }}
-tr:hover td {{ background: #faf6ee; }}
-.rank {{ color: var(--gold); font-size: .8rem; width: 28px; font-weight: 700; }}
+tr:hover td {{ border-top-style: solid; }}
+.rank {{ color: var(--sienna); font-size: .8em; width: 28px; font-weight: 700; }}
 .bar-bg {{
-  background: var(--parchment);
-  border-radius: 3px;
-  height: 9px;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  height: 8px;
   display: inline-block;
   width: 120px;
   vertical-align: middle;
 }}
 .bar-fill {{
-  background: var(--green-mid);
-  border-radius: 3px;
-  height: 9px;
+  background: var(--brown);
+  border-radius: 1px;
+  height: 8px;
   display: inline-block;
 }}
-.count-cell {{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}}
+.count-cell {{ display: flex; align-items: center; gap: 8px; white-space: nowrap; }}
 
-/* ── Notes & footer ──────────────────────────── */
-.note {{
-  font-size: .78rem;
-  color: var(--text-muted);
-  margin-top: .9rem;
-  font-style: italic;
+/* ── Footer ────────────────────────────────────────── */
+.site-footer {{
+  background: var(--walnut);
+  color: rgba(255,255,255,.65);
+  padding: 2em var(--pad);
+  font-size: .85em;
+  border-top: 3px solid var(--sienna);
 }}
-footer {{
-  background: var(--green-dark);
-  color: rgba(255,255,255,.6);
-  text-align: center;
-  padding: 1.5rem;
-  font-size: .82rem;
-  border-top: 3px solid var(--gold);
-}}
-footer a {{ color: var(--gold-light); text-decoration: none; }}
+.site-footer p {{ text-transform: uppercase; letter-spacing: .5px; margin: 0; }}
+.site-footer a {{ color: rgba(255,255,255,.85); }}
 
-/* ── Summary image grid ──────────────────────── */
-.img-grid {{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}}
-.img-grid img {{
-  width: 100%;
-  border-radius: 6px;
-  border: 1px solid var(--border);
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {{
+  :root {{ --pad: 20px; }}
+  .header-inner {{ flex-direction: column; text-align: center; }}
+  .logo-header svg {{ height: 70px; }}
+  .two-col {{ grid-template-columns: 1fr; }}
+  h1 {{ font-size: 1.6em; }}
+  nav.site-nav ul {{ padding: 0 1em; }}
+  .stats-inner {{ flex-wrap: wrap; }}
+  .stat-box {{ min-width: 90px; }}
 }}
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══════════════════════════════════════════════════════════ -->
-<header>
+<!-- HEADER -->
+<header class="site-header">
   <div class="header-inner">
-    <div class="logo-wrap">
-      <!-- Grapevine SVG logo inspired by HVS aesthetic -->
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Historic Vineyard Society">
-        <circle cx="50" cy="50" r="48" fill="none" stroke="#b8923a" stroke-width="2"/>
-        <!-- Vine trunk -->
-        <path d="M50 82 Q50 60 50 40" stroke="#d4a84b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Left branch -->
-        <path d="M50 62 Q38 56 30 50" stroke="#d4a84b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <!-- Right branch -->
-        <path d="M50 54 Q62 48 70 44" stroke="#d4a84b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <!-- Left leaf -->
-        <path d="M30 50 Q22 40 28 34 Q36 38 30 50Z" fill="#4a7c35" opacity=".85"/>
-        <!-- Right leaf -->
-        <path d="M70 44 Q78 34 72 28 Q64 32 70 44Z" fill="#4a7c35" opacity=".85"/>
-        <!-- Top leaf -->
-        <path d="M50 40 Q44 30 50 24 Q56 30 50 40Z" fill="#4a7c35" opacity=".85"/>
-        <!-- Grapes left cluster -->
-        <circle cx="26" cy="58" r="4.5" fill="#c0392b" opacity=".8"/>
-        <circle cx="34" cy="62" r="4.5" fill="#9b2335" opacity=".8"/>
-        <circle cx="22" cy="64" r="4"   fill="#a52a2a" opacity=".8"/>
-        <circle cx="30" cy="68" r="4"   fill="#c0392b" opacity=".8"/>
-        <!-- Grapes right cluster -->
-        <circle cx="74" cy="52" r="4.5" fill="#c0392b" opacity=".8"/>
-        <circle cx="82" cy="56" r="4.5" fill="#9b2335" opacity=".8"/>
-        <circle cx="70" cy="59" r="4"   fill="#a52a2a" opacity=".8"/>
-        <circle cx="78" cy="63" r="4"   fill="#c0392b" opacity=".8"/>
-        <!-- Years text -->
-        <text x="50" y="95" text-anchor="middle" font-family="Georgia,serif"
-              font-size="7" fill="#b8923a" letter-spacing="1">CALIFORNIA</text>
-      </svg>
-      <div class="logo-text">Historic<br>Vineyard Society</div>
-    </div>
+    <div class="logo-header">{logo_raw}</div>
     <div class="header-copy">
       <h1>California Historic Vineyards</h1>
-      <p class="tagline">Data source: <a href="https://historicvineyardsociety.org" style="color:var(--gold-light)">historicvineyardsociety.org</a> &nbsp;·&nbsp; {n_total} vineyards catalogued</p>
-      <div class="stat-row">
-        <div class="stat-box"><span class="num">{n_total}</span><span class="lbl">Vineyards</span></div>
-        <div class="stat-box"><span class="num">{n_avas}</span><span class="lbl">AVAs</span></div>
-        <div class="stat-box"><span class="num">{n_counties}</span><span class="lbl">Counties</span></div>
-        <div class="stat-box"><span class="num">{n_varieties}</span><span class="lbl">Varieties</span></div>
-        <div class="stat-box"><span class="num">{n_pct}</span><span class="lbl">With % data</span></div>
-      </div>
+      <p class="tagline">
+        Data source:
+        <a href="https://historicvineyardsociety.org">historicvineyardsociety.org</a>
+        &nbsp;·&nbsp; {n_total} vineyards catalogued
+      </p>
     </div>
   </div>
 </header>
 
-<!-- ══ STICKY NAV ═══════════════════════════════════════════════════════ -->
-<nav class="sticky-nav">
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-box"><span class="num">{n_total}</span><span class="lbl">Vineyards</span></div>
+    <div class="stat-box"><span class="num">{n_avas}</span><span class="lbl">AVAs</span></div>
+    <div class="stat-box"><span class="num">{n_counties}</span><span class="lbl">Counties</span></div>
+    <div class="stat-box"><span class="num">{n_varieties}</span><span class="lbl">Varieties</span></div>
+    <div class="stat-box"><span class="num">{n_pct}</span><span class="lbl">With % data</span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
   <ul>
     <li><a href="#sec-timeline">Planting Timeline</a></li>
     <li><a href="#sec-decade">By Decade</a></li>
     <li><a href="#sec-county">By County</a></li>
     <li><a href="#sec-ava">By AVA</a></li>
     <li><a href="#sec-pct">Variety %</a></li>
-    <li><a href="#sec-overall">Overall</a></li>
+    <li><a href="#sec-overall">Overall Top 10</a></li>
     <li><a href="#sec-tables">Region Tables</a></li>
   </ul>
 </nav>
 
-<main>
+<div class="main">
 
-<!-- ══ SHARED DECADE SLIDER (controls sec-decade, sec-county, sec-ava) ═ -->
-<section class="card" style="border-color:var(--gold)">
-  <div class="card-header" style="background:var(--green-mid)">
-    <span class="section-icon">🗓</span>
-    <h2>Filter by Decade Planted</h2>
+<!-- DECADE SLIDER -->
+<div class="slider-card">
+  <label for="decade-slider">Filter charts by decade planted</label>
+  <div class="decade-display" id="decade-display">
+    All Decades <small id="vy-count"></small>
   </div>
-  <div class="card-body">
-    <div class="slider-wrap">
-      <label for="decade-slider">Select a decade – charts below update automatically</label>
-      <div class="decade-display" id="decade-display">
-        All Decades <small id="vy-count"></small>
-      </div>
-      <input type="range" id="decade-slider" min="0" max="12" value="0" step="1">
-      <div class="slider-label-row">
-        <span>All</span><span>1860s</span><span>1870s</span><span>1880s</span><span>1890s</span>
-        <span>1900s</span><span>1910s</span><span>1920s</span><span>1930s</span><span>1940s</span>
-        <span>1950s</span><span>1960s</span><span>1970s</span>
-      </div>
-    </div>
-    <p class="note">
-      Drag the slider to filter the three charts below (Variety, County, and AVA)
-      to a specific planting decade. "All" shows data for all 197 vineyards.
-    </p>
+  <input type="range" id="decade-slider" min="0" max="12" value="0" step="1">
+  <div class="slider-label-row">
+    <span>All</span><span>1860s</span><span>1870s</span><span>1880s</span><span>1890s</span>
+    <span>1900s</span><span>1910s</span><span>1920s</span><span>1930s</span><span>1940s</span>
+    <span>1950s</span><span>1960s</span><span>1970s</span>
   </div>
-</section>
+  <p class="note">Drag to simultaneously filter the Variety, County, and AVA charts. "All" shows all {n_total} vineyards.</p>
+</div>
 
-<!-- ══ SEC 1: PLANTING TIMELINE ════════════════════════════════════════ -->
-<section class="card" id="sec-timeline">
-  <div class="card-header">
-    <span class="section-icon">📅</span>
-    <h2>Planting Timeline – Vineyards per Decade</h2>
-  </div>
-  <div class="card-body">
-    <p class="subtitle">Number of vineyards planted in each decade, across all 197 catalogued sites.</p>
-    <div class="ornament">❧ ✦ ❧</div>
+<!-- TIMELINE -->
+<section class="sc" id="sec-timeline">
+  <div class="sc-head"><h2>Planting Timeline</h2></div>
+  <div class="sc-body">
+    <p class="subtitle">Number of vineyards planted per decade across all {n_total} catalogued sites.</p>
+    <hr class="sc-rule">
     <div id="timeline-chart"></div>
   </div>
 </section>
 
-<!-- ══ SEC 2: VARIETY BY DECADE ════════════════════════════════════════ -->
-<section class="card" id="sec-decade">
-  <div class="card-header">
-    <span class="section-icon">🍇</span>
-    <h2>Variety Distribution — filtered by decade</h2>
-  </div>
-  <div class="card-body">
-    <p class="subtitle">
-      Top grape varieties by number of vineyards containing them.
-      Use the slider above to filter by planting decade.
-    </p>
-    <div class="ornament">❧ ✦ ❧</div>
+<!-- VARIETY BY DECADE -->
+<section class="sc" id="sec-decade">
+  <div class="sc-head"><h2>Variety Distribution</h2></div>
+  <div class="sc-body">
+    <p class="subtitle">Top grape varieties by number of vineyards — filtered by the decade slider above.</p>
+    <hr class="sc-rule">
     <div id="variety-chart"></div>
   </div>
 </section>
 
-<!-- ══ SEC 3 & 4: COUNTY + AVA STACKED BARS ════════════════════════════ -->
+<!-- COUNTY + AVA -->
 <div class="two-col">
-
-  <section class="card" id="sec-county">
-    <div class="card-header">
-      <span class="section-icon">🗺</span>
-      <h2>County Breakdown</h2>
-    </div>
-    <div class="card-body">
-      <p class="subtitle">
-        Top 15 counties. Bars stacked by variety — each segment = number of
-        vineyards in that county containing that variety. Bar height exceeds
-        vineyard count where multiple varieties coexist.
-      </p>
+  <section class="sc" id="sec-county">
+    <div class="sc-head"><h2>By County</h2></div>
+    <div class="sc-body">
+      <p class="subtitle">Top 15 counties, bars stacked by variety. Each segment = vineyards in that county containing that variety. Bar height may exceed unique-vineyard count where multiple varieties coexist.</p>
       <div id="county-chart"></div>
     </div>
   </section>
-
-  <section class="card" id="sec-ava">
-    <div class="card-header">
-      <span class="section-icon">📍</span>
-      <h2>AVA Breakdown</h2>
-    </div>
-    <div class="card-body">
-      <p class="subtitle">
-        Top 15 AVAs. Same stacking convention as County chart — segments
-        show variety appearances, not unique vineyards.
-      </p>
+  <section class="sc" id="sec-ava">
+    <div class="sc-head"><h2>By AVA</h2></div>
+    <div class="sc-body">
+      <p class="subtitle">Top 15 AVAs, stacked by variety. Same stacking convention as County chart.</p>
       <div id="ava-chart"></div>
     </div>
   </section>
-
 </div>
 
-<!-- ══ SEC 5: VARIETY % ══════════════════════════════════════════════════ -->
-<section class="card" id="sec-pct">
-  <div class="card-header">
-    <span class="section-icon">📊</span>
-    <h2>Variety Composition — Vineyards with Percentage Data</h2>
-  </div>
-  <div class="card-body">
-    <p class="subtitle">
-      {n_pct} vineyards have explicit variety percentages. Only varieties ≥ 5 % are shown.
-    </p>
-    <div class="ornament">❧ ✦ ❧</div>
+<!-- VARIETY % -->
+<section class="sc" id="sec-pct">
+  <div class="sc-head"><h2>Variety Composition</h2></div>
+  <div class="sc-body">
+    <p class="subtitle">{n_pct} vineyards have explicit variety percentages. Only varieties &ge; 5% shown.</p>
+    <hr class="sc-rule">
     <div id="pct-chart"></div>
-    <table style="margin-top:1.4rem; font-size:.84rem">
+    <table style="margin-top:1.5em">
       <thead>
-        <tr><th>Vineyard</th><th>AVA</th><th>County</th><th>Decade</th><th>Varieties (≥5%)</th></tr>
+        <tr><th>Vineyard</th><th>AVA</th><th>County</th><th>Decade</th><th>Varieties (&ge;5%)</th></tr>
       </thead>
       <tbody>
 """
 
+# ── PCT table rows (dynamic) ───────────────────────────────────────────────
 for p in PCT_VINEYARDS:
-    var_str = ", ".join(f"{v} ({round(pct)}%)" for v, pct in sorted(p["varieties"].items(), key=lambda x: -x[1]))
+    var_str = ", ".join(
+        f"{v} ({round(pct)}%)"
+        for v, pct in sorted(p["varieties"].items(), key=lambda x: -x[1])
+    )
     HTML += f"""        <tr>
           <td><b>{p['name']}</b></td>
           <td>{p['ava']}</td>
@@ -749,30 +682,25 @@ HTML += """      </tbody>
   </div>
 </section>
 
-<!-- ══ SEC 6: OVERALL TOP 10 ════════════════════════════════════════════ -->
-<section class="card" id="sec-overall">
-  <div class="card-header">
-    <span class="section-icon">🏆</span>
-    <h2>Top 10 Grape Varieties — All 197 Vineyards</h2>
-  </div>
-  <div class="card-body">
-    <p class="subtitle">Ranked by number of vineyards containing each variety, regardless of percentage.</p>
-    <div class="ornament">❧ ✦ ❧</div>
+<!-- OVERALL TOP 10 -->
+<section class="sc" id="sec-overall">
+  <div class="sc-head"><h2>Overall Top 10 Varieties</h2></div>
+  <div class="sc-body">
+    <p class="subtitle">Ranked by number of vineyards containing each variety, regardless of percentage — all 197 vineyards.</p>
+    <hr class="sc-rule">
     <div id="overall-chart"></div>
   </div>
 </section>
 
-<!-- ══ SEC 7: REGION TABLES (accordion) ════════════════════════════════ -->
-<section class="card" id="sec-tables">
-  <div class="card-header">
-    <span class="section-icon">📋</span>
-    <h2>Top Varieties by AVA — Detailed Tables</h2>
-  </div>
-  <div class="card-body">
+<!-- REGION TABLES -->
+<section class="sc" id="sec-tables">
+  <div class="sc-head"><h2>Top Varieties by AVA</h2></div>
+  <div class="sc-body">
     <p class="subtitle">Expand an AVA to see how many of its vineyards contain each variety.</p>
+    <hr class="sc-rule">
 """
 
-# Build accordion tables from data
+# ── Accordion tables (dynamic) ─────────────────────────────────────────────
 ava_variety_data = collections.defaultdict(lambda: collections.Counter())
 for vy in vineyards:
     if vy["a"]:
@@ -780,9 +708,9 @@ for vy in vineyards:
             ava_variety_data[vy["a"]][v] += 1
 
 for ava_name in sorted(ava_variety_data.keys()):
-    vc = ava_variety_data[ava_name]
-    total = sum(vc.values())
-    top10 = vc.most_common(10)
+    vc_data = ava_variety_data[ava_name]
+    total = sum(vc_data.values())
+    top10 = vc_data.most_common(10)
     max_count = top10[0][1] if top10 else 1
     HTML += f"""
     <details class="accordion">
@@ -810,15 +738,14 @@ for ava_name in sorted(ava_variety_data.keys()):
 HTML += f"""  </div>
 </section>
 
-</main>
+</div><!-- .main -->
 
-<footer>
-  <p>Data sourced from <a href="https://historicvineyardsociety.org">Historic Vineyard Society</a> · California Historic Vineyard Analysis · Built with Plotly.js</p>
+<footer class="site-footer">
+  <p>Data sourced from <a href="https://historicvineyardsociety.org">Historic Vineyard Society</a>
+  &nbsp;·&nbsp; California Historic Vineyard Analysis &nbsp;·&nbsp; Built with Plotly.js</p>
 </footer>
 
-<!-- ══ JAVASCRIPT ════════════════════════════════════════════════════════ -->
 <script>
-// ── Embedded data ─────────────────────────────────────────────────────
 const PER_DECADE    = {js_per_decade};
 const TOP_VARIETIES = {js_top_varieties};
 const TOP_COUNTIES  = {js_top_counties};
@@ -828,145 +755,115 @@ const DEC_TIMELINE  = {js_dec_timeline};
 const PCT_TRACES    = {js_pct_traces};
 const PCT_NAMES     = {js_pct_names};
 const DECADES       = {js_dec_ordered};
+const OV_VARS       = {js_ov_vars};
+const OV_COUNTS     = {js_ov_counts};
+const OV_COLORS     = {js_ov_colors};
 
-// ── Color helper ──────────────────────────────────────────────────────
-function varColor(v) {{ return VAR_COLOR[v] || VAR_COLOR['Other']; }}
-
-// ── Common Plotly config ──────────────────────────────────────────────
 const PLY_CFG = {{responsive: true, displayModeBar: false}};
 
-// ── Timeline chart (static) ───────────────────────────────────────────
+const PLY_LAYOUT_BASE = {{
+  plot_bgcolor:  '#f5f2ee',
+  paper_bgcolor: '#ffffff',
+  font: {{family: 'Nunito Sans, Helvetica, sans-serif', color: '#473b2b', size: 12}},
+  hoverlabel: {{bgcolor: '#473b2b', font: {{color: '#fff', size: 12}}}},
+}};
+
+function vc(v) {{ return VAR_COLOR[v] || VAR_COLOR['Other']; }}
+
+// ── Timeline (static) ──────────────────────────────────────────────
 Plotly.newPlot('timeline-chart', [{{
   type: 'bar',
   x: Object.keys(DEC_TIMELINE),
   y: Object.values(DEC_TIMELINE),
   marker: {{
-    color: Object.values(DEC_TIMELINE).map((_, i) =>
-      `hsl(${{200 - i * 12}}, 45%, ${{35 + i * 2}}%)`),
-    line: {{color: '#b8923a', width: 1}}
+    color: '#786b58',
+    line: {{color: '#9d5b37', width: 1}}
   }},
   hovertemplate: '<b>%{{x}}</b><br>%{{y}} vineyards<extra></extra>'
-}}], {{
+}}], Object.assign({{}}, PLY_LAYOUT_BASE, {{
   xaxis: {{title: 'Decade planted', tickangle: -30}},
-  yaxis: {{title: 'Number of vineyards', dtick: 5}},
-  height: 340,
-  margin: {{l: 60, r: 20, t: 20, b: 60}},
-  plot_bgcolor: '#faf9f5',
-  paper_bgcolor: '#ffffff',
-  font: {{family: 'Source Sans 3, sans-serif', color: '#2a1f14'}},
-  hoverlabel: {{bgcolor: '#1e3d18', font: {{color: '#fff'}}}}
-}}, PLY_CFG);
+  yaxis: {{title: 'Vineyards', dtick: 5}},
+  height: 320,
+  margin: {{l: 60, r: 20, t: 10, b: 70}},
+}}), PLY_CFG);
 
-// ── Variety bar chart ─────────────────────────────────────────────────
+// ── Variety bar ───────────────────────────────────────────────────
 function buildVarietyChart(decade) {{
   const d = PER_DECADE[decade];
-  const vars   = d.var_bar.vars;
-  const counts = d.var_bar.counts;
-  // Sort ascending for horizontal bar (Plotly shows bottom-to-top)
-  const pairs = vars.map((v,i) => [v, counts[i]])
-                    .sort((a,b) => a[1] - b[1]);
+  const pairs = d.var_bar.vars.map((v,i) => [v, d.var_bar.counts[i]])
+                              .sort((a,b) => a[1]-b[1]);
   Plotly.react('variety-chart', [{{
-    type: 'bar',
-    orientation: 'h',
-    y: pairs.map(p => p[0]),
-    x: pairs.map(p => p[1]),
+    type: 'bar', orientation: 'h',
+    y: pairs.map(p=>p[0]),
+    x: pairs.map(p=>p[1]),
     marker: {{
-      color: pairs.map(p => varColor(p[0])),
-      line: {{color: 'rgba(0,0,0,.15)', width: .5}}
+      color: pairs.map(p=>vc(p[0])),
+      line: {{color: 'rgba(0,0,0,.12)', width: .5}}
     }},
     hovertemplate: '<b>%{{y}}</b><br>%{{x}} vineyards<extra></extra>',
-    text: pairs.map(p => p[1]),
+    text: pairs.map(p=>p[1]),
     textposition: 'outside',
-    textfont: {{size: 11, color: '#2a1f14'}}
-  }}], {{
+    textfont: {{size: 11, color: '#473b2b'}}
+  }}], Object.assign({{}}, PLY_LAYOUT_BASE, {{
     xaxis: {{title: 'Number of vineyards', rangemode: 'tozero'}},
     yaxis: {{automargin: true}},
-    height: Math.max(300, pairs.length * 36 + 80),
-    margin: {{l: 180, r: 60, t: 20, b: 50}},
-    plot_bgcolor: '#faf9f5',
-    paper_bgcolor: '#ffffff',
-    font: {{family: 'Source Sans 3, sans-serif', color: '#2a1f14'}},
-    hoverlabel: {{bgcolor: '#1e3d18', font: {{color: '#fff'}}}},
+    height: Math.max(280, pairs.length * 36 + 70),
+    margin: {{l: 180, r: 60, t: 10, b: 50}},
     showlegend: false
-  }}, PLY_CFG);
+  }}), PLY_CFG);
 }}
 
-// ── Stacked bar (county or AVA) ───────────────────────────────────────
+// ── Stacked county/AVA bars ───────────────────────────────────────
 function buildStackedChart(elemId, decade, regionKey, topRegions) {{
   const d = PER_DECADE[decade][regionKey];
-  // Build traces: one per variety in TOP_VARIETIES + Other
   const allVars = [...TOP_VARIETIES, 'Other'];
   const traces = allVars.map(v => {{
-    const counts = d[v] || topRegions.map(() => 0);
+    const counts = d[v] || topRegions.map(()=>0);
     return {{
-      type: 'bar',
-      name: v,
-      x: topRegions,
-      y: counts,
-      marker: {{color: varColor(v), line: {{color: 'rgba(255,255,255,.3)', width: .5}}}},
-      hovertemplate: `<b>%{{x}}</b><br>${{v}}: %{{y}} vineyards<extra></extra>`
+      type: 'bar', name: v,
+      x: topRegions, y: counts,
+      marker: {{color: vc(v), line: {{color: 'rgba(255,255,255,.25)', width:.5}}}},
+      hovertemplate: `<b>%{{x}}</b><br>${{v}}: %{{y}}<extra></extra>`
     }};
-  }}).filter(t => t.y.some(c => c > 0));  // drop zero-only traces
+  }}).filter(t => t.y.some(c=>c>0));
 
-  Plotly.react(elemId, traces, {{
+  Plotly.react(elemId, traces, Object.assign({{}}, PLY_LAYOUT_BASE, {{
     barmode: 'stack',
-    xaxis: {{title: '', tickangle: -35, automargin: true}},
+    xaxis: {{tickangle: -40, automargin: true}},
     yaxis: {{title: 'Variety appearances'}},
     height: 460,
-    margin: {{l: 50, r: 20, t: 20, b: 120}},
-    plot_bgcolor: '#faf9f5',
-    paper_bgcolor: '#ffffff',
-    font: {{family: 'Source Sans 3, sans-serif', color: '#2a1f14', size: 11}},
-    legend: {{
-      orientation: 'h', y: -0.55, x: 0,
-      font: {{size: 10}},
-      bgcolor: 'rgba(0,0,0,0)'
-    }},
-    hoverlabel: {{bgcolor: '#1e3d18', font: {{color: '#fff'}}}}
-  }}, PLY_CFG);
+    margin: {{l: 50, r: 10, t: 10, b: 130}},
+    legend: {{orientation:'h', y:-0.6, x:0, font:{{size:10}}, bgcolor:'rgba(0,0,0,0)'}},
+  }}), PLY_CFG);
 }}
 
-// ── PCT chart (static) ────────────────────────────────────────────────
-Plotly.newPlot('pct-chart', PCT_TRACES, {{
+// ── PCT chart (static) ────────────────────────────────────────────
+Plotly.newPlot('pct-chart', PCT_TRACES, Object.assign({{}}, PLY_LAYOUT_BASE, {{
   barmode: 'stack',
   xaxis: {{title: 'Percentage (%)', range: [0, 100]}},
   yaxis: {{automargin: true}},
-  height: Math.max(400, PCT_NAMES.length * 28 + 100),
+  height: Math.max(380, PCT_NAMES.length * 28 + 100),
   legend: {{title: {{text: 'Variety'}}, orientation: 'v', x: 1.02}},
-  margin: {{l: 240, r: 160, t: 20, b: 50}},
-  plot_bgcolor: '#faf9f5',
-  paper_bgcolor: '#ffffff',
-  font: {{family: 'Source Sans 3, sans-serif', color: '#2a1f14'}},
-  hoverlabel: {{bgcolor: '#1e3d18', font: {{color: '#fff'}}}}
-}}, PLY_CFG);
+  margin: {{l: 240, r: 160, t: 10, b: 50}},
+}}), PLY_CFG);
 
-// ── Overall top-10 (static) ───────────────────────────────────────────
-const OV_VARS   = {js_ov_vars};
-const OV_COUNTS = {js_ov_counts};
-const OV_COLORS = {js_ov_colors};
+// ── Overall top-10 (static) ───────────────────────────────────────
 Plotly.newPlot('overall-chart', [{{
-  type: 'bar',
-  orientation: 'h',
-  y: OV_VARS,
-  x: OV_COUNTS,
-  marker: {{color: OV_COLORS, line: {{color: '#b8923a', width: .8}}}},
+  type: 'bar', orientation: 'h',
+  y: OV_VARS, x: OV_COUNTS,
+  marker: {{color: OV_COLORS, line: {{color: '#9d5b37', width: .8}}}},
   hovertemplate: '<b>%{{y}}</b><br>%{{x}} vineyards<extra></extra>',
-  text: OV_COUNTS,
-  textposition: 'outside',
-  textfont: {{size: 12, color: '#2a1f14'}}
-}}], {{
+  text: OV_COUNTS, textposition: 'outside',
+  textfont: {{size: 12, color: '#473b2b'}}
+}}], Object.assign({{}}, PLY_LAYOUT_BASE, {{
   xaxis: {{title: 'Number of vineyards', dtick: 10}},
   yaxis: {{automargin: true}},
-  height: 440,
-  margin: {{l: 200, r: 60, t: 20, b: 50}},
-  plot_bgcolor: '#faf9f5',
-  paper_bgcolor: '#ffffff',
-  font: {{family: 'Source Sans 3, sans-serif', color: '#2a1f14'}},
-  hoverlabel: {{bgcolor: '#1e3d18', font: {{color: '#fff'}}}},
+  height: 420,
+  margin: {{l: 200, r: 60, t: 10, b: 50}},
   showlegend: false
-}}, PLY_CFG);
+}}), PLY_CFG);
 
-// ── Slider logic ──────────────────────────────────────────────────────
+// ── Slider ────────────────────────────────────────────────────────
 const slider  = document.getElementById('decade-slider');
 const display = document.getElementById('decade-display');
 const vyCount = document.getElementById('vy-count');
@@ -974,22 +871,17 @@ const vyCount = document.getElementById('vy-count');
 function updateAll(idx) {{
   const decade = DECADES[idx];
   const d = PER_DECADE[decade];
-  display.textContent = decade === 'All' ? 'All Decades' : decade;
-  vyCount.textContent = `(${{d.n_vineyards}} vineyard${{d.n_vineyards !== 1 ? 's' : ''}})`;
-
-  // Update slider track fill
-  const pct = (idx / (DECADES.length - 1)) * 100;
+  display.firstChild.textContent = decade === 'All' ? 'All Decades' : decade;
+  vyCount.textContent = `(${{d.n_vineyards}} vineyard${{d.n_vineyards!==1?'s':''}})`;
+  const pct = (idx / (DECADES.length-1)) * 100;
   slider.style.background =
-    `linear-gradient(to right, var(--green-mid) 0%, var(--green-mid) ${{pct}}%, var(--border) ${{pct}}%, var(--border) 100%)`;
-
+    `linear-gradient(to right, #786b58 0%, #786b58 ${{pct}}%, #ccc ${{pct}}%, #ccc 100%)`;
   buildVarietyChart(decade);
   buildStackedChart('county-chart', decade, 'county', TOP_COUNTIES);
   buildStackedChart('ava-chart',    decade, 'ava',    TOP_AVAS);
 }}
 
 slider.addEventListener('input', e => updateAll(+e.target.value));
-
-// ── Initial render ────────────────────────────────────────────────────
 updateAll(0);
 </script>
 </body>
