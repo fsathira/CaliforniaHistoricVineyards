@@ -173,6 +173,62 @@ for dec in DECADES_ORDERED:
         "ava": av,
     }
 
+# ── Timeline breakdown by county / AVA / variety ──────────────────────────
+TL_DECADES_LIST = DECADES_ORDERED[1:]   # ['1860s', '1870s', ..., '1970s']
+
+# Categorical palette for county / AVA colouring in the timeline
+TL_CAT_PALETTE = [
+    "#5B8EC0","#8BC08B","#E8884A","#9B7EC0","#E8C858",
+    "#C07898","#50A898","#C8885A","#7898D8","#A8C070",
+    "#D87898","#6898A8","#B8A050","#A87098","#70B870",
+    "#D8A070","#7898C0","#C8C058","#B88870","#90C8B8",
+]
+COUNTY_COLOR = {c: TL_CAT_PALETTE[i % len(TL_CAT_PALETTE)] for i, c in enumerate(TOP_COUNTIES)}
+COUNTY_COLOR["Other"] = "#B0A8A0"
+AVA_COLOR    = {a: TL_CAT_PALETTE[i % len(TL_CAT_PALETTE)] for i, a in enumerate(TOP_AVAS)}
+AVA_COLOR["Other"] = "#B0A8A0"
+
+# By county — each vineyard belongs to exactly one county → raw counts
+timeline_county = {c: [] for c in TOP_COUNTIES + ["Other"]}
+for dec in TL_DECADES_LIST:
+    sub = filter_by_decade(dec)
+    ctr = collections.Counter(vy["c"] for vy in sub if vy["c"])
+    for c in TOP_COUNTIES:
+        timeline_county[c].append(ctr.get(c, 0))
+    timeline_county["Other"].append(
+        sum(v for k, v in ctr.items() if k not in TOP_COUNTIES))
+
+# By AVA — raw counts
+timeline_ava = {a: [] for a in TOP_AVAS + ["Other"]}
+for dec in TL_DECADES_LIST:
+    sub = filter_by_decade(dec)
+    ctr = collections.Counter(vy["a"] for vy in sub if vy["a"])
+    for a in TOP_AVAS:
+        timeline_ava[a].append(ctr.get(a, 0))
+    timeline_ava["Other"].append(
+        sum(v for k, v in ctr.items() if k not in TOP_AVAS))
+
+# By variety — 1/N normalized so bar heights still equal vineyard count
+timeline_variety = {v: [] for v in TOP_VARIETIES + ["Other"]}
+for dec in TL_DECADES_LIST:
+    sub = filter_by_decade(dec)
+    vtot = collections.defaultdict(float)
+    for vy in sub:
+        if vy["pct"]:
+            s = sum(vy["pct"].values())
+            if s > 0:
+                for v, p in vy["pct"].items():
+                    vtot[v] += p / s
+        else:
+            n = len(vy["v"])
+            if n:
+                for v in vy["v"]:
+                    vtot[v] += 1.0 / n
+    for var in TOP_VARIETIES:
+        timeline_variety[var].append(round(vtot.get(var, 0), 4))
+    timeline_variety["Other"].append(
+        round(sum(v for k, v in vtot.items() if k not in TOP_VARIETIES), 4))
+
 # ── Section 1: pct stacked bar traces ─────────────────────────────────────
 pct_vineyard_names = [p["name"] for p in PCT_VINEYARDS]
 pct_var_set = set()
@@ -196,6 +252,12 @@ js_top_counties = json.dumps(TOP_COUNTIES)
 js_top_avas     = json.dumps(TOP_AVAS)
 js_var_color    = json.dumps(VAR_COLOR)
 js_dec_timeline = json.dumps(dec_timeline)
+js_tl_decades   = json.dumps(TL_DECADES_LIST)
+js_tl_county    = json.dumps(timeline_county)
+js_tl_ava       = json.dumps(timeline_ava)
+js_tl_variety   = json.dumps(timeline_variety)
+js_county_color = json.dumps(COUNTY_COLOR)
+js_ava_color    = json.dumps(AVA_COLOR)
 js_pct_traces   = json.dumps(pct_traces)
 js_pct_names    = json.dumps(pct_vineyard_names)
 js_dec_ordered  = json.dumps(DECADES_ORDERED)
@@ -404,6 +466,39 @@ nav.site-nav a:hover {{ color: #fff; border-bottom-color: rgba(255,255,255,.6); 
   font-style: italic;
   margin-top: 0;
 }}
+
+/* ── Timeline toggle buttons ──────────────────────────────────────────── */
+.tl-toggles {{
+  display: flex;
+  align-items: center;
+  gap: .45em;
+  margin-bottom: 1.1em;
+  flex-wrap: wrap;
+}}
+.tl-toggle-label {{
+  font-size: .72em;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-right: .2em;
+  flex-shrink: 0;
+}}
+.tl-btn {{
+  font-family: var(--font-sans);
+  font-size: .76em;
+  padding: .28em 1em;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  border-radius: 2px;
+  transition: background .15s, color .15s, border-color .15s;
+}}
+.tl-btn:hover {{ border-color: var(--sienna); color: var(--sienna); }}
+.tl-btn.active {{ background: var(--walnut); color: #fff; border-color: var(--walnut); }}
 
 /* ── Inline decade strip (lives inside the chart section) ─────────────── */
 .decade-strip {{
@@ -636,8 +731,15 @@ tr:hover td {{ border-top-style: solid; }}
 <section class="sc" id="sec-timeline">
   <div class="sc-head"><h2>Planting Timeline</h2></div>
   <div class="sc-body">
-    <p class="subtitle">Number of vineyards planted per decade across all {n_total} catalogued sites.</p>
+    <p class="subtitle">Number of vineyards planted per decade across all {n_total} catalogued sites. Toggle to break down by county, AVA, or variety.</p>
     <hr class="sc-rule">
+    <div class="tl-toggles">
+      <span class="tl-toggle-label">Color by:</span>
+      <button class="tl-btn active" data-mode="simple">Decade</button>
+      <button class="tl-btn" data-mode="county">County</button>
+      <button class="tl-btn" data-mode="ava">AVA</button>
+      <button class="tl-btn" data-mode="variety">Variety</button>
+    </div>
     <div id="timeline-chart"></div>
   </div>
 </section>
@@ -805,22 +907,70 @@ const PLY_LAYOUT_BASE = {{
 
 function vc(v) {{ return VAR_COLOR[v] || VAR_COLOR['Other']; }}
 
-// ── Timeline (static) ──────────────────────────────────────────────
-Plotly.newPlot('timeline-chart', [{{
-  type: 'bar',
-  x: Object.keys(DEC_TIMELINE),
-  y: Object.values(DEC_TIMELINE),
-  marker: {{
-    color: '#786b58',
-    line: {{color: '#9d5b37', width: 1}}
-  }},
-  hovertemplate: '<b>%{{x}}</b><br>%{{y}} vineyards<extra></extra>'
-}}], Object.assign({{}}, PLY_LAYOUT_BASE, {{
-  xaxis: {{title: 'Decade planted', tickangle: -30}},
-  yaxis: {{title: 'Vineyards', dtick: 5}},
-  height: 320,
-  margin: {{l: 60, r: 20, t: 10, b: 70}},
-}}), PLY_CFG);
+// ── Timeline breakdown data ────────────────────────────────────────
+const TL_DECADES    = {js_tl_decades};
+const TL_COUNTY     = {js_tl_county};
+const TL_AVA        = {js_tl_ava};
+const TL_VARIETY    = {js_tl_variety};
+const COUNTY_COLOR  = {js_county_color};
+const AVA_COLOR     = {js_ava_color};
+
+// ── Timeline chart (togglable by county / AVA / variety) ──────────
+function buildTimelineChart(mode) {{
+  let traces, extraLayout;
+  if (mode === 'simple') {{
+    traces = [{{
+      type: 'bar',
+      x: TL_DECADES,
+      y: TL_DECADES.map(d => DEC_TIMELINE[d]),
+      marker: {{color: '#786b58', line: {{color: '#9d5b37', width: 1}}}},
+      hovertemplate: '<b>%{{x}}</b><br>%{{y}} vineyards<extra></extra>'
+    }}];
+    extraLayout = {{
+      showlegend: false,
+      height: 320,
+      margin: {{l: 60, r: 20, t: 10, b: 70}},
+    }};
+  }} else {{
+    const dataMap  = mode === 'county' ? TL_COUNTY  : mode === 'ava' ? TL_AVA  : TL_VARIETY;
+    const colorMap = mode === 'county' ? COUNTY_COLOR : mode === 'ava' ? AVA_COLOR : VAR_COLOR;
+    traces = Object.entries(dataMap)
+      .map(([name, counts]) => ({{
+        type: 'bar', name,
+        x: TL_DECADES, y: counts,
+        marker: {{
+          color: colorMap[name] || '#B0A8A0',
+          line: {{color: 'rgba(255,255,255,.2)', width: .4}}
+        }},
+        hovertemplate: `<b>%{{x}}</b><br>${{name}}: %{{y:.2f}}<extra></extra>`
+      }}))
+      .filter(t => t.y.some(v => v > 0));
+    extraLayout = {{
+      barmode: 'stack',
+      showlegend: true,
+      height: 500,
+      margin: {{l: 60, r: 20, t: 10, b: 175}},
+      legend: {{orientation: 'h', y: -0.42, x: 0, font: {{size: 10}}, bgcolor: 'rgba(0,0,0,0)'}},
+    }};
+  }}
+  Plotly.react('timeline-chart', traces,
+    Object.assign({{}}, PLY_LAYOUT_BASE, {{
+      xaxis: {{title: 'Decade planted', tickangle: -30}},
+      yaxis: {{title: mode === 'variety' ? 'Vineyard equivalents' : 'Vineyards', dtick: 5}},
+    }}, extraLayout),
+    PLY_CFG
+  );
+}}
+
+document.querySelectorAll('.tl-btn').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    document.querySelectorAll('.tl-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildTimelineChart(btn.dataset.mode);
+  }});
+}});
+
+buildTimelineChart('simple');
 
 // ── Variety bar ───────────────────────────────────────────────────
 function buildVarietyChart(decade) {{

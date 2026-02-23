@@ -188,6 +188,39 @@ nav.site-nav a:hover { color: #fff; border-bottom-color: rgba(255,255,255,.6); }
   margin-top: 0;
 }
 
+/* ── Timeline toggle buttons ──────────────────────────────────────────── */
+.tl-toggles {
+  display: flex;
+  align-items: center;
+  gap: .45em;
+  margin-bottom: 1.1em;
+  flex-wrap: wrap;
+}
+.tl-toggle-label {
+  font-size: .72em;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-right: .2em;
+  flex-shrink: 0;
+}
+.tl-btn {
+  font-family: var(--font-sans);
+  font-size: .76em;
+  padding: .28em 1em;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  border-radius: 2px;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.tl-btn:hover { border-color: var(--sienna); color: var(--sienna); }
+.tl-btn.active { background: var(--walnut); color: #fff; border-color: var(--walnut); }
+
 /* ── Inline decade strip (lives inside the chart section) ─────────────── */
 .decade-strip {
   display: flex;
@@ -1312,8 +1345,15 @@ tr:hover td { border-top-style: solid; }
 <section class="sc" id="sec-timeline">
   <div class="sc-head"><h2>Planting Timeline</h2></div>
   <div class="sc-body">
-    <p class="subtitle">Number of vineyards planted per decade across all 197 catalogued sites.</p>
+    <p class="subtitle">Number of vineyards planted per decade across all 197 catalogued sites. Toggle to break down by county, AVA, or variety.</p>
     <hr class="sc-rule">
+    <div class="tl-toggles">
+      <span class="tl-toggle-label">Color by:</span>
+      <button class="tl-btn active" data-mode="simple">Decade</button>
+      <button class="tl-btn" data-mode="county">County</button>
+      <button class="tl-btn" data-mode="ava">AVA</button>
+      <button class="tl-btn" data-mode="variety">Variety</button>
+    </div>
     <div id="timeline-chart"></div>
   </div>
 </section>
@@ -3249,22 +3289,70 @@ const PLY_LAYOUT_BASE = {
 
 function vc(v) { return VAR_COLOR[v] || VAR_COLOR['Other']; }
 
-// ── Timeline (static) ──────────────────────────────────────────────
-Plotly.newPlot('timeline-chart', [{
-  type: 'bar',
-  x: Object.keys(DEC_TIMELINE),
-  y: Object.values(DEC_TIMELINE),
-  marker: {
-    color: '#786b58',
-    line: {color: '#9d5b37', width: 1}
-  },
-  hovertemplate: '<b>%{x}</b><br>%{y} vineyards<extra></extra>'
-}], Object.assign({}, PLY_LAYOUT_BASE, {
-  xaxis: {title: 'Decade planted', tickangle: -30},
-  yaxis: {title: 'Vineyards', dtick: 5},
-  height: 320,
-  margin: {l: 60, r: 20, t: 10, b: 70},
-}), PLY_CFG);
+// ── Timeline breakdown data ────────────────────────────────────────
+const TL_DECADES    = ["1860s", "1870s", "1880s", "1890s", "1900s", "1910s", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s"];
+const TL_COUNTY     = {"Sonoma": [0, 0, 7, 12, 15, 12, 9, 4, 0, 4, 1, 1], "San Joaquin": [0, 0, 1, 0, 6, 3, 1, 5, 2, 3, 2, 0], "Napa": [0, 0, 3, 1, 4, 0, 5, 3, 1, 2, 1, 1], "Amador": [1, 2, 0, 1, 0, 0, 1, 1, 0, 0, 3, 0], "Mendocino": [0, 0, 1, 0, 1, 0, 1, 0, 3, 1, 0, 1], "Napa County": [0, 0, 0, 0, 1, 1, 2, 0, 1, 0, 0, 2], "Santa Clara": [0, 0, 1, 0, 1, 2, 2, 0, 1, 0, 0, 0], "Contra Costa": [0, 0, 1, 2, 2, 1, 0, 1, 0, 0, 0, 0], "Sonoma County": [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1], "San Luis Obispo": [0, 0, 1, 0, 0, 0, 2, 0, 1, 0, 0, 1], "San Benito County": [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1], "Riverside": [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], "Monterey": [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1], "San Joaquin County": [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0], "San Bernardino": [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0], "Other": [0, 0, 1, 3, 1, 0, 0, 0, 0, 0, 2, 3]};
+const TL_AVA        = {"Russian River Valley": [0, 0, 3, 4, 7, 6, 5, 4, 0, 2, 0, 2], "Lodi": [0, 0, 1, 0, 7, 4, 4, 5, 2, 4, 3, 0], "Sonoma Valley": [0, 0, 2, 3, 5, 2, 0, 2, 0, 3, 1, 0], "Napa Valley": [0, 0, 2, 0, 2, 1, 4, 2, 0, 2, 0, 0], "Dry Creek Valley": [0, 0, 0, 4, 3, 3, 2, 0, 1, 0, 0, 0], "Alexander Valley": [0, 0, 1, 2, 1, 1, 3, 0, 0, 0, 0, 1], "Mendocino": [0, 0, 1, 0, 1, 0, 1, 0, 2, 1, 1, 1], "Paso Robles": [0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 2, 2], "Contra Costa": [0, 0, 1, 2, 2, 1, 0, 1, 0, 0, 0, 0], "St. Helena": [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 2], "Shenandoah Valley": [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0], "Santa Cruz Mountains": [0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0], "Amador": [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0], "Central Coast": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1], "Calistoga": [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0], "Other": [0, 1, 4, 3, 4, 4, 4, 2, 2, 0, 5, 6]};
+const TL_VARIETY    = {"Zinfandel": [0, 0, 2.9881, 5.9541, 14.9168, 4.4444, 9.2667, 3.8222, 1.25, 2.0, 6.0, 1.1111], "Carignan": [0, 0, 0.7381, 1.0582, 1.9971, 0.4844, 2.15, 1.1556, 1.25, 0, 0, 0], "Petite Sirah": [0, 0, 0.4881, 1.2258, 2.0333, 0.5444, 0.1667, 0.5556, 0, 0, 0.25, 1.1111], "Alicante Bouschet": [0, 0, 0.0714, 0.5371, 1.4361, 0.1311, 0.6667, 0.4333, 0, 0, 0, 0], "Cabernet Sauvignon": [0, 0, 0.25, 0.6625, 0.4583, 0, 0.4, 0, 0, 1.0, 1.25, 3.9444], "Grenache": [0, 0, 0.0714, 1.1339, 0.125, 1.3611, 0.25, 0, 0, 0, 0, 0], "Mission": [0, 1.0, 1.5714, 1.0625, 1.0, 0.25, 0.25, 0.5, 0, 0, 0, 0], "Syrah": [0, 0, 0.3214, 0.0625, 0.1111, 0.1711, 0, 0, 0, 0, 0, 0.2], "Chardonnay": [0, 0, 0, 0, 0, 0, 0.2, 0, 0.3333, 1.0, 0.5, 1.6667], "Mourv\u00e8dre": [0, 0, 0, 0.3958, 0, 0.8611, 0.25, 0, 0, 0, 0, 0.2], "Pinot Noir": [0, 0, 0, 0, 0, 0, 0, 0, 0, 2.0, 1.5, 0.3333], "Cinsault": [0, 0, 0.0714, 0.2, 0.125, 0.1111, 0, 0, 0, 0, 0, 0], "Tempranillo": [0, 0, 0, 0.0625, 0, 0, 0.1667, 0.1111, 0, 0, 0, 0.2], "Palomino": [0, 0, 0, 0.3534, 0, 0, 0.2, 0, 0, 0, 0, 0], "Peloursin": [0, 0, 0.0714, 0, 0, 0.03, 0.1667, 0.1, 0, 0, 0, 0], "Other": [0, 0, 2.3571, 2.2917, 3.7972, 2.6111, 2.8667, 4.3222, 2.1667, 1.0, 0.5, 3.2333]};
+const COUNTY_COLOR  = {"Sonoma": "#5B8EC0", "San Joaquin": "#8BC08B", "Napa": "#E8884A", "Amador": "#9B7EC0", "Mendocino": "#E8C858", "Napa County": "#C07898", "Santa Clara": "#50A898", "Contra Costa": "#C8885A", "Sonoma County": "#7898D8", "San Luis Obispo": "#A8C070", "San Benito County": "#D87898", "Riverside": "#6898A8", "Monterey": "#B8A050", "San Joaquin County": "#A87098", "San Bernardino": "#70B870", "Other": "#B0A8A0"};
+const AVA_COLOR     = {"Russian River Valley": "#5B8EC0", "Lodi": "#8BC08B", "Sonoma Valley": "#E8884A", "Napa Valley": "#9B7EC0", "Dry Creek Valley": "#E8C858", "Alexander Valley": "#C07898", "Mendocino": "#50A898", "Paso Robles": "#C8885A", "Contra Costa": "#7898D8", "St. Helena": "#A8C070", "Shenandoah Valley": "#D87898", "Santa Cruz Mountains": "#6898A8", "Amador": "#B8A050", "Central Coast": "#A87098", "Calistoga": "#70B870", "Other": "#B0A8A0"};
+
+// ── Timeline chart (togglable by county / AVA / variety) ──────────
+function buildTimelineChart(mode) {
+  let traces, extraLayout;
+  if (mode === 'simple') {
+    traces = [{
+      type: 'bar',
+      x: TL_DECADES,
+      y: TL_DECADES.map(d => DEC_TIMELINE[d]),
+      marker: {color: '#786b58', line: {color: '#9d5b37', width: 1}},
+      hovertemplate: '<b>%{x}</b><br>%{y} vineyards<extra></extra>'
+    }];
+    extraLayout = {
+      showlegend: false,
+      height: 320,
+      margin: {l: 60, r: 20, t: 10, b: 70},
+    };
+  } else {
+    const dataMap  = mode === 'county' ? TL_COUNTY  : mode === 'ava' ? TL_AVA  : TL_VARIETY;
+    const colorMap = mode === 'county' ? COUNTY_COLOR : mode === 'ava' ? AVA_COLOR : VAR_COLOR;
+    traces = Object.entries(dataMap)
+      .map(([name, counts]) => ({
+        type: 'bar', name,
+        x: TL_DECADES, y: counts,
+        marker: {
+          color: colorMap[name] || '#B0A8A0',
+          line: {color: 'rgba(255,255,255,.2)', width: .4}
+        },
+        hovertemplate: `<b>%{x}</b><br>${name}: %{y:.2f}<extra></extra>`
+      }))
+      .filter(t => t.y.some(v => v > 0));
+    extraLayout = {
+      barmode: 'stack',
+      showlegend: true,
+      height: 500,
+      margin: {l: 60, r: 20, t: 10, b: 175},
+      legend: {orientation: 'h', y: -0.42, x: 0, font: {size: 10}, bgcolor: 'rgba(0,0,0,0)'},
+    };
+  }
+  Plotly.react('timeline-chart', traces,
+    Object.assign({}, PLY_LAYOUT_BASE, {
+      xaxis: {title: 'Decade planted', tickangle: -30},
+      yaxis: {title: mode === 'variety' ? 'Vineyard equivalents' : 'Vineyards', dtick: 5},
+    }, extraLayout),
+    PLY_CFG
+  );
+}
+
+document.querySelectorAll('.tl-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tl-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildTimelineChart(btn.dataset.mode);
+  });
+});
+
+buildTimelineChart('simple');
 
 // ── Variety bar ───────────────────────────────────────────────────
 function buildVarietyChart(decade) {
