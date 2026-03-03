@@ -18,7 +18,7 @@ Design tokens derived from the live HVS theme stylesheet:
   - Buttons: uppercase, letter-spacing .5px, padding 10px 15px
 """
 
-import csv, json, collections, re
+import csv, json, collections, re, urllib.request
 
 # ── Load data ──────────────────────────────────────────────────────────────
 rows_csv = list(csv.DictReader(open("output/vineyards_analysed.csv")))
@@ -36,6 +36,7 @@ for item in raw_json:
         "d": item.get("Decade", ""),
         "c": item.get("County", ""),
         "a": item.get("AVA", ""),
+        "u": item.get("url", ""),        # HVS page URL
         "v": var_names,       # list of variety names
         "pct": var_pct,       # {variety: pct} for those with data
     })
@@ -268,6 +269,123 @@ js_ov_vars   = json.dumps([v for v,_ in reversed(ov_top10)])
 js_ov_counts = json.dumps([c for _,c in reversed(ov_top10)])
 js_ov_colors = json.dumps([VAR_COLOR.get(v, VAR_COLOR["Other"]) for v,_ in reversed(ov_top10)])
 
+# ── AVA GeoJSON fetch & vineyard injection ──────────────────────────────────
+def _rdp_iter(pts, eps):
+    """Ramer-Douglas-Peucker simplification (iterative — no recursion limit)."""
+    if len(pts) < 3:
+        return pts
+    mask  = [True] * len(pts)
+    stack = [(0, len(pts) - 1)]
+    while stack:
+        s, e = stack.pop()
+        if e - s < 2:
+            continue
+        x0, y0 = pts[s];  xe, ye = pts[e]
+        dx, dy  = xe - x0, ye - y0
+        denom   = (dx*dx + dy*dy) ** 0.5 or 1e-9
+        md, mi  = 0.0, s
+        for i in range(s + 1, e):
+            d = abs(dx*(y0 - pts[i][1]) - (x0 - pts[i][0])*dy) / denom
+            if d > md:
+                md, mi = d, i
+        if md > eps:
+            stack.append((s, mi));  stack.append((mi, e))
+        else:
+            for i in range(s + 1, e):
+                mask[i] = False
+    return [p for p, keep in zip(pts, mask) if keep]
+
+def _simplify_ring(ring, eps):
+    """Simplify a GeoJSON ring (closed polygon boundary).
+
+    GeoJSON rings are closed: first point == last point.  We open the ring
+    (drop the duplicate end), run RDP on the open chain, then re-close it.
+    This avoids the degenerate case where start==end collapses every interior
+    point to distance 0.
+    """
+    if len(ring) < 4:
+        return ring
+    # Detect closed ring (first pt == last pt in GeoJSON convention)
+    closed = (ring[0] == ring[-1])
+    pts    = ring[:-1] if closed else ring
+    if len(pts) < 3:
+        return ring
+    s = _rdp_iter(pts, eps)
+    if len(s) < 3:
+        s = pts                             # refuse to collapse below 3 pts
+    if closed:
+        s = s + [s[0]]                      # re-close the ring
+    return s
+
+def _simplify_geom(geom, eps=0.005):
+    t = geom["type"]
+    if t == "Polygon":
+        return {"type": "Polygon",
+                "coordinates": [_simplify_ring(r, eps) for r in geom["coordinates"]]}
+    if t == "MultiPolygon":
+        return {"type": "MultiPolygon",
+                "coordinates": [[_simplify_ring(r, eps) for r in poly]
+                                for poly in geom["coordinates"]]}
+    return geom
+
+def _norm_ava(name):
+    return re.sub(r'[^a-z0-9]', '', name.lower())
+
+# Build lookup: normalised AVA name → list of vineyard dicts for map popups
+_ava_lookup = collections.defaultdict(list)
+for _vy in vineyards:
+    if _vy["a"]:
+        _ava_lookup[_norm_ava(_vy["a"])].append({
+            "name":      _vy["n"],
+            "decade":    _vy["d"],
+            "county":    _vy["c"],
+            "varieties": _vy["v"][:8],
+            "url":       _vy["u"],
+        })
+
+_AVA_ALIASES = {
+    # GeoJSON official name (normalised) → vineyard-data name (normalised)
+    _norm_ava("California Shenandoah Valley"): _norm_ava("Shenandoah Valley"),
+}
+
+def _match_ava(feat_name):
+    """Return list of vineyards for a GeoJSON feature (exact match only)."""
+    k = _norm_ava(feat_name)
+    if k in _ava_lookup:
+        return list(_ava_lookup[k])
+    alias = _AVA_ALIASES.get(k)
+    if alias and alias in _ava_lookup:
+        return list(_ava_lookup[alias])
+    return []
+
+# Fetch California AVA GeoJSON from the UC Davis community AVA repository
+# (California-specific file from avas_by_state/ — no state filtering needed)
+_AVA_URL   = ("https://raw.githubusercontent.com/UCDavisLibrary/ava/"
+              "master/avas_by_state/CA_avas.geojson")
+_ava_geojson = None
+try:
+    print("Fetching California AVA GeoJSON …", flush=True)
+    with urllib.request.urlopen(_AVA_URL, timeout=60) as _r:
+        _raw = json.loads(_r.read())
+    _ca_feats = []
+    for _f in _raw["features"]:
+        _p = _f.get("properties") or {}
+        _vys              = _match_ava(_p.get("name", ""))
+        _p["count"]       = len(_vys)
+        _p["vineyards"]   = _vys
+        _f["geometry"]    = _simplify_geom(_f["geometry"])
+        _ca_feats.append(_f)
+    _ava_geojson = {"type": "FeatureCollection", "features": _ca_feats}
+    _matched = sum(f["properties"]["count"] for f in _ca_feats)
+    print(f"  → {len(_ca_feats)} CA AVAs, {_matched} total vineyard matches",
+          flush=True)
+except Exception as _e:
+    print(f"Warning: AVA GeoJSON fetch failed ({_e}); map will be empty.",
+          flush=True)
+
+js_ava_geojson = json.dumps(
+    _ava_geojson or {"type": "FeatureCollection", "features": []})
+
 # ── Load and inline the official HVS logo ─────────────────────────────────
 logo_raw = open("logo_hvs_full.svg", encoding="utf-8").read()
 logo_raw = re.sub(r'<\?xml[^>]+\?>', '', logo_raw)
@@ -287,6 +405,8 @@ HTML = f"""<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 /* ── Reset ─────────────────────────────────────────── */
 *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -672,6 +792,114 @@ tr:hover td {{ border-top-style: solid; }}
 .site-footer a {{ color: rgba(255,255,255,.85); }}
 
 /* ── Responsive ─────────────────────────────────────── */
+/* ── AVA Map ─────────────────────────────────────────── */
+#map-wrap {{
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+}}
+#ava-map {{
+  flex: 2;
+  min-width: 0;
+  height: 560px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  z-index: 1;
+}}
+#ava-panel {{
+  flex: 1;
+  min-width: 240px;
+  max-height: 560px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  padding: 1.1em 1.2em;
+  background: var(--bg-light);
+  border-radius: 2px;
+}}
+#ava-panel .ava-panel-title {{
+  font-family: var(--font-serif);
+  font-size: 1.05em;
+  font-weight: normal;
+  color: var(--walnut);
+  margin: 0 0 .5em;
+  text-transform: none;
+  letter-spacing: 0;
+}}
+.ava-hint {{
+  font-size: .875em;
+  color: var(--text-light);
+  font-style: italic;
+}}
+.ava-count {{
+  font-size: .78em;
+  color: var(--sienna);
+  font-weight: 600;
+  margin-bottom: .8em;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}}
+.ava-none {{
+  font-size: .85em;
+  color: var(--text-light);
+  font-style: italic;
+}}
+.vy-list {{ display: flex; flex-direction: column; gap: .65em; }}
+.vy-card {{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sienna);
+  padding: .55em .8em;
+  border-radius: 2px;
+}}
+.vy-card-name {{
+  font-weight: 600;
+  font-size: .88em;
+  margin-bottom: .18em;
+  color: var(--walnut);
+}}
+.vy-card-name a {{ color: var(--sienna); }}
+.vy-card-name a:hover {{ color: var(--walnut); }}
+.vy-card-meta {{
+  font-size: .74em;
+  color: var(--text-light);
+  margin-bottom: .3em;
+}}
+.vy-card-chips {{ display: flex; flex-wrap: wrap; gap: .22em; }}
+.vy-chip {{
+  font-size: .62em;
+  padding: .15em .48em;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  white-space: nowrap;
+}}
+/* Leaflet choropleth legend */
+.map-legend {{
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: .55em .85em;
+  font-family: var(--font-sans);
+  font-size: .78em;
+  line-height: 1.65;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+}}
+.map-legend strong {{
+  font-size: .9em;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  color: var(--walnut);
+}}
+.map-legend i {{
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  margin-right: .4em;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 1px;
+}}
 @media (max-width: 768px) {{
   :root {{ --pad: 20px; }}
   .header-inner {{ flex-direction: column; text-align: center; }}
@@ -683,6 +911,9 @@ tr:hover td {{ border-top-style: solid; }}
   .stat-box {{ min-width: 90px; }}
   .decade-strip {{ flex-direction: column; align-items: flex-start; gap: .4em; }}
   .ds-slider-wrap {{ width: 100%; }}
+  #map-wrap {{ flex-direction: column; }}
+  #ava-map {{ height: 380px; }}
+  #ava-panel {{ max-height: 300px; }}
 }}
 </style>
 </head>
@@ -718,6 +949,7 @@ tr:hover td {{ border-top-style: solid; }}
 <nav class="site-nav">
   <ul>
     <li><a href="#sec-timeline">Planting Timeline</a></li>
+    <li><a href="#sec-map">AVA Map</a></li>
     <li><a href="#sec-interactive">By Decade</a></li>
     <li><a href="#sec-pct">Variety %</a></li>
     <li><a href="#sec-overall">Overall Top 10</a></li>
@@ -741,6 +973,21 @@ tr:hover td {{ border-top-style: solid; }}
       <button class="tl-btn" data-mode="variety">Variety</button>
     </div>
     <div id="timeline-chart"></div>
+  </div>
+</section>
+
+<!-- AVA MAP -->
+<section class="sc" id="sec-map">
+  <div class="sc-head"><h2>California AVA Map</h2></div>
+  <div class="sc-body">
+    <p class="subtitle">American Viticultural Areas (AVAs) colored by number of catalogued historic vineyards. Click any AVA to explore its vineyards.</p>
+    <hr class="sc-rule">
+    <div id="map-wrap">
+      <div id="ava-map"></div>
+      <div id="ava-panel">
+        <p class="ava-hint">Click on an AVA region to see the historic vineyards it contains.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -895,6 +1142,7 @@ const DECADES       = {js_dec_ordered};
 const OV_VARS       = {js_ov_vars};
 const OV_COUNTS     = {js_ov_counts};
 const OV_COLORS     = {js_ov_colors};
+const AVA_GEOJSON   = {js_ava_geojson};
 
 const PLY_CFG = {{responsive: true, displayModeBar: false}};
 
@@ -1069,6 +1317,115 @@ function updateAll(idx) {{
 
 slider.addEventListener('input', e => updateAll(+e.target.value));
 updateAll(0);
+
+// ── AVA Choropleth Map (Leaflet) ────────────────────────────────────────────
+(function() {{
+  if (typeof L === 'undefined') return;
+  if (!AVA_GEOJSON || !AVA_GEOJSON.features || !AVA_GEOJSON.features.length) {{
+    document.getElementById('ava-map').innerHTML =
+      '<p style="padding:2em;color:#777;font-style:italic">Map data unavailable.</p>';
+    return;
+  }}
+
+  const map = L.map('ava-map', {{
+    center: [37.5, -119.5],
+    zoom: 6,
+    scrollWheelZoom: false,
+  }});
+
+  L.tileLayer(
+    'https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}{{r}}.png',
+    {{
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' +
+                   ' &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }}
+  ).addTo(map);
+
+  function getColor(n) {{
+    return n >= 12 ? '#473b2b'
+         : n >=  7 ? '#956c38'
+         : n >=  4 ? '#b88c50'
+         : n >=  2 ? '#d4b07a'
+         : n >=  1 ? '#e8d5b0'
+         :            '#f5f2ee';
+  }}
+
+  function layerStyle(feat) {{
+    const n = feat.properties.count || 0;
+    return {{
+      fillColor:   getColor(n),
+      weight:      1,
+      opacity:     .8,
+      color:       '#9d5b37',
+      fillOpacity: n > 0 ? .72 : .3,
+    }};
+  }}
+
+  const panel = document.getElementById('ava-panel');
+  let active  = null;
+
+  function showPanel(feat) {{
+    const p    = feat.properties;
+    const name = p.name || '';
+    const vys  = p.vineyards || [];
+    let h = `<h3 class="ava-panel-title">${{name}}</h3>`;
+    if (!vys.length) {{
+      h += '<p class="ava-none">No catalogued historic vineyards in this AVA.</p>';
+    }} else {{
+      h += `<p class="ava-count">${{vys.length}} historic vineyard${{vys.length !== 1 ? 's' : ''}}</p>`;
+      h += '<div class="vy-list">';
+      vys.forEach(vy => {{
+        const chips = (vy.varieties || []).map(v =>
+          `<span class="vy-chip" style="background:${{VAR_COLOR[v] || '#B0A8A0'}}">${{v}}</span>`
+        ).join('');
+        const nm   = vy.url
+          ? `<a href="${{vy.url}}" target="_blank" rel="noopener">${{vy.name}}</a>`
+          : vy.name;
+        const meta = [vy.county, vy.decade].filter(Boolean).join(' \u00b7 ');
+        h += `<div class="vy-card">`;
+        h += `<div class="vy-card-name">${{nm}}</div>`;
+        if (meta)  h += `<div class="vy-card-meta">${{meta}}</div>`;
+        if (chips) h += `<div class="vy-card-chips">${{chips}}</div>`;
+        h += `</div>`;
+      }});
+      h += '</div>';
+    }}
+    panel.innerHTML = h;
+    panel.scrollTop = 0;
+  }}
+
+  function onEach(feat, layer) {{
+    const n    = feat.properties.count || 0;
+    const name = feat.properties.name  || '';
+    layer.bindTooltip(
+      `<b>${{name}}</b><br>${{n}} vineyard${{n !== 1 ? 's' : ''}}`,
+      {{sticky: true}}
+    );
+    layer.on('click', function() {{
+      if (active) active.setStyle(layerStyle(active.feature));
+      layer.setStyle({{weight: 2.5, color: '#473b2b', fillOpacity: .9}});
+      active = layer;
+      showPanel(feat);
+    }});
+  }}
+
+  L.geoJSON(AVA_GEOJSON, {{style: layerStyle, onEachFeature: onEach}}).addTo(map);
+
+  // Choropleth legend
+  const legend = L.control({{position: 'bottomright'}});
+  legend.onAdd = function() {{
+    const d = L.DomUtil.create('div', 'map-legend');
+    d.innerHTML = '<strong>Vineyards</strong><br>';
+    [[0,'0'],[1,'1'],[2,'2–3'],[4,'4–6'],[7,'7–11'],[12,'12+']].forEach(function(pair) {{
+      d.innerHTML +=
+        `<i style="background:${{getColor(pair[0] + .1)}}"></i>${{pair[1]}}<br>`;
+    }});
+    return d;
+  }};
+  legend.addTo(map);
+}})();
 </script>
 </body>
 </html>"""
